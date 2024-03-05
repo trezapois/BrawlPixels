@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://bx27usq666kpk"]
+
+[ext_resource type="Script" path="res://scenes/Main_character.cs" id="1_iw1wb"]
+[ext_resource type="Texture2D" uid="uid://04cb3g118ot2" path="res://PurpleMAnIdel-Sheet.png" id="2_uw0jw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynhjk"]
+atlas = ExtResource("2_uw0jw")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eib0x"]
+atlas = ExtResource("2_uw0jw")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyews"]
+atlas = ExtResource("2_uw0jw")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyuwb"]
+atlas = ExtResource("2_uw0jw")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o00xd"]
+atlas = ExtResource("2_uw0jw")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rafra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynhjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eib0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyews")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyuwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o00xd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whf7j"]
+size = Vector2(92, 157)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_iw1wb")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(484, 458)
+scale = Vector2(4.7973, 4.91667)
+sprite_frames = SubResource("SpriteFrames_rafra")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.653114
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(470, 453.5)
+shape = SubResource("RectangleShape2D_whf7j")
