@@ -3,7 +3,15 @@ using System;
 
 public partial class Purplemain : CharacterBody2D
 {
-	public const float Speed = 300.0f;
+	private AnimatedSprite2D _animatedSprite;
+
+    public override void _Ready()
+    {
+        _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
+    }
+    
+    
+    public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -13,6 +21,7 @@ public partial class Purplemain : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 
+	
 		// Add the gravity.
 		if (!IsOnFloor())
 			velocity.Y += gravity * (float)delta;
@@ -27,13 +36,21 @@ public partial class Purplemain : CharacterBody2D
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
+			_animatedSprite.Play("run");
 		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			_animatedSprite.Stop();
 		}
+
+
 
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	
+
+
+
 }

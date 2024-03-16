@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1748s7b0y7iy"
-path="res://.godot/imported/getting_hit-Sheet.png-27e060098408c0610d21338463e597b5.ctex"
+uid="uid://dvh5knxj03s3e"
+path="res://.godot/imported/Heavy attack-Sheet.png-d1f65321a85e60045b9a66414014b3d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://getting_hit-Sheet.png"
-dest_files=["res://.godot/imported/getting_hit-Sheet.png-27e060098408c0610d21338463e597b5.ctex"]
+source_file="res://Heavy attack-Sheet.png"
+dest_files=["res://.godot/imported/Heavy attack-Sheet.png-d1f65321a85e60045b9a66414014b3d5.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck8eo4slahrpf"
-path="res://.godot/imported/walking-Sheet.png-fe4b557302cbac24ffa671584b3a743a.ctex"
+uid="uid://bptdkn01d1wk7"
+path="res://.godot/imported/FINAL HIT-Sheet.png-0235ffeec650c44eaefc393218d2d1f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://walking-Sheet.png"
-dest_files=["res://.godot/imported/walking-Sheet.png-fe4b557302cbac24ffa671584b3a743a.ctex"]
+source_file="res://FINAL HIT-Sheet.png"
+dest_files=["res://.godot/imported/FINAL HIT-Sheet.png-0235ffeec650c44eaefc393218d2d1f5.ctex"]
 
 [params]
 
