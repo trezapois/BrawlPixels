@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://duwuawdhfbhiv"]
+[gd_scene load_steps=8 format=3 uid="uid://duwuawdhfbhiv"]
 
 [ext_resource type="Texture2D" uid="uid://d4lo0et0nu1v7" path="res://volcano.png" id="1_0qvaw"]
 [ext_resource type="Texture2D" uid="uid://beq5xuvgre2aw" path="res://Textures-16.png" id="2_3vpxs"]
 [ext_resource type="PackedScene" uid="uid://bx27usq666kpk" path="res://scenes/Main_character.tscn" id="3_4y6c8"]
+[ext_resource type="Script" path="res://Punching_ball.cs" id="4_x26ps"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_scifo"]
 texture = ExtResource("2_3vpxs")
@@ -1311,6 +1312,9 @@ texture = ExtResource("2_3vpxs")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_scifo")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygi1s"]
+size = Vector2(106, 246)
+
 [node name="Training" type="Node"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -1334,3 +1338,10 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_4y6c8")]
 position = Vector2(-293, 26)
+
+[node name="Punchingball" type="CharacterBody2D" parent="."]
+script = ExtResource("4_x26ps")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Punchingball"]
+position = Vector2(573, 435)
+shape = SubResource("RectangleShape2D_ygi1s")
