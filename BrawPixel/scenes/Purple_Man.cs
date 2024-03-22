@@ -7,7 +7,6 @@ public partial class Purple_Man : CharacterBody2D
 	
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
-<<<<<<< Updated upstream
 	private bool _inCombo = false;
 	private double _timeTillNextImput = 0;
 	private int _currentAttack = 0;
@@ -33,16 +32,9 @@ public partial class Purple_Man : CharacterBody2D
 	}
 
 
-=======
-	private Vector2 syncPos = new Vector2(0,0);
-	private float syncRotation = 0;
-	
->>>>>>> Stashed changes
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private AnimatedSprite2D animatedSprite;
-
 	public override void _Ready()
-<<<<<<< Updated upstream
 	{
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
@@ -64,43 +56,12 @@ public partial class Purple_Man : CharacterBody2D
 			{
 				velocity.X = direction.X * Speed;
 				SwitchAnimation("run");
-=======
-    {
-        animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
-		
-    }
-	public override void _PhysicsProcess(double delta)
-	{
-		if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
-		{
-			Vector2 velocity = Velocity;
-
-		
-			if (!IsOnFloor())
-				velocity.Y += gravity * (float)delta;
-
-			
-			if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-				velocity.Y = JumpVelocity;
-
-			Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-			if (direction != Vector2.Zero)
-			{
-				 bool movingLeft = direction.X < 0;
-                velocity.X = direction.X * Speed;
-                SwitchAnimation("run");
-
-                // Flip the sprite if moving left
-                animatedSprite.FlipH = movingLeft;
->>>>>>> Stashed changes
 			}
 			else
 			{
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 				SwitchAnimation("Idle");
 			}
-<<<<<<< Updated upstream
 			// Clear the Movement list at neutral position
 			if (direction.X == 0 && direction.Y == 0)
 			{
@@ -216,43 +177,6 @@ public partial class Purple_Man : CharacterBody2D
 	{
 		animatedSprite.Animation = animationName;
 	}
-=======
 
-			Velocity = velocity;
-			MoveAndSlide();
-
-			
-			syncPos = GlobalPosition;
-		
-		}
-		else
-        {
-          	//GlobalPosition = syncPos;
-			
-        }
-		
-	}
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-    private void SwitchAnimation(string animationName)
-    {
-        animatedSprite.Animation = animationName;
-    }
->>>>>>> Stashed changes
-
-	 private void FlipSprite(bool flip)
-    {
-        animatedSprite.FlipH = flip; // flip character from left to right or vice versa
-        GD.Print("Flip state changed to: ", flip);
-        if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
-        {
-            Rpc(nameof(SyncFlipState), flip); // for the multiplayer
-        }
-    }
-
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-    private void SyncFlipState(bool flip)
-    {
-        animatedSprite.FlipH = flip;
-        GD.Print("Synced flip state to: ", flip);
-    }
+	
 }
