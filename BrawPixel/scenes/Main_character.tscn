@@ -1,4 +1,8 @@
+Second-Animation
 [gd_scene load_steps=50 format=3 uid="uid://bx27usq666kpk"]
+
+[gd_scene load_steps=42 format=3 uid="uid://bx27usq666kpk"]
+main
 
 [ext_resource type="Script" path="res://scenes/Purple_Man.cs" id="1_n1pvo"]
 [ext_resource type="Texture2D" uid="uid://04cb3g118ot2" path="res://PurpleMAnIdel-Sheet.png" id="2_uw0jw"]
@@ -7,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cmwgh0yfpn1al" path="res://Double Jab fast-Sheet.png" id="4_fw4lu"]
 [ext_resource type="Texture2D" uid="uid://bptdkn01d1wk7" path="res://FINAL HIT-Sheet.png" id="4_jibwr"]
 [ext_resource type="Texture2D" uid="uid://cbnx5wy6ghctn" path="res://JABFINAL-Sheet.png" id="5_khmfc"]
+[ext_resource type="Script" path="res://scenes/Collider.cs" id="7_s2iyg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmm6j"]
 atlas = ExtResource("2_xqe0j")
@@ -322,9 +327,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whf7j"]
-size = Vector2(93, 148.5)
+size = Vector2(56, 152)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_robkj"]
+size = Vector2(61, 21)
+
+[node name="Player1" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_n1pvo")
 
@@ -334,10 +342,25 @@ scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_unqgu")
 animation = &"double fast jab"
 autoplay = "Idle"
+Second-Animation
 frame_progress = 0.58554
+
+frame = 3
+frame_progress = 0.454955
+main
 centered = false
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(467, 468)
+position = Vector2(468, 468)
 shape = SubResource("RectangleShape2D_whf7j")
+
+[node name="Collider" type="Area2D" parent="."]
+script = ExtResource("7_s2iyg")
+
+[node name="Hit_Collider" type="CollisionShape2D" parent="Collider"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(528, 434.5)
+shape = SubResource("RectangleShape2D_robkj")
+
+[connection signal="body_entered" from="Collider" to="Collider" method="_on_body_entered"]
