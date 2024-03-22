@@ -1,9 +1,14 @@
+Second-Animation
+[gd_scene load_steps=50 format=3 uid="uid://bx27usq666kpk"]
+
 [gd_scene load_steps=42 format=3 uid="uid://bx27usq666kpk"]
+main
 
 [ext_resource type="Script" path="res://scenes/Purple_Man.cs" id="1_n1pvo"]
 [ext_resource type="Texture2D" uid="uid://04cb3g118ot2" path="res://PurpleMAnIdel-Sheet.png" id="2_uw0jw"]
 [ext_resource type="Texture2D" uid="uid://dvh5knxj03s3e" path="res://Heavy attack-Sheet.png" id="2_xqe0j"]
 [ext_resource type="Texture2D" uid="uid://ibfj6eqjijyd" path="res://WALKING_Final-Sheet.png" id="3_wgiwy"]
+[ext_resource type="Texture2D" uid="uid://cmwgh0yfpn1al" path="res://Double Jab fast-Sheet.png" id="4_fw4lu"]
 [ext_resource type="Texture2D" uid="uid://bptdkn01d1wk7" path="res://FINAL HIT-Sheet.png" id="4_jibwr"]
 [ext_resource type="Texture2D" uid="uid://cbnx5wy6ghctn" path="res://JABFINAL-Sheet.png" id="5_khmfc"]
 [ext_resource type="Script" path="res://scenes/Collider.cs" id="7_s2iyg"]
@@ -51,6 +56,42 @@ region = Rect2(96, 0, 32, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hyv6"]
 atlas = ExtResource("2_uw0jw")
 region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25juo"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(0, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65lvp"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(37, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owj4l"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(74, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjwqj"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(111, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2srs0"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(148, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04exl"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(185, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpqr0"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(222, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uieit"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(259, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkfor"]
+atlas = ExtResource("4_fw4lu")
+region = Rect2(296, 0, 37, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51v7q"]
 atlas = ExtResource("4_jibwr")
@@ -179,6 +220,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_25juo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65lvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owj4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjwqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2srs0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04exl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpqr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uieit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkfor")
+}],
+"loop": true,
+"name": &"double fast jab",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_51v7q")
 }, {
 "duration": 1.0,
@@ -215,7 +288,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jab",
-"speed": 7.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -267,10 +340,14 @@ script = ExtResource("1_n1pvo")
 position = Vector2(399, 353)
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_unqgu")
-animation = &"Heavy"
+animation = &"double fast jab"
 autoplay = "Idle"
+Second-Animation
+frame_progress = 0.58554
+
 frame = 3
 frame_progress = 0.454955
+main
 centered = false
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
