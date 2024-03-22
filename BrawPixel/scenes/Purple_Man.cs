@@ -21,7 +21,7 @@ public partial class Purple_Man : CharacterBody2D
 	Purple_Man()
 	{
 		JlistInput = new Dictionary<List<int>, string>();
-		JlistInput.Add(new List<int>(){2,3,6},"heavy");
+		JlistInput.Add(new List<int>(){2,3,6},"Heavy");
 		KlistInput = new Dictionary<List<int>, string>();
 		MovementList = new List<int>();
 		AttacksList = new List<Attacks>();
