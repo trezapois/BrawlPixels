@@ -16,7 +16,7 @@ public partial class Play : Node
 		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
 	}
 	public void OnMultiPress(){
-		GetTree().ChangeSceneToFile("");
+		GetTree().ChangeSceneToFile("res://scenes/host_and_join.tscn");
 	}
 	public void OnTrainingPress(){
 		GetTree().ChangeSceneToFile("res://scenes/Training.tscn");
