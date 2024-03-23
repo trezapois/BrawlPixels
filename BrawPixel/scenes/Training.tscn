@@ -1352,7 +1352,7 @@ text = "Pause"
 script = ExtResource("4_x26ps")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Punchingball"]
-position = Vector2(866, 438)
+position = Vector2(-232, 374)
 shape = SubResource("RectangleShape2D_ygi1s")
 
 [node name="Pause" type="Control" parent="."]

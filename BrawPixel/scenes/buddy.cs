@@ -23,5 +23,7 @@ public partial class buddy : CharacterBody2D
 	public void handle_hit(int damage, Vector2 knockback)
 	{
 		HP -= damage;
+		GD.Print("ouch");
+		GD.Print(HP);
 	}
 }

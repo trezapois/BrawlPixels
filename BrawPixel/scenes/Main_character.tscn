@@ -366,7 +366,6 @@ shape = SubResource("RectangleShape2D_whf7j")
 script = ExtResource("7_s2iyg")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Collider"]
-process_mode = 1
 modulate = Color(1, 1, 0, 1)
 position = Vector2(528, 434.5)
 shape = SubResource("RectangleShape2D_robkj")
