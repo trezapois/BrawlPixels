@@ -24,8 +24,8 @@ public partial class Training : Node
 		GetTree().Paused= false;
 	}
 	public void _on_exit_pressed()
-    {
+	{
 		GetTree().Paused= false;
-        GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
-    }
+		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
+	}
 }
