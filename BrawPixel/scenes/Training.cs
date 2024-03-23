@@ -1,6 +1,5 @@
 using Godot;
 using System;
-
 public partial class Training : Node
 {
 	private Control pauseMenu;
