@@ -1,6 +1,6 @@
 # BrawlPixels
 S2 project for EPITA, 2D fighting game
-
+## THE GODOT PROJECT IS INSIDE THE BRAWL PIXEL FOLDER
 
 The controls : 
 A in qwerty / Q in azerty is the attack button 
