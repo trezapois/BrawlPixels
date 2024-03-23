@@ -1341,34 +1341,6 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_4y6c8")]
 position = Vector2(-293, 26)
 
-[node name="Pause@Continue" type="Button" parent="."]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 561.0
-offset_top = 254.0
-offset_right = 861.0
-offset_bottom = 354.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Continue"
-
-[node name="Pause@Exit" type="Button" parent="."]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 207.0
-offset_top = 254.0
-offset_right = 507.0
-offset_bottom = 354.0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Exit"
-
 [node name="Pause2" type="Button" parent="."]
 offset_right = 174.0
 offset_bottom = 85.0
@@ -1379,7 +1351,47 @@ text = "Pause"
 script = ExtResource("4_x26ps")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Punchingball"]
-position = Vector2(573, 435)
+position = Vector2(866, 438)
 shape = SubResource("RectangleShape2D_ygi1s")
 
+[node name="Pause" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause@Continue" type="Button" parent="Pause"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 652.0
+offset_top = 258.0
+offset_right = 952.0
+offset_bottom = 358.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Continue"
+
+[node name="Pause@Exit" type="Button" parent="Pause"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 164.0
+offset_top = 258.0
+offset_right = 464.0
+offset_bottom = 358.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
 [connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
+[connection signal="pressed" from="Pause/Pause@Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Pause/Pause@Exit" to="." method="_on_exit_pressed"]
