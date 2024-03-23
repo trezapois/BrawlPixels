@@ -48,7 +48,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	{
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
-		
+		CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
+		h.Disabled = true;
 	}
 	
 	
@@ -57,8 +58,11 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
 		{
 			Vector2 velocity = Velocity;
-		
-	
+			if(_timeToCombo > 0)
+				_timeToCombo -= 1;
+			else
+				AttacksList = new List<Attacks>();
+			
 			if (!IsOnFloor())
 				velocity.Y += gravity * (float)delta;
 
@@ -151,7 +155,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 			
 				if (Input.IsActionJustPressed("punch"))
 				{
-
+					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
+					h.Disabled = false;
 					foreach (var input in JlistInput.Keys) 
 					{
 						if (IsEqual(input,MovementList)) 
@@ -162,6 +167,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 							_timeTillNextImput = frames;
 							AttacksList.Add(ToAttacks(action));
 							_timeToCombo = frames + 50;
+							((Collider)GetNode<Area2D>("Collider"))._setDam(20);
 							return; 
 						}
 					}
@@ -176,6 +182,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 							_timeTillNextImput = frames;
 							AttacksList.Add(ToAttacks(action));
 							_timeToCombo = frames + 50;
+							GetNode<Collider>("Collider")._setDam(10);
 							return;
 						}
 					} 
@@ -183,6 +190,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 					_inCombo = true;
 					_timeTillNextImput = 3;
 					AttacksList.Add(Attacks.JAB1);
+					GetNode<Collider>("Collider")._setDam(8);
 					_timeToCombo = 50;
 
 				}
@@ -235,6 +243,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				else
 				{
 					_inCombo = false;
+					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
+					h.Disabled = true;
 				}
 			}
 

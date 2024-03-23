@@ -1352,7 +1352,7 @@ text = "Pause"
 script = ExtResource("4_x26ps")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Punchingball"]
-position = Vector2(866, 438)
+position = Vector2(-232, 374)
 shape = SubResource("RectangleShape2D_ygi1s")
 
 [node name="Pause" type="Control" parent="."]
@@ -1393,7 +1393,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Exit"
 
-[node name="Buddy" parent="." instance=ExtResource("6_hpx7r")]
+[node name="Buddy2" parent="." instance=ExtResource("6_hpx7r")]
 texture_filter = 1
 position = Vector2(175, 170)
 
