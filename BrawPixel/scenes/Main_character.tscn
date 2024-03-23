@@ -1,12 +1,4 @@
-<<<<<<< Updated upstream
-Second-Animation
-[gd_scene load_steps=50 format=3 uid="uid://bx27usq666kpk"]
-=======
 [gd_scene load_steps=51 format=3 uid="uid://bx27usq666kpk"]
->>>>>>> Stashed changes
-
-[gd_scene load_steps=42 format=3 uid="uid://bx27usq666kpk"]
-main
 
 [ext_resource type="Script" path="res://scenes/Purple_Man.cs" id="1_n1pvo"]
 [ext_resource type="Texture2D" uid="uid://04cb3g118ot2" path="res://PurpleMAnIdel-Sheet.png" id="2_uw0jw"]
