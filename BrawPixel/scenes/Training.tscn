@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://duwuawdhfbhiv"]
+[gd_scene load_steps=10 format=3 uid="uid://duwuawdhfbhiv"]
 
 [ext_resource type="Texture2D" uid="uid://d4lo0et0nu1v7" path="res://volcano.png" id="1_0qvaw"]
 [ext_resource type="Script" path="res://scenes/Training.cs" id="1_apkrt"]
 [ext_resource type="Texture2D" uid="uid://beq5xuvgre2aw" path="res://Textures-16.png" id="2_3vpxs"]
 [ext_resource type="PackedScene" uid="uid://bx27usq666kpk" path="res://scenes/Main_character.tscn" id="3_4y6c8"]
 [ext_resource type="Script" path="res://Punching_ball.cs" id="4_x26ps"]
+[ext_resource type="PackedScene" uid="uid://lrl7iwbxll6o" path="res://scenes/buddy.tscn" id="6_hpx7r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_scifo"]
 texture = ExtResource("2_3vpxs")
@@ -1391,6 +1392,10 @@ offset_bottom = 358.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+
+[node name="Buddy2" parent="." instance=ExtResource("6_hpx7r")]
+texture_filter = 1
+position = Vector2(175, 170)
 
 [connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
 [connection signal="pressed" from="Pause/Pause@Continue" to="." method="_on_continue_pressed"]
