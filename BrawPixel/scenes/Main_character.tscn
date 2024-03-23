@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 Second-Animation
 [gd_scene load_steps=50 format=3 uid="uid://bx27usq666kpk"]
+=======
+[gd_scene load_steps=51 format=3 uid="uid://bx27usq666kpk"]
+>>>>>>> Stashed changes
 
 [gd_scene load_steps=42 format=3 uid="uid://bx27usq666kpk"]
 main
@@ -329,10 +333,32 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whf7j"]
 size = Vector2(56, 152)
 
+<<<<<<< Updated upstream
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_robkj"]
 size = Vector2(61, 21)
 
 [node name="Player1" type="CharacterBody2D"]
+=======
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_24k6o"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = true
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("AnimatedSprite2D:animation")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = true
+properties/3/path = NodePath("AnimatedSprite2D:flip_h")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = true
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+>>>>>>> Stashed changes
 texture_filter = 1
 script = ExtResource("1_n1pvo")
 
@@ -342,12 +368,15 @@ scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_unqgu")
 animation = &"double fast jab"
 autoplay = "Idle"
+<<<<<<< Updated upstream
 Second-Animation
 frame_progress = 0.58554
 
 frame = 3
 frame_progress = 0.454955
 main
+=======
+>>>>>>> Stashed changes
 centered = false
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
@@ -355,6 +384,7 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 position = Vector2(468, 468)
 shape = SubResource("RectangleShape2D_whf7j")
 
+<<<<<<< Updated upstream
 [node name="Collider" type="Area2D" parent="."]
 script = ExtResource("7_s2iyg")
 
@@ -364,3 +394,7 @@ position = Vector2(528, 434.5)
 shape = SubResource("RectangleShape2D_robkj")
 
 [connection signal="body_entered" from="Collider" to="Collider" method="_on_body_entered"]
+=======
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_24k6o")
+>>>>>>> Stashed changes
