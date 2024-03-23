@@ -21,7 +21,9 @@ Attack just after a normal jab -> double fast jab
 
 ## The Multiplayer:
 ### 1:
-Bother Player should be connected to the same internet.
+Both player should be connected to the same internet.
 ### 2:
-One player has to host. To do that click the button Host one time and the other play has to click join. When clicked, either the Host or the one who joined need to click Start game and both player will be connected together.
+One player has to host. To do that click the button Host one time and the other play has to click the join button. When clicked, either the Host or the one who joined need to click Start game and both player will be connected together.
+### 3:
+Have Fun !!
 
