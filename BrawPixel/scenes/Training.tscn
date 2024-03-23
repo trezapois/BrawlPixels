@@ -1,8 +1,6 @@
- Second-Animation
 [gd_scene load_steps=7 format=3 uid="uid://duwuawdhfbhiv"]
 
-[gd_scene load_steps=8 format=3 uid="uid://duwuawdhfbhiv"]
-main
+
 
 [ext_resource type="Texture2D" uid="uid://d4lo0et0nu1v7" path="res://volcano.png" id="1_0qvaw"]
 [ext_resource type="Script" path="res://scenes/Training.cs" id="1_apkrt"]
