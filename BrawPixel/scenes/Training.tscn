@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://beq5xuvgre2aw" path="res://Textures-16.png" id="2_3vpxs"]
 [ext_resource type="PackedScene" uid="uid://bx27usq666kpk" path="res://scenes/Main_character.tscn" id="3_4y6c8"]
 [ext_resource type="Script" path="res://Punching_ball.cs" id="4_x26ps"]
-[ext_resource type="PackedScene" uid="uid://lrl7iwbxll6o" path="res://scenes/buddy.tscn" id="6_hpx7r"]
+[ext_resource type="PackedScene" uid="uid://2u32c1aohad4" path="res://scenes/buddy.tscn" id="6_hpx7r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_scifo"]
 texture = ExtResource("2_3vpxs")

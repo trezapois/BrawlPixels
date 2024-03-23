@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://lrl7iwbxll6o"]
+[gd_scene load_steps=15 format=3 uid="uid://2u32c1aohad4"]
 
 [ext_resource type="Texture2D" uid="uid://bptdkn01d1wk7" path="res://FINAL HIT-Sheet.png" id="1_aan62"]
+[ext_resource type="Script" path="res://scenes/buddy.cs" id="1_wksat"]
 [ext_resource type="Texture2D" uid="uid://04cb3g118ot2" path="res://PurpleMAnIdel-Sheet.png" id="2_68i2u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4ir3"]
@@ -83,6 +84,7 @@ animations = [{
 size = Vector2(89, 145)
 
 [node name="Buddy2" type="CharacterBody2D"]
+script = ExtResource("1_wksat")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
