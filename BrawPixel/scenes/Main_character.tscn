@@ -325,7 +325,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whf7j"]
 size = Vector2(56, 152)
 
-
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_robkj"]
+size = Vector2(61, 21)
 
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_24k6o"]
