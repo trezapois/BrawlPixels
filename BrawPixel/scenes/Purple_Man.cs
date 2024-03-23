@@ -12,6 +12,7 @@ public partial class Purple_Man : Test.scenes.Main_character
 	private int _currentAttack = 0;
 	private int _previousAttack = 0;
 	private double _timeToCombo = 0;
+	public int HP = 100;
 	
 	public Dictionary<List<int>, (string,int)> JlistInput { get; }
 	public Dictionary<List<int>, (string,int)> KlistInput { get; }
@@ -34,7 +35,6 @@ public partial class Purple_Man : Test.scenes.Main_character
 	}
 	
 	
-
 	private Vector2 syncPos = new Vector2(0,0);
 	private float syncRotation = 0;
 	
@@ -232,5 +232,11 @@ public partial class Purple_Man : Test.scenes.Main_character
 	{
 		animatedSprite.FlipH = flip;
 		GD.Print("Synced flip state to: ", flip);
+	}
+	
+	public void handle_hit(int damage, Vector2 knockback)
+	{
+		HP -= damage;
+		Velocity = knockback;
 	}
 }
