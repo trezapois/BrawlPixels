@@ -1,6 +1,5 @@
 using Godot;
 using System;
-
 public partial class Training : Node
 {
 	private Control pauseMenu;
@@ -16,9 +15,9 @@ public partial class Training : Node
 	public override void _Process(double delta)
 	{
 		if (buddy != null && !buddy.Visible)
-        {
-            OnBuddyDied();
-        }
+		{
+			OnBuddyDied();
+		}
 	}
 	public void _on_pause_2_pressed(){
 		GetTree().Paused= true;
@@ -35,8 +34,8 @@ public partial class Training : Node
 		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
 	}
  	private void OnBuddyDied()
-    {
-        // Transition to the "you won" scene
-        GetTree().ChangeSceneToFile("res://scenes/Win.tscn");
-    }
+	{
+		// Transition to the "you won" scene
+		GetTree().ChangeSceneToFile("res://scenes/Win.tscn");
+	}
 }
