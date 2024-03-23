@@ -39,6 +39,3 @@ public partial class Training : Node
         GetTree().ChangeSceneToFile("res://scenes/Win.tscn");
     }
 }
-		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
-	}
-}
