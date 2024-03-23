@@ -19,3 +19,9 @@ Down - Down+Right - Right - Q -> Heavy Attack
 
 Attack just after a normal jab -> double fast jab
 
+## The Multiplayer:
+### 1:
+Bother Player should be connected to the same internet.
+### 2:
+One player has to host. To do that click the button Host one time and the other play has to click join. When clicked, either the Host or the one who joined need to click Start game and both player will be connected together.
+
