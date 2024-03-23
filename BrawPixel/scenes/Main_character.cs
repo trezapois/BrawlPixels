@@ -9,6 +9,7 @@ public abstract partial class Main_character : CharacterBody2D
 
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
+	
 	/*
 	private bool _inCombo = false;
 	private double _timeTillNextImput = 0;
@@ -114,10 +115,7 @@ public override void _PhysicsProcess(double delta)
 	Velocity = velocity;
 	MoveAndSlide();
 }*/
-	public void handle_hit()
-	{
-		Console.WriteLine("OUCH");
-	}
+	
 }
 
 

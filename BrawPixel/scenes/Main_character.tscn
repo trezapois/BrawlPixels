@@ -354,7 +354,7 @@ script = ExtResource("1_n1pvo")
 position = Vector2(489, 475)
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_unqgu")
-animation = &"Heavy"
+animation = &"jab"
 autoplay = "Idle"
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
@@ -365,7 +365,8 @@ shape = SubResource("RectangleShape2D_whf7j")
 [node name="Collider" type="Area2D" parent="."]
 script = ExtResource("7_s2iyg")
 
-[node name="Hit_Collider" type="CollisionShape2D" parent="Collider"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Collider"]
+process_mode = 1
 modulate = Color(1, 1, 0, 1)
 position = Vector2(528, 434.5)
 shape = SubResource("RectangleShape2D_robkj")

@@ -18,8 +18,7 @@ public partial class Collider : Area2D
 	private void _on_body_entered(Node2D body)
 	{
 
-		if (body is Punching_ball)
-			((Punching_ball)body).handle_hit();
+		((Purple_Man)body).handle_hit(10,new Vector2(3,-1));
 		
 	}
 }
