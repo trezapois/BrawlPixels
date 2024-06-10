@@ -13,4 +13,5 @@ public enum Attacks
 	AERIALPUNCH,
 	AERIALKICK,
 	NOTHING,
+	SPECIAL_ATTACK
 }
