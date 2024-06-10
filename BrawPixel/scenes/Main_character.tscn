@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bx27usq666kpk"]
+[gd_scene load_steps=59 format=3 uid="uid://bx27usq666kpk"]
 
 [ext_resource type="Script" path="res://scenes/Purple_Man.cs" id="1_n1pvo"]
 [ext_resource type="Texture2D" uid="uid://04cb3g118ot2" path="res://PurpleMAnIdel-Sheet.png" id="2_uw0jw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cmwgh0yfpn1al" path="res://Double Jab fast-Sheet.png" id="4_fw4lu"]
 [ext_resource type="Texture2D" uid="uid://bptdkn01d1wk7" path="res://FINAL HIT-Sheet.png" id="4_jibwr"]
 [ext_resource type="Texture2D" uid="uid://cbnx5wy6ghctn" path="res://JABFINAL-Sheet.png" id="5_khmfc"]
+[ext_resource type="Texture2D" uid="uid://c5w3t0envekx2" path="res://PurpleManStomp-Sheet.png" id="5_y3jps"]
 [ext_resource type="Script" path="res://scenes/Collider.cs" id="7_s2iyg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmm6j"]
@@ -52,6 +53,26 @@ region = Rect2(96, 0, 32, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hyv6"]
 atlas = ExtResource("2_uw0jw")
 region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7n37"]
+atlas = ExtResource("5_y3jps")
+region = Rect2(0, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu775"]
+atlas = ExtResource("5_y3jps")
+region = Rect2(37, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ysvt"]
+atlas = ExtResource("5_y3jps")
+region = Rect2(74, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yepkx"]
+atlas = ExtResource("5_y3jps")
+region = Rect2(111, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu2j8"]
+atlas = ExtResource("5_y3jps")
+region = Rect2(148, 0, 37, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_25juo"]
 atlas = ExtResource("4_fw4lu")
@@ -216,6 +237,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_q7n37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu775")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ysvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yepkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu2j8")
+}],
+"loop": false,
+"name": &"Special",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_25juo")
 }, {
 "duration": 1.0,
@@ -354,8 +395,10 @@ script = ExtResource("1_n1pvo")
 position = Vector2(489, 475)
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_unqgu")
-animation = &"jab"
+animation = &"Special"
 autoplay = "Idle"
+frame = 4
+frame_progress = 1.0
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

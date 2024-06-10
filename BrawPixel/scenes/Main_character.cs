@@ -6,7 +6,7 @@ namespace Test.scenes;
 
 public abstract partial class Main_character : CharacterBody2D
 {
-
+	
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	
@@ -71,6 +71,7 @@ public abstract partial class Main_character : CharacterBody2D
 	{
 		if (s == "jab")
 		{
+
 			return Attacks.JAB1;
 		}
 		if (s == "double fast jab")
@@ -81,6 +82,11 @@ public abstract partial class Main_character : CharacterBody2D
 		{
 			return Attacks.HEAVYATTACK;
 		}
+		if (s == "special_attack")
+        {
+			GD.Print("touch");
+            return Attacks.SPECIAL_ATTACK;
+        }
 		// we will be adding more attacks when their animations will be created
 		else
 		{
@@ -114,8 +120,5 @@ public override void _PhysicsProcess(double delta)
 
 	Velocity = velocity;
 	MoveAndSlide();
-}*/
-	
+}*/ 
 }
-
-

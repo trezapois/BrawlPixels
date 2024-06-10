@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4to4a8jy6khq"]
+
+[ext_resource type="Texture2D" uid="uid://87v5lgi50d2o" path="res://Spikes-Sheet.png" id="1_m6qjr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86mo0"]
+atlas = ExtResource("1_m6qjr")
+region = Rect2(0, 108, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f1h0"]
+atlas = ExtResource("1_m6qjr")
+region = Rect2(0, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj31l"]
+atlas = ExtResource("1_m6qjr")
+region = Rect2(0, 54, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e81vk"]
+atlas = ExtResource("1_m6qjr")
+region = Rect2(0, 108, 37, 54)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psb22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86mo0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f1h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj31l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e81vk")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88pie"]
+size = Vector2(148, 45)
+
+[node name="Spikes" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(489, 475)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_psb22")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(488, 512)
+shape = SubResource("RectangleShape2D_88pie")
