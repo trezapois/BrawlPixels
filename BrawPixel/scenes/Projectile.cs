@@ -14,7 +14,6 @@ public partial class Projectile : Area2D
         GD.Print("Projectile is ready");
         _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _animatedSprite.Play(); // Start the animation when the projectile is ready
-        Connect("body_entered", new Callable(this, nameof(OnBodyEntered)));
     }
 
     public override void _Process(double delta)
@@ -31,12 +30,5 @@ public partial class Projectile : Area2D
     {
         _direction = direction.Normalized();
     }
-    private void OnBodyEntered(Node body)
-    {
-        if (body is IDamageable damageable)
-        {
-            damageable.ApplyDamage(Damage);
-            QueueFree(); // Remove the projectile after hitting
-        }
-    }
+    
 }

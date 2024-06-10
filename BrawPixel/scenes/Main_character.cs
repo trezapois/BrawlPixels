@@ -82,11 +82,6 @@ public abstract partial class Main_character : CharacterBody2D
 		{
 			return Attacks.HEAVYATTACK;
 		}
-		if (s == "special_attack")
-        {
-			GD.Print("touch");
-            return Attacks.SPECIAL_ATTACK;
-        }
 		// we will be adding more attacks when their animations will be created
 		else
 		{
