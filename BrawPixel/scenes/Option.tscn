@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://vcmfrivxrdst"]
+[gd_scene load_steps=4 format=3 uid="uid://vcmfrivxrdst"]
 
 [ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="1_0dvey"]
 [ext_resource type="Script" path="res://scenes/Option.cs" id="1_08llp"]
+[ext_resource type="AudioStream" uid="uid://dngh6vk77cfxs" path="res://Sounds/SoundEffects/Button.mp3" id="3_w2ltw"]
 
 [node name="Option" type="Node"]
 script = ExtResource("1_08llp")
@@ -39,6 +40,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+
+[node name="ExitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w2ltw")
+volume_db = 12.0
+pitch_scale = 0.67
 
 [connection signal="pressed" from="Volume" to="." method="OnVolumnPress"]
 [connection signal="pressed" from="Exit" to="." method="OnExitPress"]

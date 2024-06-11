@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv3gywm3tryux"]
+[gd_scene load_steps=5 format=3 uid="uid://cv3gywm3tryux"]
 
 [ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="1_cj2uk"]
 [ext_resource type="Script" path="res://scenes/main_menu.cs" id="1_sdra2"]
 [ext_resource type="Texture2D" uid="uid://b0ifbhkmaoqf7" path="res://cooltext452762315149742.png" id="2_830f6"]
+[ext_resource type="AudioStream" uid="uid://d0n3hfq7ekkln" path="res://Sounds/SoundEffects/Button2.mp3" id="4_uuks6"]
 
 [node name="main_menu" type="Node"]
 script = ExtResource("1_sdra2")
@@ -59,6 +60,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Option"
+
+[node name="MenuSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uuks6")
+volume_db = 12.0
 
 [connection signal="pressed" from="Play" to="." method="OnPlayPress"]
 [connection signal="pressed" from="Option" to="." method="OnOptionPress"]

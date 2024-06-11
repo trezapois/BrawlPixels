@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c75hrfp28qcay"
+path="res://.godot/imported/before fight.mp3-791bc2db1c41843f08ab1905144c51fe.mp3str"
+
+[deps]
+
+source_file="res://Sounds/SoundEffects/before fight.mp3"
+dest_files=["res://.godot/imported/before fight.mp3-791bc2db1c41843f08ab1905144c51fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
