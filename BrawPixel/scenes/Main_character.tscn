@@ -630,11 +630,13 @@ autoplay = "Idle"
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+
 root_node = NodePath("../..")
 autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_mgxax")
 }
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(468, 468)
