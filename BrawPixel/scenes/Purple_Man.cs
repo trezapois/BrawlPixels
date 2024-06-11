@@ -12,7 +12,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	private int _currentAttack = 0;
 	private int _previousAttack = 0;
 	private double _timeToCombo = 0;
-	public int HP {get;set;}
+	private int hitstun = 0;
+	private int HP {get;set;}
 	
 	public Dictionary<List<int>, (string,int)> JlistInput { get; }
 	public Dictionary<List<int>, (string,int)> KlistInput { get; }
@@ -67,7 +68,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				velocity.Y += gravity * (float)delta;
 
 
-			if (!_inCombo)
+			if (_inCombo == false && hitstun == 0)
 			{
 				Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 				if (direction != Vector2.Zero)
@@ -233,7 +234,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 					velocity.Y = JumpVelocity;
 			}
-			else
+			else if(_inCombo)
 			{
 				velocity.X = 0;
 				if(_timeTillNextImput > 0)
@@ -247,6 +248,10 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 					h.Disabled = true;
 				}
 			}
+			else
+			{
+				
+			}
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -254,10 +259,12 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		
 		}
 	}
-	
-	
-	
-	
+	public void handle_hit(int damage, Vector2 knockback)
+	{
+		HP -= damage; 
+		Velocity = new Vector2(-20,-20);
+		hitstun = 20;
+	}
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void SwitchAnimation(string animationName)
 	{
@@ -282,8 +289,6 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		GD.Print("Synced flip state to: ", flip);
 	}
 	
-	public void handle_hit(int damage, Vector2 knockback)
-	{
-		HP -= damage;
-	}
+	
+	
 }

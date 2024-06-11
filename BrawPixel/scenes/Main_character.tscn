@@ -395,11 +395,11 @@ script = ExtResource("1_n1pvo")
 position = Vector2(489, 475)
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_unqgu")
-animation = &"Special"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 4
-frame_progress = 1.0
 offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(468, 468)

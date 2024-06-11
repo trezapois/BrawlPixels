@@ -20,6 +20,12 @@ public abstract partial class Main_character : CharacterBody2D
 	public List<Attacks> AttacksList { get; set; }
 	public Dictionary<List<Attacks>, (string,int)> JCombos { get; }
 	public Dictionary<List<Attacks>, (string,int)> KCombos { get; }
+
+	public void Jump()
+	{
+		velocity.Y = JumpVelocity;
+	}
+	
 	public Main_character()
 	{
 		JlistInput = new Dictionary<List<int>, (string, int)>();
@@ -83,10 +89,10 @@ public abstract partial class Main_character : CharacterBody2D
 			return Attacks.HEAVYATTACK;
 		}
 		if (s == "special_attack")
-        {
+		{
 			GD.Print("touch");
-            return Attacks.SPECIAL_ATTACK;
-        }
+			return Attacks.SPECIAL_ATTACK;
+		}
 		// we will be adding more attacks when their animations will be created
 		else
 		{
@@ -104,7 +110,7 @@ public override void _PhysicsProcess(double delta)
 
 	// Handle Jump.
 	if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-		velocity.Y = JumpVelocity;
+		Jump();
 
 	// Get the input direction and handle the movement/deceleration.
 	// As good practice, you should replace UI actions with custom gameplay actions.
@@ -120,5 +126,6 @@ public override void _PhysicsProcess(double delta)
 
 	Velocity = velocity;
 	MoveAndSlide();
-}*/ 
+}
+	 */
 }
