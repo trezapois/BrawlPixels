@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce4r11vkprxtu"
-path="res://.godot/imported/PurpleMAnIdel.png-3228bb9c1ac7dc1f53c0ce159e3e8fcb.ctex"
+uid="uid://c5w3t0envekx2"
+path="res://.godot/imported/PurpleManStomp-Sheet.png-53e34b0f89134e0aa49eaf0b37586a74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PurpleMAnIdel.png"
-dest_files=["res://.godot/imported/PurpleMAnIdel.png-3228bb9c1ac7dc1f53c0ce159e3e8fcb.ctex"]
+source_file="res://Character/Purpleman/PurpleManStomp-Sheet.png"
+dest_files=["res://.godot/imported/PurpleManStomp-Sheet.png-53e34b0f89134e0aa49eaf0b37586a74.ctex"]
 
 [params]
 

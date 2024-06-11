@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j1clnqfrtvwf"
-path="res://.godot/imported/TMP BUBLE PROJECTILE-Sheet.png-6f4462bfad18858fe416f958762a7817.ctex"
+uid="uid://b8yfnes5l4s5v"
+path="res://.godot/imported/PurpleIdle-Sheet.png-ee33457fe504948664e7c519a7827b88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TMP BUBLE PROJECTILE-Sheet.png"
-dest_files=["res://.godot/imported/TMP BUBLE PROJECTILE-Sheet.png-6f4462bfad18858fe416f958762a7817.ctex"]
+source_file="res://Character/Purpleman/PurpleIdle-Sheet.png"
+dest_files=["res://.godot/imported/PurpleIdle-Sheet.png-ee33457fe504948664e7c519a7827b88.ctex"]
 
 [params]
 
