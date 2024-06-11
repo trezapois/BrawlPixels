@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmwgh0yfpn1al"
-path="res://.godot/imported/Double Jab fast-Sheet.png-2f0bb5f2cf6786663e1d57761fd617ed.ctex"
+uid="uid://c6uo6c5n6vsmd"
+path="res://.godot/imported/JABFINAL-Sheet.png-811520aeecff3dd014d7eae46e28b229.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Double Jab fast-Sheet.png"
-dest_files=["res://.godot/imported/Double Jab fast-Sheet.png-2f0bb5f2cf6786663e1d57761fd617ed.ctex"]
+source_file="res://Character/RetroBoy/JABFINAL-Sheet.png"
+dest_files=["res://.godot/imported/JABFINAL-Sheet.png-811520aeecff3dd014d7eae46e28b229.ctex"]
 
 [params]
 

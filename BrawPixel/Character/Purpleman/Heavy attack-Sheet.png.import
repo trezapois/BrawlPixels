@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5w3t0envekx2"
-path="res://.godot/imported/PurpleManStomp-Sheet.png-be58edf975d1236d3e2755a236833e8a.ctex"
+uid="uid://dvh5knxj03s3e"
+path="res://.godot/imported/Heavy attack-Sheet.png-e2d6095ae0cdeb920d24ac8c54419edb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PurpleManStomp-Sheet.png"
-dest_files=["res://.godot/imported/PurpleManStomp-Sheet.png-be58edf975d1236d3e2755a236833e8a.ctex"]
+source_file="res://Character/Purpleman/Heavy attack-Sheet.png"
+dest_files=["res://.godot/imported/Heavy attack-Sheet.png-e2d6095ae0cdeb920d24ac8c54419edb.ctex"]
 
 [params]
 
