@@ -1344,7 +1344,7 @@ texture_filter = 1
 position = Vector2(589, 303)
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_4y6c8")]
+[node name="1" parent="." instance=ExtResource("3_4y6c8")]
 position = Vector2(-292, 26)
 
 [node name="Pause2" type="Button" parent="."]
@@ -1415,7 +1415,3 @@ volume_db = 12.0
 stream = ExtResource("7_6y5b4")
 volume_db = 12.0
 pitch_scale = 0.67
-
-[connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
-[connection signal="pressed" from="Pause/Pause@Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Pause/Pause@Exit" to="." method="_on_exit_pressed"]

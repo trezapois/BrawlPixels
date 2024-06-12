@@ -13,11 +13,17 @@ public partial class Option : Node
 
 		// Connect the button's "pressed" signal to the OnVolumePress method
 		var volumeButton = GetNode<Button>("Volume");
-		volumeButton.Connect("pressed", new Callable(this, nameof(OnVolumePress)));
+		if (!volumeButton.IsConnected("pressed", new Callable(this, nameof(OnVolumePress))))
+		{
+			volumeButton.Connect("pressed", new Callable(this, nameof(OnVolumePress)));
+		}
 
 		// Connect the button's "pressed" signal to the OnExitPress method
 		var exitButton = GetNode<Button>("Exit");
-		exitButton.Connect("pressed", new Callable(this, nameof(OnExitPress)));
+		if (!exitButton.IsConnected("pressed", new Callable(this, nameof(OnExitPress))))
+		{
+			exitButton.Connect("pressed", new Callable(this, nameof(OnExitPress)));
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

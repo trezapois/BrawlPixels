@@ -32,7 +32,7 @@ public partial class Training : Node
 		continueButton.Connect("pressed", new Callable(this, nameof(OnContinuePressed)));
 
 		var pauseButton = GetNode<Button>("Pause2");
-		pauseButton.Connect("pressed", new Callable(this, nameof(OnPause2Pressed)));
+		pauseButton.Connect("pressed", new Callable(this, nameof(_on_pause_2_pressed)));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +44,7 @@ public partial class Training : Node
 		}
 	}
 
-	public void OnPause2Pressed()
+	public void _on_pause_2_pressed()
 	{
 		GD.Print("Pause button pressed");
 
@@ -117,4 +117,3 @@ public partial class Training : Node
 		GetTree().ChangeSceneToFile("res://scenes/Win.tscn");
 	}
 }
-

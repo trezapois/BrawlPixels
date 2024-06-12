@@ -11,13 +11,19 @@ public partial class main_menu : Node
 		// Get the AudioStreamPlayer node
 		_audioPlayer = GetNode<AudioStreamPlayer>("MenuSound");
 
-		// Connect the button's "pressed" signal to the OnPlayPress method
+		// Get the Play button and connect the signal
 		var playButton = GetNode<Button>("Play");
-		playButton.Connect("pressed", new Callable(this, nameof(OnPlayPress)));
+		if (!playButton.IsConnected("pressed", new Callable(this, nameof(OnPlayPress))))
+		{
+			playButton.Connect("pressed", new Callable(this, nameof(OnPlayPress)));
+		}
 
-		// Connect the button's "pressed" signal to the OnOptionPress method
+		// Get the Option button and connect the signal
 		var optionButton = GetNode<Button>("Option");
-		optionButton.Connect("pressed", new Callable(this, nameof(OnOptionPress)));
+		if (!optionButton.IsConnected("pressed", new Callable(this, nameof(OnOptionPress))))
+		{
+			optionButton.Connect("pressed", new Callable(this, nameof(OnOptionPress)));
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

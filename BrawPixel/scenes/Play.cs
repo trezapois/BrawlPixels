@@ -46,15 +46,24 @@ public partial class Play : Node
 
 		// Connect the button's "pressed" signal to the OnExitPress method
 		var exitButton = GetNode<Button>("Exit");
-		exitButton.Connect("pressed", new Callable(this, nameof(OnExitPress)));
+		if (!exitButton.IsConnected("pressed", new Callable(this, nameof(OnExitPress))))
+		{
+			exitButton.Connect("pressed", new Callable(this, nameof(OnExitPress)));
+		}
 
 		// Connect the button's "pressed" signal to the OnMultiPress method
-		var multiButton = GetNode<Button>("Multi");
-		multiButton.Connect("pressed", new Callable(this, nameof(OnMultiPress)));
+		var multiButton = GetNode<Button>("Multiplayer");
+		if (!multiButton.IsConnected("pressed", new Callable(this, nameof(OnMultiPress))))
+		{
+			multiButton.Connect("pressed", new Callable(this, nameof(OnMultiPress)));
+		}
 
 		// Connect the button's "pressed" signal to the OnTrainingPress method
 		var trainingButton = GetNode<Button>("Training");
-		trainingButton.Connect("pressed", new Callable(this, nameof(OnTrainingPress)));
+		if (!trainingButton.IsConnected("pressed", new Callable(this, nameof(OnTrainingPress))))
+		{
+			trainingButton.Connect("pressed", new Callable(this, nameof(OnTrainingPress)));
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -143,4 +152,3 @@ public partial class Play : Node
 		GetTree().ChangeSceneToFile("res://scenes/Training.tscn");
 	}
 }
-
