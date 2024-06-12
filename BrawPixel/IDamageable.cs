@@ -2,5 +2,5 @@ namespace Test;
 
 public interface IDamageable
 {
-    void ApplyDamage(int amount);
+	void ApplyDamage(int amount);
 }

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cmwgh0yfpn1al" path="res://Character/Purpleman/Double Jab fast-Sheet.png" id="5_516cb"]
 [ext_resource type="Texture2D" uid="uid://bptdkn01d1wk7" path="res://Character/Purpleman/FINAL HIT-Sheet.png" id="6_e48lp"]
 [ext_resource type="Texture2D" uid="uid://cbnx5wy6ghctn" path="res://Character/Purpleman/JABFINAL-Sheet.png" id="7_848a3"]
+
 [ext_resource type="Script" path="res://scenes/Collider.cs" id="7_s2iyg"]
 [ext_resource type="Texture2D" uid="uid://ibfj6eqjijyd" path="res://Character/Purpleman/WALKING_Final-Sheet.png" id="8_lyflp"]
 
@@ -33,6 +34,7 @@ region = Rect2(148, 0, 37, 54)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvvej"]
 atlas = ExtResource("2_vsjdy")
 region = Rect2(185, 0, 37, 54)
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmugh"]
 atlas = ExtResource("3_4ufr7")
@@ -213,16 +215,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mmugh")
+"texture": SubResource("AtlasTexture_d7poc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xrtqx")
+"texture": SubResource("AtlasTexture_ec1he")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n7njm")
+"texture": SubResource("AtlasTexture_bty21")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fkljj")
+"texture": SubResource("AtlasTexture_xc1yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hyv6")
 }],
 "loop": true,
 "name": &"Idle",
@@ -293,7 +298,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0w2st")
 }],
-"loop": false,
+"loop": true,
 "name": &"getting hit",
 "speed": 7.0
 }, {
@@ -356,13 +361,14 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="Animation" id="Animation_65n1r"]
+[sub_resource type="Animation" id="Animation_xokmb"]
 resource_name = "Heavy"
-length = 1.25
+length = 0.833335
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -374,24 +380,24 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.9, 1.2),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.35, 0.433333, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_574ex"]
+[sub_resource type="Animation" id="Animation_xdahm"]
 resource_name = "Idle"
-length = 3.0
 loop_mode = 1
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -403,22 +409,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4),
+"times": PackedFloat32Array(0, 0.25, 0.433333, 0.633333, 0.933333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_t6i0v"]
+[sub_resource type="Animation" id="Animation_4vn4p"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -430,7 +436,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -440,97 +446,14 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_ynf0l"]
-resource_name = "Special"
-length = 0.9
+[sub_resource type="Animation" id="Animation_go7jk"]
+resource_name = "jab1"
+length = 0.383335
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Special"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-
-[sub_resource type="Animation" id="Animation_0cv8r"]
-resource_name = "double Jab"
-length = 0.85
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"double fast jab"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
-[sub_resource type="Animation" id="Animation_ltryg"]
-resource_name = "getting hit"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"getting hit"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_mvljv"]
-resource_name = "jab"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -542,22 +465,82 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.0333333, 0.0833333, 0.116667, 0.166667, 0.233333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_mxjij"]
-resource_name = "walk"
+[sub_resource type="Animation" id="Animation_ctdhq"]
+resource_name = "jab2"
+length = 0.500002
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"double fast jab"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0333333, 0.05, 0.1, 0.166667, 0.233333, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_q0jqa"]
+resource_name = "Special"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Special"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.0833333, 0.216667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_aa8ev"]
+resource_name = "Walk"
+length = 1.0
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -569,26 +552,25 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"times": PackedFloat32Array(0, 0.116667, 0.216667, 0.316667, 0.416667, 0.516667, 0.616667, 0.716667, 0.816667, 0.916667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mgxax"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6l1ga"]
 _data = {
-"Heavy": SubResource("Animation_65n1r"),
-"Idle": SubResource("Animation_574ex"),
-"RESET": SubResource("Animation_t6i0v"),
-"Special": SubResource("Animation_ynf0l"),
-"double Jab": SubResource("Animation_0cv8r"),
-"getting hit": SubResource("Animation_ltryg"),
-"jab": SubResource("Animation_mvljv"),
-"walk": SubResource("Animation_mxjij")
+"Heavy": SubResource("Animation_xokmb"),
+"Idle": SubResource("Animation_xdahm"),
+"RESET": SubResource("Animation_4vn4p"),
+"Special": SubResource("Animation_q0jqa"),
+"Walk": SubResource("Animation_aa8ev"),
+"jab1": SubResource("Animation_go7jk"),
+"jab2": SubResource("Animation_ctdhq")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whf7j"]
@@ -615,11 +597,13 @@ properties/3/spawn = true
 properties/3/sync = true
 properties/3/watch = true
 
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_bvrgc"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jg850"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_bvrgc")
 states/Idle/position = Vector2(333.5, 65)
+
 
 [node name="Player1" type="CharacterBody2D"]
 texture_filter = 1
@@ -634,13 +618,9 @@ autoplay = "Idle"
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-
-root_node = NodePath("../..")
-autoplay = "Idle"
 libraries = {
-"": SubResource("AnimationLibrary_mgxax")
+"": SubResource("AnimationLibrary_6l1ga")
 }
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(468, 468)
@@ -657,11 +637,13 @@ shape = SubResource("RectangleShape2D_robkj")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_24k6o")
 
+
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_jg850")
 anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
 advance_expression_base_node = NodePath("")
 active = true
 parameters/Idle/blend_position = Vector2(0, 0)
+
 
 [connection signal="body_entered" from="Collider" to="Collider" method="_on_body_entered"]
