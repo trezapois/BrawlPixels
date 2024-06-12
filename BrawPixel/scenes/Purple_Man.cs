@@ -197,7 +197,6 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				}
 				if (Input.IsActionJustPressed("kick"))
 				{
-					GD.Print(HP);
 					foreach (var input in KlistInput.Keys) 
 					{
 						if (IsEqual(input,MovementList)) 
@@ -251,10 +250,10 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 			}
 			else
 			{
-				hitstun --;
+				
 			}
-		if (hitstun == 0)
-			Velocity = velocity;
+
+		Velocity = velocity;
 		MoveAndSlide();
 		syncPos = GlobalPosition;
 		
@@ -263,10 +262,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	public void handle_hit(int damage, Vector2 knockback)
 	{
 		HP -= damage; 
-		Velocity = new Vector2(200,-20);
+		Velocity = new Vector2(-20,-20);
 		hitstun = 20;
-		GD.Print("plop");
-		GD.Print(HP);
 	}
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void SwitchAnimation(string animationName)
