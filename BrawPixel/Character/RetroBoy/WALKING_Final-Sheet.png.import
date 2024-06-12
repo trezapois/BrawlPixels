@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8yfnes5l4s5v"
-path="res://.godot/imported/PurpleIdle-Sheet.png-2c69c0d0521d6c90a9bb9306f8664693.ctex"
+uid="uid://dff3fm64ljcr3"
+path="res://.godot/imported/WALKING_Final-Sheet.png-fc606755f14152b252d72a87a1617f92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PurpleIdle-Sheet.png"
-dest_files=["res://.godot/imported/PurpleIdle-Sheet.png-2c69c0d0521d6c90a9bb9306f8664693.ctex"]
+source_file="res://Character/RetroBoy/WALKING_Final-Sheet.png"
+dest_files=["res://.godot/imported/WALKING_Final-Sheet.png-fc606755f14152b252d72a87a1617f92.ctex"]
 
 [params]
 

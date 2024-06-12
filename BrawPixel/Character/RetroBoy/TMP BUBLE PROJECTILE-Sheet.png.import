@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvh5knxj03s3e"
-path="res://.godot/imported/Heavy attack-Sheet.png-d1f65321a85e60045b9a66414014b3d5.ctex"
+uid="uid://dtc2s5824cujx"
+path="res://.godot/imported/TMP BUBLE PROJECTILE-Sheet.png-7d22b69093744d729181fb332e063aac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Heavy attack-Sheet.png"
-dest_files=["res://.godot/imported/Heavy attack-Sheet.png-d1f65321a85e60045b9a66414014b3d5.ctex"]
+source_file="res://Character/RetroBoy/TMP BUBLE PROJECTILE-Sheet.png"
+dest_files=["res://.godot/imported/TMP BUBLE PROJECTILE-Sheet.png-7d22b69093744d729181fb332e063aac.ctex"]
 
 [params]
 

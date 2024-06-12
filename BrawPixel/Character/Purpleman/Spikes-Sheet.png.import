@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6r6fs2fsrnih"
-path="res://.godot/imported/Fall-Sheet.png-e821e952067abb3cf1e7960b262c510e.ctex"
+uid="uid://87v5lgi50d2o"
+path="res://.godot/imported/Spikes-Sheet.png-50f7ca35e4334686034c62dcf0bd435a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fall-Sheet.png"
-dest_files=["res://.godot/imported/Fall-Sheet.png-e821e952067abb3cf1e7960b262c510e.ctex"]
+source_file="res://Character/Purpleman/Spikes-Sheet.png"
+dest_files=["res://.godot/imported/Spikes-Sheet.png-50f7ca35e4334686034c62dcf0bd435a.ctex"]
 
 [params]
 

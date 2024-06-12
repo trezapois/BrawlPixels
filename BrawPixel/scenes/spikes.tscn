@@ -1,21 +1,21 @@
 [gd_scene load_steps=12 format=3 uid="uid://b4to4a8jy6khq"]
 
-[ext_resource type="Texture2D" uid="uid://87v5lgi50d2o" path="res://Spikes-Sheet.png" id="1_m6qjr"]
+[ext_resource type="Texture2D" uid="uid://87v5lgi50d2o" path="res://Character/Purpleman/Spikes-Sheet.png" id="1_bgkkj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_86mo0"]
-atlas = ExtResource("1_m6qjr")
+atlas = ExtResource("1_bgkkj")
 region = Rect2(0, 108, 37, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7f1h0"]
-atlas = ExtResource("1_m6qjr")
+atlas = ExtResource("1_bgkkj")
 region = Rect2(0, 0, 37, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dj31l"]
-atlas = ExtResource("1_m6qjr")
+atlas = ExtResource("1_bgkkj")
 region = Rect2(0, 54, 37, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e81vk"]
-atlas = ExtResource("1_m6qjr")
+atlas = ExtResource("1_bgkkj")
 region = Rect2(0, 108, 37, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_psb22"]
