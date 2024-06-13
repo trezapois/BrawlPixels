@@ -358,7 +358,8 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_65n1r"]
 resource_name = "Heavy"
-length = 1.25
+length = 1.0
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -378,7 +379,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.9, 1.2),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.433333, 0.533333, 0.683333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -388,6 +389,7 @@ tracks/1/keys = {
 resource_name = "Idle"
 length = 3.0
 loop_mode = 1
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -442,7 +444,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ynf0l"]
 resource_name = "Special"
-length = 0.9
+length = 1.16667
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -470,7 +473,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_0cv8r"]
 resource_name = "double Jab"
-length = 0.85
+length = 0.416668
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -490,7 +494,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.116667, 0.166667, 0.233333, 0.266667, 0.316667, 0.383333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -499,6 +503,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_ltryg"]
 resource_name = "getting hit"
 length = 0.4
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -526,7 +531,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mvljv"]
 resource_name = "jab"
-length = 0.6
+length = 0.300002
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -546,7 +552,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.15, 0.183333, 0.233333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -554,6 +560,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mxjij"]
 resource_name = "walk"
+loop_mode = 1
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -634,13 +642,11 @@ autoplay = "Idle"
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-
 root_node = NodePath("../..")
 autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_mgxax")
 }
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(468, 468)
