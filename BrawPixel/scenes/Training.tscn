@@ -1343,6 +1343,7 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 position = Vector2(-292, 26)
 
 [node name="Pause2" type="Button" parent="."]
+texture_filter = 1
 offset_right = 174.0
 offset_bottom = 85.0
 theme_override_font_sizes/font_size = 30

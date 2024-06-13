@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://2u32c1aohad4"]
+[gd_scene load_steps=11 format=3 uid="uid://2u32c1aohad4"]
 
 [ext_resource type="Script" path="res://scenes/buddy.cs" id="1_wksat"]
 [ext_resource type="Texture2D" uid="uid://bptdkn01d1wk7" path="res://Character/Purpleman/FINAL HIT-Sheet.png" id="2_nbshl"]
-[ext_resource type="Texture2D" uid="uid://04cb3g118ot2" path="res://Character/Purpleman/PurpleMAnIdel-Sheet.png" id="3_kxbbx"]
+[ext_resource type="Texture2D" uid="uid://ce4r11vkprxtu" path="res://Character/Purpleman/PurpleMAnIdel.png" id="3_wajjy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4ir3"]
 atlas = ExtResource("2_nbshl")
@@ -20,25 +20,9 @@ region = Rect2(74, 0, 37, 54)
 atlas = ExtResource("2_nbshl")
 region = Rect2(111, 0, 37, 54)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ss0pv"]
-atlas = ExtResource("3_kxbbx")
-region = Rect2(0, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbgb4"]
-atlas = ExtResource("3_kxbbx")
-region = Rect2(32, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_snw8j"]
-atlas = ExtResource("3_kxbbx")
-region = Rect2(64, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6nhcb"]
-atlas = ExtResource("3_kxbbx")
-region = Rect2(96, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1tirv"]
-atlas = ExtResource("3_kxbbx")
-region = Rect2(128, 0, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxb5e"]
+atlas = ExtResource("3_wajjy")
+region = Rect2(0, 0, 37, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6qrau"]
 animations = [{
@@ -61,19 +45,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ss0pv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bbgb4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_snw8j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6nhcb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1tirv")
+"texture": SubResource("AtlasTexture_cxb5e")
 }],
 "loop": true,
 "name": &"Idle",
@@ -88,7 +60,7 @@ script = ExtResource("1_wksat")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(517, 310)
+position = Vector2(516, 324)
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_6qrau")
 animation = &"Idle"

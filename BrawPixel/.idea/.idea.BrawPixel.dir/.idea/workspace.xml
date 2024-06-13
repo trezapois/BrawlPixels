@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5658afdf-b97e-4362-8618-3eab5a4a6344" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BrawPixel.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BrawPixel.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/Multi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Multi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/Multi.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Multi.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/Projectile.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Projectile.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/buddy.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/buddy.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/pause.tscn" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +34,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Animation-player",
+    "git-widget-placeholder": "Character",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -46,7 +51,7 @@
 }]]></component>
   <component name="RunManager" selected=".NET Executable.Player">
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="/private/var/folders/cd/zm5_596d1zzg1ppcy_f_p7600000gn/T/AppTranslocation/25961F87-9D09-455E-A5BC-1552DCB27FAA/d/Godot_mono.app/Contents/MacOS/Godot" />
+      <option name="EXE_PATH" value="/private/var/folders/cd/zm5_596d1zzg1ppcy_f_p7600000gn/T/AppTranslocation/92569ACB-E656-4168-B605-E162FD4088F7/d/Godot_mono.app/Contents/MacOS/Godot" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;$PROJECT_DIR$&quot; --editor" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -59,7 +64,7 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="/private/var/folders/cd/zm5_596d1zzg1ppcy_f_p7600000gn/T/AppTranslocation/25961F87-9D09-455E-A5BC-1552DCB27FAA/d/Godot_mono.app/Contents/MacOS/Godot" />
+      <option name="EXE_PATH" value="/private/var/folders/cd/zm5_596d1zzg1ppcy_f_p7600000gn/T/AppTranslocation/92569ACB-E656-4168-B605-E162FD4088F7/d/Godot_mono.app/Contents/MacOS/Godot" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;$PROJECT_DIR$&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -84,6 +89,7 @@
       <workItem from="1717935499049" duration="126000" />
       <workItem from="1717935638598" duration="13920000" />
       <workItem from="1718106804683" duration="603000" />
+      <workItem from="1718276536758" duration="5229000" />
     </task>
     <servers />
   </component>
