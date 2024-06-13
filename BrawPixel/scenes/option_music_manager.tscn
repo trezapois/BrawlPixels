@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ymiyrk08roi0"]
+
+[ext_resource type="Script" path="res://scenes/OptionMusicManager.cs" id="1_hh2jw"]
+[ext_resource type="AudioStream" uid="uid://cepy1iymnt6tx" path="res://Sounds/Music/Nostalgia.mp3" id="1_rogto"]
+
+[node name="OptionMusicManager" type="Node"]
+script = ExtResource("1_hh2jw")
+
+[node name="Nostalgia" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_rogto")
+volume_db = -10.0
+bus = &"Music"

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b271q8q6wh3rs"]
+[gd_scene load_steps=7 format=3 uid="uid://b271q8q6wh3rs"]
 
 [ext_resource type="Script" path="res://scenes/Play.cs" id="1_3dkgr"]
 [ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="1_281ii"]
 [ext_resource type="AudioStream" uid="uid://dngh6vk77cfxs" path="res://Sounds/SoundEffects/Button.mp3" id="3_j247i"]
 [ext_resource type="AudioStream" uid="uid://c75hrfp28qcay" path="res://Sounds/SoundEffects/before fight.mp3" id="4_05oob"]
+[ext_resource type="AudioStream" uid="uid://c7jfsj34tq51l" path="res://Sounds/Music/Electronic chill1.mp3" id="5_jsb65"]
+[ext_resource type="AudioStream" uid="uid://1p6ky3djt7ks" path="res://Sounds/Music/Electronic chill2.mp3" id="6_tlav2"]
 
 [node name="Play" type="Node"]
 script = ExtResource("1_3dkgr")
@@ -60,11 +62,23 @@ text = "Exit"
 stream = ExtResource("3_j247i")
 volume_db = 12.0
 pitch_scale = 0.67
+bus = &"SFX"
 
 [node name="Train&MultiSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_05oob")
 volume_db = 7.0
 pitch_scale = 0.86
+bus = &"SFX"
+
+[node name="MusicChill1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jsb65")
+volume_db = -2.0
+bus = &"Music"
+
+[node name="MusicChill2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tlav2")
+volume_db = -2.0
+bus = &"Music"
 
 [connection signal="pressed" from="Multiplayer" to="." method="OnMultiPress"]
 [connection signal="pressed" from="Training" to="." method="OnTrainingPress"]

@@ -6,6 +6,11 @@ public partial class Play : Node
 	private AudioStreamPlayer _exitAudioPlayer;
 	private AudioStreamPlayer _trainingAudioPlayer;
 	private AudioStreamPlayer _multiAudioPlayer;
+	private AudioStreamPlayer _backgroundMusicPlayer1;
+	private AudioStreamPlayer _backgroundMusicPlayer2;
+	private AudioStreamPlayer _currentMusicPlayer;
+
+	private Random _random = new Random();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -42,6 +47,22 @@ public partial class Play : Node
 		else
 		{
 			GD.Print("MultiSound node found");
+		}
+
+		// Get the background music players
+		_backgroundMusicPlayer1 = GetNode<AudioStreamPlayer>("MusicChill1");
+		_backgroundMusicPlayer2 = GetNode<AudioStreamPlayer>("MusicChill2");
+
+		// Randomly select a music player
+		_currentMusicPlayer = _random.Next(0, 2) == 0 ? _backgroundMusicPlayer1 : _backgroundMusicPlayer2;
+
+		if (_currentMusicPlayer != null)
+		{
+			_currentMusicPlayer.Play();
+		}
+		else
+		{
+			GD.Print("Background music player not found");
 		}
 
 		// Connect the button's "pressed" signal to the OnExitPress method
@@ -86,6 +107,12 @@ public partial class Play : Node
 			GD.Print("Audio player not found");
 		}
 
+		// Stop background music
+		if (_currentMusicPlayer != null)
+		{
+			_currentMusicPlayer.Stop();
+		}
+
 		// Change the scene after a short delay to ensure the sound plays
 		Timer timer = new Timer();
 		AddChild(timer);
@@ -113,6 +140,12 @@ public partial class Play : Node
 			GD.Print("Multi sound player not found");
 		}
 
+		// Stop background music
+		if (_currentMusicPlayer != null)
+		{
+			_currentMusicPlayer.Stop();
+		}
+
 		// Change the scene after a short delay to ensure the sound plays
 		Timer timer = new Timer();
 		AddChild(timer);
@@ -138,6 +171,12 @@ public partial class Play : Node
 		else
 		{
 			GD.Print("Training sound player not found");
+		}
+
+		// Stop background music
+		if (_currentMusicPlayer != null)
+		{
+			_currentMusicPlayer.Stop();
 		}
 
 		// Change the scene after a short delay to ensure the sound plays

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1p6ky3djt7ks"
+path="res://.godot/imported/Electronic chill2.mp3-93f7d51a1694a5225be6ad3e25bd4502.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Electronic chill2.mp3"
+dest_files=["res://.godot/imported/Electronic chill2.mp3-93f7d51a1694a5225be6ad3e25bd4502.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

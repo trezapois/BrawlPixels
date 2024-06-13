@@ -4,58 +4,84 @@ using System;
 public partial class Option : Node
 {
 	private AudioStreamPlayer _audioPlayer;
+	private AudioStreamPlayer _volumeSoundPlayer;
+	private OptionMusicManager _optionMusicManager;
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		// Get the AudioStreamPlayer node
 		_audioPlayer = GetNode<AudioStreamPlayer>("ExitSound");
+		_volumeSoundPlayer = GetNode<AudioStreamPlayer>("VolumeSound");
 
-		// Connect the button's "pressed" signal to the OnVolumePress method
 		var volumeButton = GetNode<Button>("Volume");
 		if (!volumeButton.IsConnected("pressed", new Callable(this, nameof(OnVolumePress))))
 		{
 			volumeButton.Connect("pressed", new Callable(this, nameof(OnVolumePress)));
 		}
 
-		// Connect the button's "pressed" signal to the OnExitPress method
 		var exitButton = GetNode<Button>("Exit");
 		if (!exitButton.IsConnected("pressed", new Callable(this, nameof(OnExitPress))))
 		{
 			exitButton.Connect("pressed", new Callable(this, nameof(OnExitPress)));
 		}
-	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		// Instantiate and add the OptionMusicManager to the scene
+		var optionMusicManagerScene = (PackedScene)ResourceLoader.Load("res://scenes/option_music_manager.tscn");
+		_optionMusicManager = (OptionMusicManager)optionMusicManagerScene.Instantiate();
+		AddChild(_optionMusicManager);
+
+		// Start the option music
+		_optionMusicManager.PlayMusic();
 	}
 
 	public void OnVolumePress()
 	{
-		GetTree().ChangeSceneToFile("");
+		GD.Print("Volume button pressed");
+
+		var backgroundMusicManager = GetNode<BackgroundMusicManager>("/root/BackgroundMusicManager");
+		backgroundMusicManager.StopMusic();
+
+		if (_volumeSoundPlayer != null)
+		{
+			_volumeSoundPlayer.Stop();
+			_volumeSoundPlayer.Play();
+		}
+		else
+		{
+			GD.Print("Volume Player not found: ");
+		}
+
+		Timer timer = new Timer();
+		AddChild(timer);
+		timer.Connect("timeout", new Callable(this, nameof(OnVolumeSceneChange)));
+		timer.Start(0.1f);
+	}
+
+	private void OnVolumeSceneChange()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/Volume.tscn");
+
+		var backgroundMusicManager = GetNode<BackgroundMusicManager>("/root/BackgroundMusicManager");
+		backgroundMusicManager.ResumeMusic();
 	}
 
 	public void OnExitPress()
 	{
 		GD.Print("Exit button pressed");
 
-		// Play the sound effect
 		if (_audioPlayer != null)
 		{
-			_audioPlayer.Stop(); // Ensure the audio player is stopped first
-			_audioPlayer.Play(); // Then play the sound
+			_audioPlayer.Stop();
+			_audioPlayer.Play();
 		}
 		else
 		{
 			GD.Print("Audio player not found");
 		}
 
-		// Change the scene after a short delay to ensure the sound plays
 		Timer timer = new Timer();
 		AddChild(timer);
 		timer.Connect("timeout", new Callable(this, nameof(OnExitSceneChange)));
-		timer.Start(0.1f); // Start the timer with a short delay
+		timer.Start(0.1f);
 	}
 
 	private void OnExitSceneChange()
