@@ -14,60 +14,69 @@ script = ExtResource("1_3dkgr")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -60.0
+offset_right = 107.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_281ii")
 
-[node name="Multiplayer" type="Button" parent="."]
-anchors_preset = 5
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 2.08165e-12)
+anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -140.0
-offset_right = 140.0
-offset_bottom = 159.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 40.0
 grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Multiplayer" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.4
 theme_override_font_sizes/font_size = 30
 text = "Multiplayer"
 
-[node name="Training" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -79.5
-offset_right = 140.0
-offset_bottom = 79.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="StoryMode" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.4
+theme_override_font_sizes/font_size = 30
+text = "Story Mode"
+
+[node name="Training" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.4
 theme_override_font_sizes/font_size = 30
 text = "Training"
 
-[node name="Exit" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -159.0
-offset_right = 140.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Exit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.4
 theme_override_font_sizes/font_size = 30
 text = "Exit"
-
-[node name="ExitSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_j247i")
-volume_db = 12.0
-pitch_scale = 0.67
-bus = &"SFX"
 
 [node name="Train&MultiSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_05oob")
 volume_db = 7.0
 pitch_scale = 0.86
+bus = &"SFX"
+
+[node name="ExitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_j247i")
+volume_db = 12.0
+pitch_scale = 0.67
 bus = &"SFX"
 
 [node name="MusicChill1" type="AudioStreamPlayer" parent="."]
@@ -80,6 +89,6 @@ stream = ExtResource("6_tlav2")
 volume_db = -2.0
 bus = &"Music"
 
-[connection signal="pressed" from="Multiplayer" to="." method="OnMultiPress"]
-[connection signal="pressed" from="Training" to="." method="OnTrainingPress"]
-[connection signal="pressed" from="Exit" to="." method="OnExitPress"]
+[connection signal="pressed" from="VBoxContainer/Multiplayer" to="." method="OnMultiPress"]
+[connection signal="pressed" from="VBoxContainer/Training" to="." method="OnTrainingPress"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPress"]

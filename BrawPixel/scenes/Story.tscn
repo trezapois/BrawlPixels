@@ -1,0 +1,165 @@
+[gd_scene load_steps=19 format=3 uid="uid://dysloffn86qfq"]
+
+[ext_resource type="Script" path="res://scenes/Story.cs" id="1_kg1gn"]
+[ext_resource type="Texture2D" uid="uid://mtmnyp6rilw1" path="res://Adventure/frame_00_delay-0.1s.png" id="2_svrtv"]
+[ext_resource type="Texture2D" uid="uid://bepg80wjikc6l" path="res://Adventure/frame_06_delay-0.1s.png" id="3_wxov7"]
+[ext_resource type="Texture2D" uid="uid://tv8tigmliwn5" path="res://Adventure/frame_07_delay-0.1s.png" id="4_07phs"]
+[ext_resource type="Texture2D" uid="uid://bth3ms3kapti0" path="res://Adventure/frame_08_delay-0.1s.png" id="5_13o0k"]
+[ext_resource type="Texture2D" uid="uid://cc82ydi1wrg5p" path="res://Adventure/frame_09_delay-0.1s.png" id="6_olriu"]
+[ext_resource type="Texture2D" uid="uid://bgr87j7boci4s" path="res://Adventure/frame_10_delay-0.1s.png" id="7_4n3nd"]
+[ext_resource type="Texture2D" uid="uid://d08byj55td5lj" path="res://Adventure/frame_11_delay-0.1s.png" id="8_mose0"]
+[ext_resource type="Texture2D" uid="uid://d2huvtnv14ttx" path="res://Adventure/frame_12_delay-0.1s.png" id="9_nh46m"]
+[ext_resource type="Texture2D" uid="uid://4l3v2lt4g1ob" path="res://Adventure/frame_13_delay-0.1s.png" id="10_cyny1"]
+[ext_resource type="Texture2D" uid="uid://cja74nlrcbjgw" path="res://Adventure/frame_14_delay-0.1s.png" id="11_llb33"]
+
+[sub_resource type="Theme" id="Theme_qlsrg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wllss"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kgew"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awehm"]
+bg_color = Color(0.737255, 0.576471, 0.109804, 1)
+
+[sub_resource type="Animation" id="Animation_ggq0v"]
+resource_name = "BackgroundAnimation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_wxov7"), ExtResource("4_07phs"), ExtResource("5_13o0k"), ExtResource("6_olriu"), ExtResource("7_4n3nd"), ExtResource("8_mose0"), ExtResource("9_nh46m"), ExtResource("10_cyny1"), ExtResource("11_llb33"), ExtResource("11_llb33")]
+}
+
+[sub_resource type="Animation" id="Animation_kugnp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_svrtv")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgd3f"]
+_data = {
+"BackgroundAnimation": SubResource("Animation_ggq0v"),
+"RESET": SubResource("Animation_kugnp")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+script = ExtResource("1_kg1gn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(575, 325)
+scale = Vector2(1.91833, 1.88889)
+texture = ExtResource("2_svrtv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ContinueText" type="Button" parent="."]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 525.0
+offset_right = 1151.0
+offset_bottom = 645.0
+
+[node name="NarratorText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 539.0
+offset_right = 1153.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 25
+autowrap_mode = 2
+text_overrun_behavior = 1
+
+[node name="Skip" type="Button" parent="."]
+offset_left = 1.0
+offset_top = 569.0
+offset_right = 82.0
+offset_bottom = 619.0
+theme = SubResource("Theme_qlsrg")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wllss")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7kgew")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_awehm")
+text = "Skip"
+
+[node name="nothing" type="Label" parent="."]
+layout_mode = 0
+offset_left = 994.0
+offset_top = 622.0
+offset_right = 1150.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0.572549, 0.384314, 0.380392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Click to continue ..."
+
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rgd3f")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.749
+anchor_bottom = 16.162
+offset_top = 246.0
+offset_right = 0.039978
+offset_bottom = -266.48
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerNameInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.86
+theme_override_font_sizes/font_size = 30
+alignment = 1
+max_length = 24
+expand_to_text_length = true
+clear_button_enabled = true
+
+[node name="ConfirmNameButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.89
+text = "Confirm"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 75.0
+
+[node name="WarningLabel" type="Label" parent="VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.231373, 0.380392, 0.729412, 1)
+theme_override_font_sizes/font_size = 50
+text = "Maximum 24 characters!"
+horizontal_alignment = 1

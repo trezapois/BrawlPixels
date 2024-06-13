@@ -6,88 +6,64 @@ public partial class Play : Node
 	private AudioStreamPlayer _exitAudioPlayer;
 	private AudioStreamPlayer _trainingAudioPlayer;
 	private AudioStreamPlayer _multiAudioPlayer;
-	private AudioStreamPlayer _backgroundMusicPlayer1;
-	private AudioStreamPlayer _backgroundMusicPlayer2;
 	private AudioStreamPlayer _currentMusicPlayer;
-
 	private Random _random = new Random();
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		// Get the AudioStreamPlayer nodes
 		_exitAudioPlayer = GetNode<AudioStreamPlayer>("ExitSound");
-
-		if (_exitAudioPlayer == null)
-		{
-			GD.Print("ExitSound node not found");
-		}
-		else
-		{
-			GD.Print("ExitSound node found");
-		}
-
 		_trainingAudioPlayer = GetNode<AudioStreamPlayer>("Train&MultiSound");
-
-		if (_trainingAudioPlayer == null)
-		{
-			GD.Print("TrainingSound node not found");
-		}
-		else
-		{
-			GD.Print("TrainingSound node found");
-		}
-
 		_multiAudioPlayer = GetNode<AudioStreamPlayer>("Train&MultiSound");
 
-		if (_multiAudioPlayer == null)
-		{
-			GD.Print("MultiSound node not found");
-		}
-		else
-		{
-			GD.Print("MultiSound node found");
-		}
+		// Check if nodes are found
+		GD.Print(_exitAudioPlayer != null ? "ExitSound node found" : "ExitSound node not found");
+		GD.Print(_trainingAudioPlayer != null ? "TrainingSound node found" : "TrainingSound node not found");
+		GD.Print(_multiAudioPlayer != null ? "MultiSound node found" : "MultiSound node not found");
 
-		// Get the background music players
-		_backgroundMusicPlayer1 = GetNode<AudioStreamPlayer>("MusicChill1");
-		_backgroundMusicPlayer2 = GetNode<AudioStreamPlayer>("MusicChill2");
+		// Get the button nodes from the VBoxContainer
+		var vboxContainer = GetNode<VBoxContainer>("VBoxContainer");
+		var exitButton = vboxContainer.GetNode<Button>("Exit");
+		var multiButton = vboxContainer.GetNode<Button>("Multiplayer");
+		var trainingButton = vboxContainer.GetNode<Button>("Training");
+		var storyButton = vboxContainer.GetNode<Button>("StoryMode");
 
-		// Randomly select a music player
-		_currentMusicPlayer = _random.Next(0, 2) == 0 ? _backgroundMusicPlayer1 : _backgroundMusicPlayer2;
-
-		if (_currentMusicPlayer != null)
-		{
-			_currentMusicPlayer.Play();
-		}
-		else
-		{
-			GD.Print("Background music player not found");
-		}
-
-		// Connect the button's "pressed" signal to the OnExitPress method
-		var exitButton = GetNode<Button>("Exit");
+		// Connect the buttons' "pressed" signals if not already connected
 		if (!exitButton.IsConnected("pressed", new Callable(this, nameof(OnExitPress))))
 		{
 			exitButton.Connect("pressed", new Callable(this, nameof(OnExitPress)));
 		}
 
-		// Connect the button's "pressed" signal to the OnMultiPress method
-		var multiButton = GetNode<Button>("Multiplayer");
 		if (!multiButton.IsConnected("pressed", new Callable(this, nameof(OnMultiPress))))
 		{
 			multiButton.Connect("pressed", new Callable(this, nameof(OnMultiPress)));
 		}
 
-		// Connect the button's "pressed" signal to the OnTrainingPress method
-		var trainingButton = GetNode<Button>("Training");
 		if (!trainingButton.IsConnected("pressed", new Callable(this, nameof(OnTrainingPress))))
 		{
 			trainingButton.Connect("pressed", new Callable(this, nameof(OnTrainingPress)));
 		}
+
+		if (!storyButton.IsConnected("pressed", new Callable(this, nameof(OnStoryPress))))
+		{
+			storyButton.Connect("pressed", new Callable(this, nameof(OnStoryPress)));
+		}
+
+		// Start playing one of the background musics
+		PlayRandomMusic();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	private void PlayRandomMusic()
+	{
+		if (_currentMusicPlayer != null && _currentMusicPlayer.Playing)
+		{
+			_currentMusicPlayer.Stop();
+		}
+
+		_currentMusicPlayer = _random.Next(0, 2) == 0 ? GetNode<AudioStreamPlayer>("MusicChill1") : GetNode<AudioStreamPlayer>("MusicChill2");
+		_currentMusicPlayer.Play();
+	}
+
 	public override void _Process(double delta)
 	{
 	}
@@ -96,28 +72,20 @@ public partial class Play : Node
 	{
 		GD.Print("Exit button pressed");
 
-		// Play the sound effect
-		if (_exitAudioPlayer != null)
-		{
-			_exitAudioPlayer.Stop(); // Ensure the audio player is stopped first
-			_exitAudioPlayer.Play(); // Then play the sound
-		}
-		else
-		{
-			GD.Print("Audio player not found");
-		}
-
-		// Stop background music
-		if (_currentMusicPlayer != null)
+		// Stop the background music
+		if (_currentMusicPlayer != null && _currentMusicPlayer.Playing)
 		{
 			_currentMusicPlayer.Stop();
 		}
 
+		// Play the sound effect
+		_exitAudioPlayer?.Play();
+
 		// Change the scene after a short delay to ensure the sound plays
-		Timer timer = new Timer();
+		var timer = new Timer();
 		AddChild(timer);
 		timer.Connect("timeout", new Callable(this, nameof(OnExitSceneChange)));
-		timer.Start(0.1f); // Start the timer with a short delay
+		timer.Start(0.1f);
 	}
 
 	private void OnExitSceneChange()
@@ -129,28 +97,17 @@ public partial class Play : Node
 	{
 		GD.Print("Multi button pressed");
 
-		// Play the sound effect
-		if (_multiAudioPlayer != null)
-		{
-			_multiAudioPlayer.Stop(); // Ensure the audio player is stopped first
-			_multiAudioPlayer.Play(); // Then play the sound
-		}
-		else
-		{
-			GD.Print("Multi sound player not found");
-		}
+		// Stop the background music
+		_currentMusicPlayer?.Stop();
 
-		// Stop background music
-		if (_currentMusicPlayer != null)
-		{
-			_currentMusicPlayer.Stop();
-		}
+		// Play the sound effect
+		_multiAudioPlayer?.Play();
 
 		// Change the scene after a short delay to ensure the sound plays
-		Timer timer = new Timer();
+		var timer = new Timer();
 		AddChild(timer);
 		timer.Connect("timeout", new Callable(this, nameof(OnMultiSceneChange)));
-		timer.Start(0.1f); // Start the timer with a short delay
+		timer.Start(0.1f);
 	}
 
 	private void OnMultiSceneChange()
@@ -162,32 +119,42 @@ public partial class Play : Node
 	{
 		GD.Print("Training button pressed");
 
-		// Play the sound effect
-		if (_trainingAudioPlayer != null)
-		{
-			_trainingAudioPlayer.Stop(); // Ensure the audio player is stopped first
-			_trainingAudioPlayer.Play(); // Then play the sound
-		}
-		else
-		{
-			GD.Print("Training sound player not found");
-		}
+		// Stop the background music
+		_currentMusicPlayer?.Stop();
 
-		// Stop background music
-		if (_currentMusicPlayer != null)
-		{
-			_currentMusicPlayer.Stop();
-		}
+		// Play the sound effect
+		_trainingAudioPlayer?.Play();
 
 		// Change the scene after a short delay to ensure the sound plays
-		Timer timer = new Timer();
+		var timer = new Timer();
 		AddChild(timer);
 		timer.Connect("timeout", new Callable(this, nameof(OnTrainingSceneChange)));
-		timer.Start(0.1f); // Start the timer with a short delay
+		timer.Start(0.1f);
 	}
 
 	private void OnTrainingSceneChange()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/Training.tscn");
+	}
+
+	public void OnStoryPress()
+	{
+		GD.Print("Story button pressed");
+
+		// Stop the background music
+		_currentMusicPlayer?.Stop();
+
+		// Play the sound effect (if any, you can add a sound player for this)
+
+		// Change the scene after a short delay to ensure the sound plays
+		var timer = new Timer();
+		AddChild(timer);
+		timer.Connect("timeout", new Callable(this, nameof(OnStorySceneChange)));
+		timer.Start(0.1f);
+	}
+
+	private void OnStorySceneChange()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/Story.tscn"); // Make sure this path is correct
 	}
 }
