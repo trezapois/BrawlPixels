@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c0sstgdu34jjm"
+path="res://.godot/imported/DALL·E 2024-02-20 14.11.06 - A charming village nestled in the candy world, where the houses are made from cookies and candies. Gingerbread houses with icing roofs line the cobble-pixelicious.png-33a5b1b87d97634d9ff975c76f88ba62.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://BackStages/DALL·E 2024-02-20 14.11.06 - A charming village nestled in the candy world, where the houses are made from cookies and candies. Gingerbread houses with icing roofs line the cobble-pixelicious.png"
+dest_files=["res://.godot/imported/DALL·E 2024-02-20 14.11.06 - A charming village nestled in the candy world, where the houses are made from cookies and candies. Gingerbread houses with icing roofs line the cobble-pixelicious.png-33a5b1b87d97634d9ff975c76f88ba62.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

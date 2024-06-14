@@ -22,7 +22,6 @@ BackgroundMusicManager="*res://scenes/background_music_manager.tscn"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [dotnet]
 

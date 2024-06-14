@@ -94,6 +94,7 @@ autowrap_mode = 2
 text_overrun_behavior = 1
 
 [node name="Skip" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 569.0
 offset_right = 82.0
@@ -104,17 +105,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wllss")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7kgew")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_awehm")
 text = "Skip"
-
-[node name="nothing" type="Label" parent="."]
-layout_mode = 0
-offset_left = 994.0
-offset_top = 622.0
-offset_right = 1150.0
-offset_bottom = 645.0
-theme_override_colors/font_color = Color(0.572549, 0.384314, 0.380392, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "Click to continue ..."
 
 [node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -151,6 +141,17 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.89
 text = "Confirm"
 
+[node name="nothing" type="Label" parent="."]
+layout_mode = 0
+offset_left = 994.0
+offset_top = 622.0
+offset_right = 1150.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(0.572549, 0.384314, 0.380392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Click to continue ..."
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 1150.0
@@ -163,3 +164,5 @@ theme_override_colors/font_color = Color(0.231373, 0.380392, 0.729412, 1)
 theme_override_font_sizes/font_size = 50
 text = "Maximum 24 characters!"
 horizontal_alignment = 1
+
+[connection signal="text_submitted" from="VBoxContainer/PlayerNameInput" to="." method="_on_player_name_input_text_submitted"]

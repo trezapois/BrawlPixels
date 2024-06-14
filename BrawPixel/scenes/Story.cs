@@ -13,6 +13,8 @@ public partial class Story : Control
 	private string _playerName = "Player";
 	private int _currentTextIndex = 0;
 	private bool _askingForName = false;
+	private Label _nothingLabel;
+	private Button _skipButton;
 
 	// Array of narration texts
 	private string[] _narrationTexts = new string[]
@@ -34,7 +36,9 @@ public partial class Story : Control
 		_continueTextButton = GetNode<Button>("ContinueText");
 		_playerNameInput = GetNode<LineEdit>("VBoxContainer/PlayerNameInput");
 		_confirmNameButton = GetNode<Button>("VBoxContainer/ConfirmNameButton");
-		_warningLabel = GetNode<Label>("VBoxContainer2/WarningLabel");  // Updated path to WarningLabel
+		_warningLabel = GetNode<Label>("VBoxContainer2/WarningLabel");
+		_nothingLabel = GetNode<Label>("nothing");
+		_skipButton = GetNode<Button>("Skip");
 
 		// Debugging: Print to ensure nodes are found
 		GD.Print($"AnimationPlayer found: {_animationPlayer != null}");
@@ -43,10 +47,14 @@ public partial class Story : Control
 		GD.Print($"PlayerNameInput found: {_playerNameInput != null}");
 		GD.Print($"ConfirmNameButton found: {_confirmNameButton != null}");
 		GD.Print($"WarningLabel found: {_warningLabel != null}");
+		GD.Print($"NothingLabel found: {_nothingLabel != null}");
+		GD.Print($"SkipButton found: {_skipButton != null}");
 
 		// Connect the button signals
 		_continueTextButton.Pressed += OnContinueTextPressed;
 		_confirmNameButton.Pressed += OnConfirmNamePressed;
+		_playerNameInput.TextSubmitted += _on_player_name_input_text_submitted;
+		_skipButton.Pressed += OnSkipButtonPressed; // Connect Skip button signal
 
 		// Initially hide the input field, confirm button, and warning label
 		_playerNameInput.Visible = false;
@@ -81,6 +89,17 @@ public partial class Story : Control
 		}
 	}
 
+	public override void _Input(InputEvent @event)
+	{
+		if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.Space)
+		{
+			if (_continueTextButton.Visible)
+			{
+				OnContinueTextPressed();
+			}
+		}
+	}
+
 	private void OnConfirmNamePressed()
 	{
 		// Get the player's name from the input field
@@ -90,19 +109,38 @@ public partial class Story : Control
 		_playerNameInput.Visible = false;
 		_confirmNameButton.Visible = false;
 
-		// Show the narration text and continue button
+		// Show the narration text, continue button, and nothing label
 		_narratorText.Visible = true;
 		_continueTextButton.Visible = true;
+		_nothingLabel.Visible = true;
 
 		// Continue the narration
 		_askingForName = false;
 		ShowNextText();
 	}
 
+	private void _on_player_name_input_text_submitted(string newText)
+	{
+		OnConfirmNamePressed();
+	}
+
 	private void OnContinueTextPressed()
 	{
-		// Show the next text
-		ShowNextText();
+		// Show the next text or transition to the new scene
+		if (_narratorText.Text == "And so the adventure begins ...")
+		{
+			GetTree().ChangeSceneToFile("res://scenes/AdventureScene.tscn");
+		}
+		else
+		{
+			ShowNextText();
+		}
+	}
+
+	private void OnSkipButtonPressed()
+	{
+		// Skip to the adventure scene
+		GetTree().ChangeSceneToFile("res://scenes/AdventureScene.tscn");
 	}
 
 	private void OnTextChanged(string newText)
@@ -143,6 +181,7 @@ public partial class Story : Control
 					_playerNameInput.Visible = true;
 					_confirmNameButton.Visible = true;
 					_continueTextButton.Visible = false;
+					_nothingLabel.Visible = false; // Hide the nothing label
 					return;
 				}
 				else
@@ -160,8 +199,14 @@ public partial class Story : Control
 		else
 		{
 			// End of narration, you can add logic to transition to the next scene or end the story
-			_narratorText.Text = "The End.";
-			_continueTextButton.Visible = false; // Hide the continue button
+			_narratorText.Text = "And so the adventure begins ...";
+			_continueTextButton.Pressed += OnAdventureBeginPressed;
 		}
+		_nothingLabel.Visible = _continueTextButton.Visible; // Make sure nothing label is visible when continue button is visible
+	}
+
+	private void OnAdventureBeginPressed()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/AdventureScene.tscn");
 	}
 }
