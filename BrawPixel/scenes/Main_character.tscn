@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bx27usq666kpk"]
+[gd_scene load_steps=95 format=3 uid="uid://bx27usq666kpk"]
 
 [ext_resource type="Script" path="res://scenes/Purple_Man.cs" id="1_n1pvo"]
 [ext_resource type="Texture2D" uid="uid://dvh5knxj03s3e" path="res://Character/Purpleman/Heavy attack-Sheet.png" id="2_vsjdy"]
@@ -356,6 +356,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whf7j"]
+size = Vector2(53, 152)
+
 [sub_resource type="Animation" id="Animation_65n1r"]
 resource_name = "Heavy"
 length = 1.0
@@ -383,6 +386,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Collider/Hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.316667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_whf7j"), SubResource("RectangleShape2D_whf7j"), SubResource("RectangleShape2D_whf7j")]
 }
 
 [sub_resource type="Animation" id="Animation_574ex"]
@@ -414,6 +441,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_whf7j")]
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_robkj"]
+size = Vector2(61, 21)
 
 [sub_resource type="Animation" id="Animation_t6i0v"]
 length = 0.001
@@ -440,6 +482,54 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Collider/Hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_whf7j")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Collider/Hurtbox:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_robkj")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ynf0l"]
@@ -470,6 +560,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_whf7j")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Collider/Hurtbox:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_robkj")]
+}
 
 [sub_resource type="Animation" id="Animation_0cv8r"]
 resource_name = "double Jab"
@@ -498,6 +612,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Collider/Hurtbox:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_robkj")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Collider/Hurtbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.25, 0.316667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_whf7j")]
 }
 
 [sub_resource type="Animation" id="Animation_ltryg"]
@@ -528,6 +678,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_whf7j")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.383333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_mvljv"]
 resource_name = "jab"
@@ -556,6 +730,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_whf7j")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Collider/Hurtbox:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_robkj")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Collider/Hurtbox:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.116667, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_mxjij"]
@@ -586,6 +796,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_whf7j")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mgxax"]
 _data = {
@@ -598,12 +820,6 @@ _data = {
 "jab": SubResource("Animation_mvljv"),
 "walk": SubResource("Animation_mxjij")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_whf7j"]
-size = Vector2(56, 152)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_robkj"]
-size = Vector2(61, 21)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_24k6o"]
 properties/0/path = NodePath(".:position")
@@ -623,11 +839,95 @@ properties/3/spawn = true
 properties/3/sync = true
 properties/3/watch = true
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_bvrgc"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ubjth"]
+animation = &"Heavy"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jg850"]
-states/Idle/node = SubResource("AnimationNodeBlendSpace2D_bvrgc")
-states/Idle/position = Vector2(333.5, 65)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gj7en"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5blox"]
+animation = &"Special"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6j2t0"]
+animation = &"double Jab"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_npj5c"]
+animation = &"getting hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rul40"]
+animation = &"jab"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f1t4s"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jxrv6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s33xg"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bu0jb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1j8hd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_acqp6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ju6a"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lp3dh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f0ygo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkiue"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ai5w4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lvwm7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8v0ua"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yobrg"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6cuho"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qable"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kdkg7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5hkk5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y7nkf"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ujs0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0rqw4"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_famxy"]
+states/End/position = Vector2(904, 100)
+states/Heavy/node = SubResource("AnimationNodeAnimation_ubjth")
+states/Heavy/position = Vector2(723, 340)
+states/Idle/node = SubResource("AnimationNodeAnimation_gj7en")
+states/Idle/position = Vector2(397, 168)
+states/Special/node = SubResource("AnimationNodeAnimation_5blox")
+states/Special/position = Vector2(465, 32)
+states/Start/position = Vector2(214, 142)
+"states/double Jab/node" = SubResource("AnimationNodeAnimation_6j2t0")
+"states/double Jab/position" = Vector2(946, 246)
+"states/getting hit/node" = SubResource("AnimationNodeAnimation_npj5c")
+"states/getting hit/position" = Vector2(472, 315)
+states/jab/node = SubResource("AnimationNodeAnimation_rul40")
+states/jab/position = Vector2(875, 175)
+states/walk/node = SubResource("AnimationNodeAnimation_f1t4s")
+states/walk/position = Vector2(661, 71)
+transitions = ["Idle", "Special", SubResource("AnimationNodeStateMachineTransition_jxrv6"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_s33xg"), "Idle", "getting hit", SubResource("AnimationNodeStateMachineTransition_bu0jb"), "walk", "getting hit", SubResource("AnimationNodeStateMachineTransition_1j8hd"), "Idle", "walk", SubResource("AnimationNodeStateMachineTransition_acqp6"), "walk", "Idle", SubResource("AnimationNodeStateMachineTransition_5ju6a"), "walk", "Special", SubResource("AnimationNodeStateMachineTransition_lp3dh"), "walk", "Heavy", SubResource("AnimationNodeStateMachineTransition_f0ygo"), "walk", "jab", SubResource("AnimationNodeStateMachineTransition_wkiue"), "jab", "double Jab", SubResource("AnimationNodeStateMachineTransition_ai5w4"), "Heavy", "getting hit", SubResource("AnimationNodeStateMachineTransition_lvwm7"), "Special", "getting hit", SubResource("AnimationNodeStateMachineTransition_8v0ua"), "jab", "getting hit", SubResource("AnimationNodeStateMachineTransition_yobrg"), "double Jab", "getting hit", SubResource("AnimationNodeStateMachineTransition_6cuho"), "Heavy", "Idle", SubResource("AnimationNodeStateMachineTransition_qable"), "getting hit", "Idle", SubResource("AnimationNodeStateMachineTransition_kdkg7"), "double Jab", "Idle", SubResource("AnimationNodeStateMachineTransition_5hkk5"), "Special", "Idle", SubResource("AnimationNodeStateMachineTransition_y7nkf"), "jab", "Idle", SubResource("AnimationNodeStateMachineTransition_6ujs0"), "Idle", "jab", SubResource("AnimationNodeStateMachineTransition_0rqw4")]
 
 [node name="Player1" type="CharacterBody2D"]
 texture_filter = 1
@@ -649,8 +949,9 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(468, 468)
+position = Vector2(466.5, 468)
 shape = SubResource("RectangleShape2D_whf7j")
+disabled = true
 
 [node name="Collider" type="Area2D" parent="."]
 script = ExtResource("7_s2iyg")
@@ -659,15 +960,15 @@ script = ExtResource("7_s2iyg")
 modulate = Color(1, 1, 0, 1)
 position = Vector2(528, 434.5)
 shape = SubResource("RectangleShape2D_robkj")
+disabled = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_24k6o")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_jg850")
+tree_root = SubResource("AnimationNodeStateMachine_famxy")
 anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
 advance_expression_base_node = NodePath("")
 active = true
-parameters/Idle/blend_position = Vector2(0, 0)
 
 [connection signal="body_entered" from="Collider" to="Collider" method="_on_body_entered"]

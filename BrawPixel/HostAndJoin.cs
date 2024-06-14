@@ -18,23 +18,23 @@ public partial class HostAndJoin : Control
 		Multiplayer.ConnectionFailed += ConnectionFailed;
 	}
 
-    private void ConnectionFailed()
-    {
-        GD.Print("CONNECTION FAILED");
-    }
+	private void ConnectionFailed()
+	{
+		GD.Print("CONNECTION FAILED");
+	}
 
-    private void ConnectedToServer()
-    {
+	private void ConnectedToServer()
+	{
 		GD.Print("CONNECTION SUCCESFUL");
 		RpcId(1, "sendPlayerInformation", GetNode<LineEdit>("LineEdit").Text, Multiplayer.GetUniqueId());
-    }
+	}
 
-    private void PeerDisconnected(long id)
-    {
-       GD.Print("PLAYER DISCONNECTED" + id.ToString());
-    }
+	private void PeerDisconnected(long id)
+	{
+	   GD.Print("PLAYER DISCONNECTED" + id.ToString());
+	}
 
-    private void PeerConnected(long id){
+	private void PeerConnected(long id){
 		GD.Print("PLAYER CONNECTED" + id.ToString());
 	}
 	
