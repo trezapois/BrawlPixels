@@ -23,7 +23,7 @@ public partial class Story : Control
 		"His name is ..... ",
 		"His name is {playerName} !!!",
 		"Cloaked in mystery, your presence sends ripples through the very fabric of the world.",
-		"Your eyes, deep with untold stories, {playerName} is no ordinary adventurer. Legends speak of this enigmatic wanderer, a force unto themselves, driven by motives unknown.",
+		"Your eyes, deep with untold stories, {playerName} is no ordinary adventurer. Legends speak of this enigmatic wanderer, driven by motives unknown.",
 		"One day, {playerName} decided to embark on a journey ...",
 		"And so the adventure begins ..."
 	};
