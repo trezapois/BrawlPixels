@@ -8,12 +8,12 @@ public partial class Enemy : CharacterBody2D
 	private Random random = new Random();
 
 	[Signal]
-	public delegate void EnemyDefeated();
+	public delegate void EnemyDefeatedEventHandler();
 
 	public override void _Ready()
 	{
-		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
-		collisionShape.Connect("body_entered", new Callable(this, nameof(OnBodyEntered)));
+		var area = GetNode<Area2D>("Area2D");
+		area.Connect("body_entered", new Callable(this, nameof(OnBodyEntered)));
 
 		var movementTimer = GetNode<Timer>("Timer");
 		movementTimer.Connect("timeout", new Callable(this, nameof(OnMovementTimeout)));
@@ -28,7 +28,7 @@ public partial class Enemy : CharacterBody2D
 			hitCount++;
 			if (hitCount >= maxHits)
 			{
-				EmitSignal(nameof(EnemyDefeated));
+				EmitSignal(nameof(EnemyDefeatedEventHandler));
 				QueueFree(); // Remove enemy when defeated
 			}
 			else
