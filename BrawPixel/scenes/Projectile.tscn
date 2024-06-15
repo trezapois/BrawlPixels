@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://xlkvvuhsovgf"]
 
 [ext_resource type="Script" path="res://scenes/Projectile.cs" id="1_jkytv"]
-[ext_resource type="Texture2D" uid="uid://j1clnqfrtvwf" path="res://Character/RetroBoy/TMP BUBLE PROJECTILE-Sheet.png" id="2_2qy1p"]
+[ext_resource type="Texture2D" uid="uid://dtc2s5824cujx" path="res://Character/RetroBoy/TMP BUBLE PROJECTILE-Sheet.png" id="2_2qy1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwxlx"]
 atlas = ExtResource("2_2qy1p")

@@ -50,7 +50,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	{
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
-		CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
+		CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
 		AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
 		AP.Play("Idle");
 	}
@@ -59,6 +59,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	public override void _PhysicsProcess(double delta)
 	{
 		AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
+		GD.Print(AP.CurrentAnimation);
 		if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
 		{
 			Vector2 velocity = Velocity;
@@ -66,12 +67,11 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				_timeToCombo -= 1;
 			else
 				AttacksList = new List<Attacks>();
-			
 			if (!IsOnFloor())
 				velocity.Y += gravity * (float)delta;
 
 
-			if (AP.CurrentAnimation == "Idle" || AP.CurrentAnimation == "walk" && hitstun == 0)
+			if (((AP.CurrentAnimation == "Idle" || AP.CurrentAnimation == "walk") || AP.CurrentAnimation == "getting hit" )&& hitstun == 0)
 			{
 				Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 				if (direction != Vector2.Zero)
@@ -162,7 +162,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 			
 				if (Input.IsActionJustPressed("punch"))
 				{
-					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
+					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
 					h.Disabled = false;
 					foreach (var input in JlistInput.Keys) 
 					{
@@ -231,17 +231,21 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 							return;
 						}
 					} 
-					/*AP.Play("kck");
+					AP.Play("Special");
 					_inCombo = true;
 					_timeTillNextImput = 3;
 					AttacksList.Add(Attacks.SMALLKICK);
-					_timeToCombo = 50;*/
+					_timeToCombo = 50;
 
 				}
 				if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 					velocity.Y = JumpVelocity;
 			}
-			else if(_inCombo)
+			else if(AP.CurrentAnimation == "")
+			{
+				AP.Play("Idle");
+			}
+			else if(hitstun == 0)
 			{
 				velocity.X = 0;
 				if(_timeTillNextImput > 0)
@@ -251,13 +255,14 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				else
 				{
 					_inCombo = false;
-					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
+					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
 					h.Disabled = true;
 				}
 			}
+			
 			else
 			{
-				
+				hitstun--;
 			}
 
 		Velocity = velocity;
@@ -266,7 +271,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		
 		}
 	}
-	public void handle_hit(int damage, Vector2 knockback)
+	
+	public void handle_hit(int damage, Vector2 knockback, int stun)
 	{
 		HP -= damage; 
 		Velocity = new Vector2(-20,-20);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://bx27usq666kpk"]
+[gd_scene load_steps=96 format=3 uid="uid://bx27usq666kpk"]
 
 [ext_resource type="Script" path="res://scenes/Purple_Man.cs" id="1_n1pvo"]
 [ext_resource type="Texture2D" uid="uid://dvh5knxj03s3e" path="res://Character/Purpleman/Heavy attack-Sheet.png" id="2_vsjdy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cbnx5wy6ghctn" path="res://Character/Purpleman/JABFINAL-Sheet.png" id="7_848a3"]
 [ext_resource type="Script" path="res://scenes/Collider.cs" id="7_s2iyg"]
 [ext_resource type="Texture2D" uid="uid://ibfj6eqjijyd" path="res://Character/Purpleman/WALKING_Final-Sheet.png" id="8_lyflp"]
+[ext_resource type="Script" path="res://scenes/Hurtbox.cs" id="9_xvt4w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmm6j"]
 atlas = ExtResource("2_vsjdy")
@@ -390,7 +391,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Collider/Hurtbox:disabled")
+tracks/2/path = NodePath("Collider/Hitbox:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -453,6 +454,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [SubResource("RectangleShape2D_whf7j")]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_robkj"]
 size = Vector2(61, 21)
@@ -486,7 +499,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Collider/Hurtbox:disabled")
+tracks/2/path = NodePath("Collider/Hitbox:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -510,7 +523,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Collider/Hurtbox:shape")
+tracks/4/path = NodePath("Collider/Hitbox:shape")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -575,7 +588,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Collider/Hurtbox:shape")
+tracks/3/path = NodePath("Collider/Hitbox:shape")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -616,7 +629,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Collider/Hurtbox:shape")
+tracks/2/path = NodePath("Collider/Hitbox:shape")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -628,7 +641,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Collider/Hurtbox:disabled")
+tracks/3/path = NodePath("Collider/Hitbox:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -746,7 +759,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Collider/Hurtbox:shape")
+tracks/3/path = NodePath("Collider/Hitbox:shape")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -758,7 +771,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Collider/Hurtbox:disabled")
+tracks/4/path = NodePath("Collider/Hitbox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -952,11 +965,12 @@ libraries = {
 position = Vector2(466.5, 468)
 shape = SubResource("RectangleShape2D_whf7j")
 disabled = true
+script = ExtResource("9_xvt4w")
 
 [node name="Collider" type="Area2D" parent="."]
 script = ExtResource("7_s2iyg")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Collider"]
+[node name="Hitbox" type="CollisionShape2D" parent="Collider"]
 modulate = Color(1, 1, 0, 1)
 position = Vector2(528, 434.5)
 shape = SubResource("RectangleShape2D_robkj")

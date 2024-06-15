@@ -5,7 +5,7 @@ public partial class Projectile : Area2D
 	[Export]
 	public int Speed = 100; // Speed of the projectile
 	[Export]
-	public int Damage = 15; // Damage dealt by the projectile
+	public int Damage = 7; // Damage dealt by the projectile
 
 	private Vector2 _direction = Vector2.Right; // Default direction
 	private AnimatedSprite2D _animatedSprite; // Reference to the AnimatedSprite2D node
@@ -37,12 +37,22 @@ public partial class Projectile : Area2D
 	
 	private void OnBodyEntered(Node2D body)
 	{
-		if(body is Purple_Man)
-			((Purple_Man)body).handle_hit(Damage, knockback);
+		if(body is Hurtbox)
+		{
+			if(body is Purple_Man)
+			((Purple_Man)body).handle_hit(7,new Vector2(0,0),3);
+		}
+		/*
+		
+		if(body is retro_boy)
+			((retro_boy)body).handle_hit(7,new Vector2(0,0),3);
+		//if(body is Purple_Man)
+			//((Purple_Man)body).handle_hit(7,new Vector2(0,0),3);
 		if (body is buddy)
-			((buddy)body).handle_hit(Damage, knockback);
+			((buddy)body).handle_hit(7,new Vector2(0,0),3);
 		
-		knockback = new Vector2(0,0);
 		
+		QueueFree();
+		*/
 	}
 }
