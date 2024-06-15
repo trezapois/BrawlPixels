@@ -1,11 +1,13 @@
-[gd_scene load_steps=119 format=3 uid="uid://ccnmibv8s8f7n"]
+[gd_scene load_steps=133 format=3 uid="uid://ccnmibv8s8f7n"]
 
 [ext_resource type="Texture2D" uid="uid://co05gd8spbs4j" path="res://Character/Hilda/Heavy attack-Sheet.png" id="1_0p65e"]
 [ext_resource type="Texture2D" uid="uid://boqdwn6wlv2yk" path="res://Character/Hilda/Special/Heavy attackSpecial-Sheet.png" id="2_1wb21"]
 [ext_resource type="Texture2D" uid="uid://b5wqkjjsty1kp" path="res://Character/Hilda/HildaIdle-Sheet.png" id="3_tixbh"]
 [ext_resource type="Texture2D" uid="uid://d28c2t3rna2x0" path="res://Character/Hilda/Special/HildaIdle-Sheet.png" id="4_07n3e"]
 [ext_resource type="Texture2D" uid="uid://dmbhghvpa1o05" path="res://Character/Hilda/HildaSpecial-Sheet.png" id="5_5e2uq"]
+[ext_resource type="Texture2D" uid="uid://vyq1i4eqmnik" path="res://Character/Hilda/HildaKneeHit-Sheet.png" id="5_pppch"]
 [ext_resource type="Texture2D" uid="uid://bfgap4glp3uns" path="res://Character/Hilda/Double Jab fast-Sheet.png" id="6_0tnun"]
+[ext_resource type="Texture2D" uid="uid://qks2c28biqwr" path="res://Character/Hilda/Special/HildaKneeHit-Sheet.png" id="6_th14i"]
 [ext_resource type="Texture2D" uid="uid://cq3827feml0pn" path="res://Character/Hilda/Special/Double Jab fast-Sheet.png" id="7_giodb"]
 [ext_resource type="Texture2D" uid="uid://cwqc2tw2ip7i0" path="res://Character/Hilda/FINAL HIT-Sheet.png" id="8_iislo"]
 [ext_resource type="Texture2D" uid="uid://cq51ded8w7uln" path="res://Character/Hilda/Special/FINAL HIT-Sheet.png" id="9_r3mjb"]
@@ -94,6 +96,46 @@ region = Rect2(74, 0, 37, 54)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8k4mk"]
 atlas = ExtResource("4_07n3e")
 region = Rect2(111, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dslc"]
+atlas = ExtResource("5_pppch")
+region = Rect2(0, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt4gb"]
+atlas = ExtResource("5_pppch")
+region = Rect2(37, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfa8s"]
+atlas = ExtResource("5_pppch")
+region = Rect2(74, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au1hx"]
+atlas = ExtResource("5_pppch")
+region = Rect2(111, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1stsm"]
+atlas = ExtResource("5_pppch")
+region = Rect2(148, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6tbt"]
+atlas = ExtResource("6_th14i")
+region = Rect2(0, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ae7m"]
+atlas = ExtResource("6_th14i")
+region = Rect2(37, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loieo"]
+atlas = ExtResource("6_th14i")
+region = Rect2(74, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lt2h"]
+atlas = ExtResource("6_th14i")
+region = Rect2(111, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0xmu"]
+atlas = ExtResource("6_th14i")
+region = Rect2(148, 0, 37, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xv27s"]
 atlas = ExtResource("5_5e2uq")
@@ -431,6 +473,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8dslc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt4gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfa8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au1hx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1stsm")
+}],
+"loop": true,
+"name": &"Knee Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6tbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ae7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loieo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lt2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0xmu")
+}],
+"loop": true,
+"name": &"KneeHitRage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xv27s")
 }, {
 "duration": 1.0,
@@ -692,6 +774,34 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_dtwcx"]
+resource_name = "HeavyRage"
+length = 0.51
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"HeavyRage"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="Animation" id="Animation_574ex"]
 resource_name = "Idle"
 length = 3.0
@@ -719,6 +829,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_wv82e"]
+resource_name = "IdleRage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"IdleRage", &"HeavyRage"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_t6i0v"]
@@ -776,6 +913,33 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_3mt76"]
+resource_name = "WalkRage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"runRage"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="Animation" id="Animation_0cv8r"]
 resource_name = "double Jab"
 length = 1.30001
@@ -804,6 +968,34 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_as2ap"]
+resource_name = "double fast jab Rage"
+length = 0.84
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"double fast jab Rage"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
 [sub_resource type="Animation" id="Animation_ltryg"]
 resource_name = "getting hit"
 length = 0.4
@@ -818,6 +1010,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"getting hit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fj44s"]
+resource_name = "getting hitRage"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"getting hitRage"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -859,144 +1079,6 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_mxjij"]
-resource_name = "walk"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"run"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_wv82e"]
-resource_name = "IdleRage"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"IdleRage", &"HeavyRage"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_dtwcx"]
-resource_name = "HeavyRage"
-length = 0.51
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"HeavyRage"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_as2ap"]
-resource_name = "double fast jab Rage"
-length = 0.84
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"double fast jab Rage"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
-[sub_resource type="Animation" id="Animation_fj44s"]
-resource_name = "getting hitRage"
-length = 0.35
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"getting hitRage"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
 [sub_resource type="Animation" id="Animation_5t1ti"]
 resource_name = "jabRage"
 length = 0.55
@@ -1025,8 +1107,8 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_3mt76"]
-resource_name = "WalkRage"
+[sub_resource type="Animation" id="Animation_mxjij"]
+resource_name = "walk"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1037,7 +1119,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"runRage"]
+"values": [&"run"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1052,12 +1134,70 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_dmoq5"]
+resource_name = "KneeHit"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Knee Hit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_bb1pt"]
+resource_name = "KneeHitRage"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"KneeHitRage"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mgxax"]
 _data = {
 "Heavy": SubResource("Animation_65n1r"),
 "HeavyRage": SubResource("Animation_dtwcx"),
 "Idle": SubResource("Animation_574ex"),
 "IdleRage": SubResource("Animation_wv82e"),
+"KneeHit": SubResource("Animation_dmoq5"),
+"KneeHitRage": SubResource("Animation_bb1pt"),
 "RESET": SubResource("Animation_t6i0v"),
 "Special": SubResource("Animation_ynf0l"),
 "WalkRage": SubResource("Animation_3mt76"),

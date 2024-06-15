@@ -1,5 +1,6 @@
-[gd_scene load_steps=67 format=3 uid="uid://qhs03hmrc68u"]
+[gd_scene load_steps=74 format=3 uid="uid://qhs03hmrc68u"]
 
+[ext_resource type="Texture2D" uid="uid://cb3em5f3ilydg" path="res://Character/RetroBoy/RetroBoyExplosion-Sheet.png" id="1_8kapi"]
 [ext_resource type="Texture2D" uid="uid://fenohuhk0os2" path="res://Character/RetroBoy/Heavy attack-Sheet.png" id="1_mbjw5"]
 [ext_resource type="Texture2D" uid="uid://d0skkih6flb8i" path="res://Character/RetroBoy/RetroIdle-Sheet.png" id="2_ft4i4"]
 [ext_resource type="Texture2D" uid="uid://bvraj3bwj5lhu" path="res://Character/RetroBoy/Retro Special-Sheet.png" id="3_oqtsu"]
@@ -8,6 +9,26 @@
 [ext_resource type="Texture2D" uid="uid://c6uo6c5n6vsmd" path="res://Character/RetroBoy/JABFINAL-Sheet.png" id="6_0lbpn"]
 [ext_resource type="Texture2D" uid="uid://dff3fm64ljcr3" path="res://Character/RetroBoy/WALKING_Final-Sheet.png" id="7_o5v4o"]
 [ext_resource type="Script" path="res://scenes/Collider.cs" id="8_1vdki"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf4jl"]
+atlas = ExtResource("1_8kapi")
+region = Rect2(0, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m67h1"]
+atlas = ExtResource("1_8kapi")
+region = Rect2(37, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e3rt"]
+atlas = ExtResource("1_8kapi")
+region = Rect2(74, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlo8d"]
+atlas = ExtResource("1_8kapi")
+region = Rect2(111, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afau5"]
+atlas = ExtResource("1_8kapi")
+region = Rect2(148, 0, 37, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_orn4l"]
 atlas = ExtResource("1_mbjw5")
@@ -183,6 +204,26 @@ region = Rect2(333, 0, 37, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_83a5h"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf4jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m67h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e3rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlo8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afau5")
+}],
+"loop": true,
+"name": &"Explosion",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_orn4l")
@@ -571,8 +612,37 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_5j6oy"]
+resource_name = "Explosion"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Explosion"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mgxax"]
 _data = {
+"Explosion": SubResource("Animation_5j6oy"),
 "Heavy": SubResource("Animation_65n1r"),
 "Idle": SubResource("Animation_574ex"),
 "RESET": SubResource("Animation_t6i0v"),
