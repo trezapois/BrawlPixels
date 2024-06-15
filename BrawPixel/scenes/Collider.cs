@@ -22,7 +22,7 @@ public partial class Collider : Area2D
 		damage = n;
 	}
 	
-	public void _setDam(Vector2 v)
+	public void _setK(Vector2 v)
 	{
 		knockback = v;
 	}
