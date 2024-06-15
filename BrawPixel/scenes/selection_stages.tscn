@@ -1,0 +1,304 @@
+[gd_scene load_steps=18 format=3 uid="uid://bsgga37grcbtc"]
+
+[ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="1_i2eva"]
+[ext_resource type="Script" path="res://scenes/selection_stages.cs" id="1_vhfg2"]
+[ext_resource type="Texture2D" uid="uid://ctf6oxasaqdvy" path="res://BackStages/desert 2.JPG" id="2_5ucw4"]
+[ext_resource type="Texture2D" uid="uid://dv8f85men8jou" path="res://BackStages/candy village.JPG" id="3_bsxxt"]
+[ext_resource type="Texture2D" uid="uid://ceskvb4ms1mpl" path="res://BackStages/the End.JPG" id="4_oiccn"]
+[ext_resource type="Texture2D" uid="uid://dcqvhf5bgcmb6" path="res://BackStages/Space.JPG" id="5_h45ew"]
+[ext_resource type="Texture2D" uid="uid://bpkwx3oujw32w" path="res://BackStages/Heaven call.JPG" id="6_x0pn1"]
+[ext_resource type="Texture2D" uid="uid://dsrycadl5i241" path="res://BackStages/volcani.JPG" id="7_oj40m"]
+[ext_resource type="Texture2D" uid="uid://dym83oqkuu6xw" path="res://BackStages/Library.JPG" id="8_jfnti"]
+[ext_resource type="Texture2D" uid="uid://d3qyixonypq1v" path="res://BackStages/Heaven Door.JPG" id="9_qdywj"]
+[ext_resource type="Texture2D" uid="uid://c1hk7qg7w8ev8" path="res://BackStages/desert.JPG" id="10_ymrsa"]
+[ext_resource type="Texture2D" uid="uid://ga5wdgk0h5c2" path="res://BackStages/dark forest.JPG" id="11_qqcer"]
+[ext_resource type="Texture2D" uid="uid://biuenntnc00nw" path="res://BackStages/cyberpunk.JPG" id="12_nxfdn"]
+[ext_resource type="Texture2D" uid="uid://br3w0a6623fhp" path="res://BackStages/graveyard.JPG" id="13_34soy"]
+[ext_resource type="Texture2D" uid="uid://vt4r3o3nkct7" path="res://BackStages/forest night.JPG" id="14_557yd"]
+[ext_resource type="Texture2D" uid="uid://dlvtmqyk3rp5b" path="res://BackStages/CandyLand.JPG" id="15_1fvda"]
+[ext_resource type="Texture2D" uid="uid://b60q57ybmb4cp" path="res://BackStages/floating island.JPG" id="16_08t8g"]
+
+[node name="Selection Stages" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vhfg2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 1342.0
+offset_bottom = 752.0
+texture = ExtResource("1_i2eva")
+
+[node name="Desert" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -51.0
+offset_right = 171.0
+offset_bottom = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("2_5ucw4")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 100.0
+offset_right = 164.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Choose Your Stage"
+
+[node name="Candy Vilage" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = -51.0
+offset_right = 351.0
+offset_bottom = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("3_bsxxt")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Random" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 749.0
+offset_top = 180.0
+offset_right = 920.0
+offset_bottom = 282.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Random"
+icon_alignment = 1
+
+[node name="The End" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 364.0
+offset_top = 180.0
+offset_right = 535.0
+offset_bottom = 282.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("4_oiccn")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Space" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 184.0
+offset_top = 180.0
+offset_right = 355.0
+offset_bottom = 282.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("5_h45ew")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Heaven" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 554.0
+offset_top = 66.0
+offset_right = 725.0
+offset_bottom = 168.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("6_x0pn1")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Volcano" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 554.0
+offset_top = 180.0
+offset_right = 725.0
+offset_bottom = 282.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("7_oj40m")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Library" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 941.0
+offset_top = 66.0
+offset_right = 1112.0
+offset_bottom = 168.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("8_jfnti")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Heaven Gate" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 749.0
+offset_top = 66.0
+offset_right = 920.0
+offset_bottom = 168.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("9_qdywj")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Desert2" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 941.0
+offset_top = -51.0
+offset_right = 1112.0
+offset_bottom = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("10_ymrsa")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Dark Forest" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 745.0
+offset_top = -51.0
+offset_right = 916.0
+offset_bottom = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("11_qqcer")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Cyberpunk" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 554.0
+offset_top = -51.0
+offset_right = 725.0
+offset_bottom = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("12_nxfdn")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Graveyard" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 364.0
+offset_top = 66.0
+offset_right = 535.0
+offset_bottom = 168.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("13_34soy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Forest Night" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 184.0
+offset_top = 66.0
+offset_right = 355.0
+offset_bottom = 168.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("14_557yd")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Candy" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 363.0
+offset_top = -51.0
+offset_right = 534.0
+offset_bottom = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("15_1fvda")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Floating Island" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 66.0
+offset_right = 171.0
+offset_bottom = 168.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1000
+icon = ExtResource("16_08t8g")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Volcano" to="." method="OnVolcanoButtonPressed"]
