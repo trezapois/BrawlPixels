@@ -1513,18 +1513,24 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Exit"
 
+[node name="PauseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_k4r0q")
+volume_db = 12.0
+bus = &"SFX"
+
 [node name="ContinueSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_17d4b")
 volume_db = 4.189
 pitch_scale = 0.93
 bus = &"SFX"
 
-[node name="PauseSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_k4r0q")
+[node name="ExitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nv8qq")
 volume_db = 12.0
+pitch_scale = 0.67
 bus = &"SFX"
 
-[node name="ExitSound" type="AudioStreamPlayer" parent="."]
+[node name="BackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nv8qq")
 volume_db = 12.0
 pitch_scale = 0.67

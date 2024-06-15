@@ -29,6 +29,7 @@ grow_vertical = 2
 texture = ExtResource("2_as38e")
 
 [node name="Stage1" type="Button" parent="."]
+layout_mode = 0
 offset_left = 516.0
 offset_top = 542.0
 offset_right = 570.0
@@ -39,6 +40,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ib858")
 text = "-1-"
 
 [node name="Stage2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 296.0
 offset_top = 485.0
 offset_right = 348.0
@@ -54,6 +56,7 @@ scale = Vector2(0.0513672, 0.05)
 texture = ExtResource("3_00trv")
 
 [node name="Stage3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 309.0
 offset_top = 274.0
 offset_right = 361.0
@@ -70,6 +73,7 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_00trv")
 
 [node name="Back" type="Button" parent="."]
+layout_mode = 0
 offset_right = 49.0
 offset_bottom = 35.0
 theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)

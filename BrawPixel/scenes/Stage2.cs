@@ -5,158 +5,167 @@ public partial class Stage2 : Node
 {
 	public AdventureScene AdventureScene { get; set; }
 
-	// Similar implementation as Stage1 with stage-specific logic
-
 	private AudioStreamPlayer _exitAudioPlayer;
+	private AudioStreamPlayer _backAudioPlayer;
 	private AudioStreamPlayer _continueAudioPlayer;
 	private AudioStreamPlayer _pauseAudioPlayer;
 	private Control _pauseMenu;
 	private Label _instructionLabel;
 	private CharacterBody2D _player;
-	private Area2D _groundDetector;
 	private Control _completionPanel;
 	private Button _completionExitButton;
 	private Button _pauseButton;
 	private int _currentStep = 0;
-	private int _jumpCount = 0;
-	private bool _isJumping = false;
+	private int _hitCount = 0;
+	private bool _stageCompleted = false;
+	private bool _isExiting = false;
 
 	private string[] _instructions = new string[]
 	{
-		"Move right until you reach the edge.",
-		"Now, move left until you reach the edge.",
-		"Jump one time.",
-		"Jump three times."
+		"Find and hit the enemy."
 	};
 
 	public override void _Ready()
 	{
-		_pauseMenu = GetNode<Control>("Pause");
-		_exitAudioPlayer = GetNode<AudioStreamPlayer>("ExitSound");
-		_continueAudioPlayer = GetNode<AudioStreamPlayer>("ContinueSound");
-		_pauseAudioPlayer = GetNode<AudioStreamPlayer>("PauseSound");
-		var exitButton = GetNode<Button>("Pause/Pause_Exit");
-		exitButton.Connect("pressed", new Callable(this, nameof(OnExitPressed)));
-		var continueButton = GetNode<Button>("Pause/Pause_Continue");
-		continueButton.Connect("pressed", new Callable(this, nameof(OnContinuePressed)));
-		_pauseButton = GetNode<Button>("Pause2");
-		_pauseButton.Connect("pressed", new Callable(this, nameof(OnPause2Pressed)));
-		_completionExitButton = GetNode<Button>("CompletionPanel/ExitButton");
-		_completionExitButton.Connect("pressed", new Callable(this, nameof(OnCompletionExitPressed)));
-		_instructionLabel = GetNode<Label>("DoIt");
-		_player = GetNode<CharacterBody2D>("1");
-		_instructionLabel.Text = _instructions[_currentStep];
-		_pauseMenu.Hide();
-		_completionPanel = GetNode<Control>("CompletionPanel");
-		_completionPanel.Hide();
-		GetNode<Area2D>("RightEnd").Connect("body_entered", new Callable(this, nameof(OnRightEndBodyEntered)));
-		GetNode<Area2D>("LeftEnd").Connect("body_entered", new Callable(this, nameof(OnLeftEndBodyEntered)));
-		_groundDetector = GetNode<Area2D>("GroundDetector");
-		_groundDetector.Connect("body_entered", new Callable(this, nameof(OnGroundDetectorBodyEntered)));
-		GetNode<TileMap>("TileMap").AddToGroup("ground");
-	}
-
-	public override void _Process(double delta)
-	{
-		if (Input.IsActionJustPressed("ui_jump"))
+		try
 		{
-			_isJumping = true;
+			GD.Print("Initializing nodes...");
+			_pauseMenu = GetNodeOrNull<Control>("Pause");
+			_exitAudioPlayer = GetNodeOrNull<AudioStreamPlayer>("ExitSound");
+			_backAudioPlayer = GetNodeOrNull<AudioStreamPlayer>("BackSound");
+			_continueAudioPlayer = GetNodeOrNull<AudioStreamPlayer>("ContinueSound");
+			_pauseAudioPlayer = GetNodeOrNull<AudioStreamPlayer>("PauseSound");
+			_instructionLabel = GetNodeOrNull<Label>("DoIt");
+			_player = GetNodeOrNull<CharacterBody2D>("1");
+			_completionPanel = GetNodeOrNull<Control>("CompletionPanel");
+			_pauseButton = GetNodeOrNull<Button>("Pause2");
+			_completionExitButton = GetNodeOrNull<Button>("CompletionPanel/ExitButton");
+
+			if (_pauseMenu == null) GD.PrintErr("Pause menu is null.");
+			if (_exitAudioPlayer == null) GD.PrintErr("Exit audio player is null.");
+			if (_backAudioPlayer == null) GD.PrintErr("Back audio player is null.");
+			if (_continueAudioPlayer == null) GD.PrintErr("Continue audio player is null.");
+			if (_pauseAudioPlayer == null) GD.PrintErr("Pause audio player is null.");
+			if (_instructionLabel == null) GD.PrintErr("Instruction label is null.");
+			if (_player == null) GD.PrintErr("Player is null.");
+			if (_completionPanel == null) GD.PrintErr("Completion panel is null.");
+			if (_pauseButton == null) GD.PrintErr("Pause button is null.");
+			if (_completionExitButton == null) GD.PrintErr("Completion exit button is null.");
+
+			if (_pauseMenu == null || _exitAudioPlayer == null || _backAudioPlayer == null || _continueAudioPlayer == null || _pauseAudioPlayer == null || _instructionLabel == null || _player == null || _completionPanel == null || _pauseButton == null || _completionExitButton == null)
+			{
+				GD.PrintErr("One or more nodes are not found in the scene.");
+				return;
+			}
+
+			var exitButton = GetNodeOrNull<Button>("Pause/Pause_Exit");
+			if (exitButton != null)
+				exitButton.Connect("pressed", new Callable(this, nameof(OnPauseExitPressed)));
+			else
+				GD.PrintErr("Pause exit button is null.");
+
+			var continueButton = GetNodeOrNull<Button>("Pause/Pause_Continue");
+			if (continueButton != null)
+				continueButton.Connect("pressed", new Callable(this, nameof(OnContinuePressed)));
+			else
+				GD.PrintErr("Pause continue button is null.");
+
+			_pauseButton.Connect("pressed", new Callable(this, nameof(OnPause2Pressed)));
+			_completionExitButton.Connect("pressed", new Callable(this, nameof(OnCompletionExitPressed)));
+
+			_instructionLabel.Text = _instructions[_currentStep];
+			_pauseMenu.Hide();
+			_completionPanel.Hide();
+
+			GD.Print("Stage2 _Ready complete.");
+
+			// Load and instantiate the enemy
+			var enemyScene = (PackedScene)ResourceLoader.Load("res://Adventure/Enemy.tscn");
+			var enemyInstance = (Enemy)enemyScene.Instantiate();
+			enemyInstance.Connect("EnemyDefeated", new Callable(this, nameof(OnEnemyDefeated)));
+			AddChild(enemyInstance);
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr("Error in _Ready: ", ex.ToString());
 		}
 	}
 
 	private void OnPause2Pressed()
 	{
-		if (_pauseAudioPlayer != null)
-		{
-			_pauseAudioPlayer.Stop();
-			_pauseAudioPlayer.Play();
-		}
-
+		_pauseAudioPlayer?.Play();
 		GetTree().Paused = true;
 		_pauseMenu.Show();
 	}
 
 	private void OnContinuePressed()
 	{
-		if (_continueAudioPlayer != null)
-		{
-			_continueAudioPlayer.Stop();
-			_continueAudioPlayer.Play();
-		}
-
+		_continueAudioPlayer?.Play();
 		_pauseMenu.Hide();
 		GetTree().Paused = false;
 	}
 
-	private void OnExitPressed()
+	private void OnPauseExitPressed()
 	{
+		GD.Print("Pause Exit button pressed");
+		_exitAudioPlayer.Play();
 		if (_exitAudioPlayer != null)
 		{
+			GD.Print("Playing exit sound");
+			_exitAudioPlayer.Seek(0);
 			_exitAudioPlayer.Stop();
 			_exitAudioPlayer.Play();
-			OnExitSceneChange();
+			CleanupStage2();
+			GetTree().Paused = false;
+			GetTree().ChangeSceneToFile("res://scenes/AdventureScene.tscn");
+		}
+		else
+		{
+			GD.PrintErr("Exit audio player is null!");
+			OnPauseExitTimeout(); // Fallback if no audio player
 		}
 	}
 
-	private void OnCompletionExitPressed()
+	private void OnPauseExitTimeout()
 	{
-		if (_exitAudioPlayer != null)
+		if (_isExiting)
 		{
-			_exitAudioPlayer.Stop();
-			_exitAudioPlayer.Play();
-			NotifyStageCompleted(2); // Directly notify parent
-			OnExitSceneChange();
+			GD.Print("Exit already in progress, ignoring additional requests.");
+			return;
 		}
-	}
+		_isExiting = true;
 
-	private void OnExitSceneChange()
-	{
+		GD.Print("Exit sound finished, changing scene");
+		if (_exitAudioPlayer.IsConnected("finished", new Callable(this, nameof(OnPauseExitTimeout))))
+		{
+			_exitAudioPlayer.Disconnect("finished", new Callable(this, nameof(OnPauseExitTimeout)));
+		}
+		CleanupStage2();
 		GetTree().Paused = false;
 		GetTree().ChangeSceneToFile("res://scenes/AdventureScene.tscn");
 	}
 
-	private void OnRightEndBodyEntered(Node body)
+	private void CleanupStage2()
 	{
-		if (body == _player && _currentStep == 0)
-		{
-			_currentStep++;
-			_instructionLabel.Text = _instructions[_currentStep];
-		}
+		QueueFree(); // Free the current instance
 	}
 
-	private void OnLeftEndBodyEntered(Node body)
+	private void OnCompletionExitPressed()
 	{
-		if (body == _player && _currentStep == 1)
-		{
-			_currentStep++;
-			_instructionLabel.Text = _instructions[_currentStep];
-		}
+		GD.Print("Completion Exit button pressed");
+		_backAudioPlayer?.Play();
+		NotifyStageCompleted(2);
+		OnPauseExitTimeout(); // Directly call scene change
 	}
 
-	private void OnGroundDetectorBodyEntered(Node body)
+	private void OnEnemyDefeated()
 	{
-		if (_isJumping)
-		{
-			_isJumping = false;
+		_hitCount++;
+		GD.Print("Enemy defeated. Hit count: " + _hitCount);
 
-			if (_currentStep == 2)
-			{
-				_jumpCount++;
-				if (_jumpCount >= 1)
-				{
-					_currentStep++;
-					_jumpCount = 0;
-					_instructionLabel.Text = _instructions[_currentStep];
-				}
-			}
-			else if (_currentStep == 3)
-			{
-				_jumpCount++;
-				if (_jumpCount >= 3)
-				{
-					ShowCompletionPanel();
-				}
-			}
+		if (_hitCount >= 10)
+		{
+			ShowCompletionPanel();
 		}
 	}
 
@@ -166,11 +175,20 @@ public partial class Stage2 : Node
 		_pauseMenu.Hide();
 		_instructionLabel.Hide();
 		_pauseButton.Hide();
+		_stageCompleted = true;
 	}
 
 	private void NotifyStageCompleted(int stageNumber)
 	{
 		GD.Print("Stage 2 completed");
 		AdventureScene?.OnStageCompleted(stageNumber);
+	}
+
+	public override void _ExitTree()
+	{
+		if (!_stageCompleted && IsInstanceValid(AdventureScene))
+		{
+			AdventureScene.OnStageCompleted(-1); // Indicate that the stage was exited without completion
+		}
 	}
 }

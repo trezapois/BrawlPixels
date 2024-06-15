@@ -33,7 +33,6 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 		AttacksList = new List<Attacks>();
 		JCombos = new Dictionary<List<Attacks>, (string, int)>();
 		JCombos.Add(new List<Attacks>() { Attacks.JAB1 }, ("double fast jab", 4));
-		//JCombos.Add(new List<Attacks>() { Attacks.JAB1 ,Attacks.JAB2},"jab3");
 		KCombos = new Dictionary<List<Attacks>, (string, int)>();
 		HP = 100;
 	}
@@ -50,7 +49,6 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 		else
 		{
 			GD.PrintErr("Node name is not a valid authority ID: " + Name);
-			// Handle the error appropriately here, e.g., set a default authority or log the error
 		}
 
 		CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
@@ -227,7 +225,7 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 		{
 			if (IsEqual(input, MovementList))
 			{
-				(string action, int frames) = KlistInput[input];
+				 (string action, int frames) = KlistInput[input];
 				SwitchAnimation(action);
 				_inCombo = true;
 				_timeTillNextImput = frames;
