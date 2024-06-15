@@ -80,7 +80,7 @@ public abstract partial class Main_character : CharacterBody2D
 
 			return Attacks.JAB1;
 		}
-		if (s == "double fast jab")
+		if (s == "double Jab")
 		{
 			return Attacks.JAB2;
 		}

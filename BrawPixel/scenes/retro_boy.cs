@@ -2,7 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Purple_Man : Test.scenes.Main_character,IHittable
+
+public partial class Retro_boy : Test.scenes.Main_character,IHittable
 {
 	
 
@@ -12,13 +13,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	private int _currentAttack = 0;
 	private int _previousAttack = 0;
 	private double _timeToCombo = 0;
-	public int hitstun {get;set;}
-	public int HP {get;set;}
-	private AnimationPlayer AP;
-	public bool turned {get; set;}
-	public int kbx {get;set;}
-	public int kby {get;set;}
-	
+	private int hitstun = 0;
+	private int HP {get;set;}
 	
 	public Dictionary<List<int>, (string,int)> JlistInput { get; }
 	public Dictionary<List<int>, (string,int)> KlistInput { get; }
@@ -27,7 +23,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	public Dictionary<List<Attacks>, (string,int)> JCombos { get; }
 	public Dictionary<List<Attacks>, (string,int)> KCombos { get; }
 
-	Purple_Man()
+	Retro_boy()
 	{
 		JlistInput = new Dictionary<List<int>, (string,int)>();
 		JlistInput.Add(new List<int>(){2,3,6},("Heavy",5));
@@ -35,12 +31,10 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		MovementList = new List<int>();
 		AttacksList = new List<Attacks>();
 		JCombos = new Dictionary<List<Attacks>, (string,int)>();
-		JCombos.Add(new List<Attacks>() {Attacks.JAB1},("double Jab",4));
+		JCombos.Add(new List<Attacks>() {Attacks.JAB1},("double fast jab",4));
 		//JCombos.Add(new List<Attacks>() { Attacks.JAB1 ,Attacks.JAB2},"jab3");
 		KCombos = new Dictionary<List<Attacks>, (string,int)>();
 		HP = 100;
-		turned = false;
-		hitstun = 0;
 	}
 	
 	
@@ -52,19 +46,17 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	private AnimatedSprite2D animatedSprite;
 
 	public override void _Ready()
+
 	{
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
-		CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
-		AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
-		AP.Play("Idle");
+		CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
+		h.Disabled = true;
 	}
 	
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
-		
 		if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
 		{
 			Vector2 velocity = Velocity;
@@ -72,32 +64,27 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				_timeToCombo -= 1;
 			else
 				AttacksList = new List<Attacks>();
+			
 			if (!IsOnFloor())
 				velocity.Y += gravity * (float)delta;
-			if(hitstun > 0)
-			{
-				velocity = new Vector2(200,-500);
-				hitstun = hitstun - 1;
-			}
-			if (((AP.CurrentAnimation == "Idle" || AP.CurrentAnimation == "walk") || AP.CurrentAnimation == "getting hit" )&& hitstun == 0)
+
+
+			if (_inCombo == false && hitstun == 0)
 			{
 				Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 				if (direction != Vector2.Zero)
 				{
 					bool movingLeft = direction.X < 0;
 					velocity.X = direction.X * Speed;
-					//SwitchAnimation("run");
-					//AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
-					//if(AP.CurrentAnimation != "walk")
-					AP.Play("walk");
+					SwitchAnimation("run");
+	
 					// Flip the sprite if moving left
 					animatedSprite.FlipH = movingLeft;
 				}
 				else
 				{
 					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-					//AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
-					AP.Play("Idle");
+					SwitchAnimation("Idle");
 				}
 				// Clear the Movement list at neutral position
 				if (direction.X == 0 && direction.Y == 0)
@@ -170,14 +157,15 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 			
 				if (Input.IsActionJustPressed("punch"))
 				{
-					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
+					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
 					h.Disabled = false;
 					foreach (var input in JlistInput.Keys) 
 					{
 						if (IsEqual(input,MovementList)) 
 						{ 
 							(string action, int frames) = JlistInput[input];
-							AP.Play(action); 
+							SwitchAnimation(action); 
+							_inCombo = true;
 							_timeTillNextImput = frames;
 							AttacksList.Add(ToAttacks(action));
 							_timeToCombo = frames + 50;
@@ -191,23 +179,20 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 						if (IsEqual(input,AttacksList))
 						{
 							(string action, int frames) = JCombos[input];
-							//AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
-							AP.Play(action);
+							SwitchAnimation(action);
+							_inCombo = true;
 							_timeTillNextImput = frames;
 							AttacksList.Add(ToAttacks(action));
 							_timeToCombo = frames + 50;
 							GetNode<Collider>("Collider")._setDam(10);
-							GetNode<Collider>("Collider")._setK(new Vector2(-30,-30));
-							GetNode<Collider>("Collider")._setHitstun(5);
 							return;
 						}
 					} 
-					AP.Play("jab");
+					SwitchAnimation("jab");
+					_inCombo = true;
 					_timeTillNextImput = 3;
 					AttacksList.Add(Attacks.JAB1);
 					GetNode<Collider>("Collider")._setDam(8);
-					GetNode<Collider>("Collider")._setK(new Vector2(-5,-5));
-					GetNode<Collider>("Collider")._setHitstun(8);
 					_timeToCombo = 50;
 
 				}
@@ -218,7 +203,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 						if (IsEqual(input,MovementList)) 
 						{ 
 							(string action, int frames) = KlistInput[input];
-							AP.Play(action); 
+							SwitchAnimation(action); 
+							_inCombo = true;
 							_timeTillNextImput = frames;
 							AttacksList.Add(ToAttacks(action));
 							_timeToCombo = frames + 50;
@@ -231,27 +217,25 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 						if (IsEqual(input,AttacksList))
 						{
 							(string action, int frames) = JCombos[input];
-							AP.Play(action);
+							SwitchAnimation(action);
+							_inCombo = true;
 							_timeTillNextImput = frames;
 							AttacksList.Add(ToAttacks(action));
 							_timeToCombo = frames + 50;
 							return;
 						}
 					} 
-					AP.Play("Special");
+					/*SwitchAnimation("kck");
+					_inCombo = true;
 					_timeTillNextImput = 3;
 					AttacksList.Add(Attacks.SMALLKICK);
-					_timeToCombo = 50;
+					_timeToCombo = 50;*/
 
 				}
 				if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 					velocity.Y = JumpVelocity;
 			}
-			else if(AP.CurrentAnimation == "" && hitstun == 0)
-			{
-				AP.Play("Idle");
-			}
-			else if(hitstun == 0)
+			else if(_inCombo)
 			{
 				velocity.X = 0;
 				if(_timeTillNextImput > 0)
@@ -260,37 +244,27 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				}
 				else
 				{
-					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
+					_inCombo = false;
+					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
 					h.Disabled = true;
 				}
 			}
 			else
 			{
-				hitstun = hitstun - 1;
-				_inCombo = true;
-				velocity.Y = -500;
+				
 			}
-			if(_inCombo == false)
-				Velocity = velocity;
-			_inCombo = false;
-			MoveAndSlide();
-			syncPos = GlobalPosition;
+
+		Velocity = velocity;
+		MoveAndSlide();
+		syncPos = GlobalPosition;
 		
-			GD.Print(velocity);
-			GD.Print(hitstun);
 		}
-		
 	}
-	
-	public void handle_hit(int damage, Vector2 knockback, int stun)
+	public void handle_hit(int damage, Vector2 knockback)
 	{
 		HP -= damage; 
-		//Velocity = knockback;
-		kbx = 200;
-		kby = -500;
-		hitstun = 30; //stun;
-		GD.Print(HP);
-		
+		Velocity = new Vector2(-20,-20);
+		hitstun = 20;
 	}
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void SwitchAnimation(string animationName)
@@ -307,7 +281,6 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		{
 			Rpc(nameof(SyncFlipState), flip); // for the multiplayer
 		}
-		
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
