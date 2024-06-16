@@ -1,15 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b271q8q6wh3rs"]
+[gd_scene load_steps=8 format=3 uid="uid://b271q8q6wh3rs"]
 
 [ext_resource type="Script" path="res://scenes/Play.cs" id="1_3dkgr"]
 [ext_resource type="Texture2D" uid="uid://bxa05mjesbdwh" path="res://imageeeees.png" id="2_eagqp"]
-[ext_resource type="Texture2D" uid="uid://j5js6sh6rnyp" path="res://pixil-frame-0 (5).png" id="3_rfe01"]
-[ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="1_281ii"]
 [ext_resource type="AudioStream" uid="uid://dngh6vk77cfxs" path="res://Sounds/SoundEffects/Button.mp3" id="3_j247i"]
+[ext_resource type="Texture2D" uid="uid://j5js6sh6rnyp" path="res://pixil-frame-0 (5).png" id="3_rfe01"]
 [ext_resource type="AudioStream" uid="uid://c75hrfp28qcay" path="res://Sounds/SoundEffects/before fight.mp3" id="4_05oob"]
 [ext_resource type="AudioStream" uid="uid://c7jfsj34tq51l" path="res://Sounds/Music/Electronic chill1.mp3" id="5_jsb65"]
 [ext_resource type="AudioStream" uid="uid://1p6ky3djt7ks" path="res://Sounds/Music/Electronic chill2.mp3" id="6_tlav2"]
-
-
 
 [node name="Play" type="Node"]
 script = ExtResource("1_3dkgr")
@@ -93,18 +90,13 @@ stream = ExtResource("6_tlav2")
 volume_db = -2.0
 bus = &"Music"
 
-[connection signal="pressed" from="VBoxContainer/Multiplayer" to="." method="OnMultiPress"]
-[connection signal="pressed" from="VBoxContainer/Training" to="." method="OnTrainingPress"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPress"]
-
-[node name="TextureRect" type="TextureRect" parent="Exit"]
-layout_mode = 0
+[node name="Exit@TextureRect2" type="TextureRect" parent="."]
 offset_left = -111.0
 offset_top = -39.0
 offset_right = 376.0
 offset_bottom = 199.0
 texture = ExtResource("3_rfe01")
 
-[connection signal="pressed" from="Multiplayer" to="." method="OnMultiPress"]
-[connection signal="pressed" from="Training" to="." method="OnTrainingPress"]
-[connection signal="pressed" from="Exit" to="." method="OnExitPress"]
+[connection signal="pressed" from="VBoxContainer/Multiplayer" to="." method="OnMultiPress"]
+[connection signal="pressed" from="VBoxContainer/Training" to="." method="OnTrainingPress"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPress"]

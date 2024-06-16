@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://jded1u2bkjau"]
+[gd_scene load_steps=11 format=3 uid="uid://jded1u2bkjau"]
 
 [ext_resource type="Script" path="res://scenes/volcano.cs" id="1_0rxa6"]
 [ext_resource type="Texture2D" uid="uid://d4lo0et0nu1v7" path="res://volcano.png" id="1_fm1ba"]
@@ -1396,9 +1396,6 @@ position = Vector2(-417, -127)
 [node name="BuddySpawn" type="Node2D" parent="."]
 position = Vector2(398, -72)
 
-[connection signal="pressed" from="Pause/Pause_Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Pause/Pause_Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = 561.0
 offset_top = 209.0
@@ -1424,4 +1421,7 @@ show_percentage = false
 
 [node name="Timer" type="Timer" parent="HealthBar"]
 
+[connection signal="pressed" from="Pause/Pause_Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Pause/Pause_Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
 [connection signal="timeout" from="HealthBar/Timer" to="HealthBar" method="_on_timer_timeout"]

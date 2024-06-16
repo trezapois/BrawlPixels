@@ -1,12 +1,10 @@
-
-[gd_scene load_steps=7 format=3 uid="uid://cv3gywm3tryux"]
+[gd_scene load_steps=8 format=3 uid="uid://cv3gywm3tryux"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.cs" id="1_sdra2"]
 [ext_resource type="Texture2D" uid="uid://c2n48cbcy8hct" path="res://images.png" id="2_8cgg2"]
 [ext_resource type="Texture2D" uid="uid://b0ifbhkmaoqf7" path="res://cooltext452762315149742.png" id="2_830f6"]
-[ext_resource type="AudioStream" uid="uid://d0n3hfq7ekkln" path="res://Sounds/SoundEffects/Button2.mp3" id="4_uuks6"]
-
 [ext_resource type="Texture2D" uid="uid://j5js6sh6rnyp" path="res://pixil-frame-0 (5).png" id="4_ubgth"]
+[ext_resource type="AudioStream" uid="uid://d0n3hfq7ekkln" path="res://Sounds/SoundEffects/Button2.mp3" id="4_uuks6"]
 [ext_resource type="Texture2D" uid="uid://vlo37d2hv6ip" path="res://feather.png" id="5_3bc87"]
 [ext_resource type="Texture2D" uid="uid://drlh8n57v15tv" path="res://pixil-frame-0 (7).png" id="6_ku620"]
 
@@ -52,6 +50,7 @@ theme_override_font_sizes/font_size = 30
 text = "Play"
 
 [node name="TextureRect3" type="TextureRect" parent="Play"]
+layout_mode = 0
 offset_left = -96.0
 offset_top = -29.0
 offset_right = 328.0
@@ -73,11 +72,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Option"
 
-[node name="MenuSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_uuks6")
-volume_db = 12.0
-bus = &"SFX"
-
 [node name="TextureRect" type="TextureRect" parent="Option"]
 layout_mode = 0
 offset_left = -97.0
@@ -85,6 +79,11 @@ offset_top = -29.0
 offset_right = 326.0
 offset_bottom = 110.0
 texture = ExtResource("4_ubgth")
+
+[node name="MenuSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uuks6")
+volume_db = 12.0
+bus = &"SFX"
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 offset_left = -91.0
