@@ -1589,3 +1589,11 @@ text = "Back"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary"]
 position = Vector2(1168, 440)
 shape = SubResource("RectangleShape2D_iasja")
+
+[node name="TargetBoundary" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 312.0
+offset_right = 1163.0
+offset_bottom = 507.0

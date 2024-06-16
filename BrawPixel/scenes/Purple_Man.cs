@@ -23,6 +23,8 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private AnimatedSprite2D animatedSprite;
+	private bool _playerAttacking = false;
+	private Timer _attackTimer;
 
 	public Purple_Man()
 	{
@@ -40,6 +42,12 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 	public override void _Ready()
 	{
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+		_attackTimer = new Timer();
+		AddChild(_attackTimer);
+		_attackTimer.WaitTime = 0.5f;
+		_attackTimer.OneShot = true;
+		_attackTimer.Connect("timeout", new Callable(this, nameof(OnAttackTimerTimeout)));
 
 		// Ensure the Name is numeric before parsing
 		if (int.TryParse(Name, out int authorityId))
@@ -181,6 +189,10 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 	{
 		CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hurtbox");
 		h.Disabled = false;
+
+		_playerAttacking = true;
+		_attackTimer.Start();
+
 		foreach (var input in JlistInput.Keys)
 		{
 			if (IsEqual(input, MovementList))
@@ -191,7 +203,7 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 				_timeTillNextImput = frames;
 				AttacksList.Add(ToAttacks(action));
 				_timeToCombo = frames + 50;
-				((Collider)GetNode<Area2D>("Collider"))._setDam(20);
+				GetNode<Collider>("Collider")._setDam(20);
 				return;
 			}
 		}
@@ -225,7 +237,7 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 		{
 			if (IsEqual(input, MovementList))
 			{
-				 (string action, int frames) = KlistInput[input];
+				(string action, int frames) = KlistInput[input];
 				SwitchAnimation(action);
 				_inCombo = true;
 				_timeTillNextImput = frames;
@@ -291,5 +303,21 @@ public partial class Purple_Man : Test.scenes.Main_character, IHittable
 	public void handle_hit(int damage, Vector2 knockback)
 	{
 		HP -= damage;
+	}
+
+	private void OnAttackTimerTimeout()
+	{
+		_playerAttacking = false;
+		GD.Print("Player stopped attacking");
+	}
+
+	public bool IsAttacking()
+	{
+		return _playerAttacking;
+	}
+
+	public void SetAttacking(bool attacking)
+	{
+		_playerAttacking = attacking;
 	}
 }
