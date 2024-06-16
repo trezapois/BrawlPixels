@@ -1,6 +1,7 @@
-[gd_scene load_steps=133 format=3 uid="uid://c6l5cslemw82"]
+[gd_scene load_steps=135 format=3 uid="uid://c6l5cslemw82"]
 
 [ext_resource type="Texture2D" uid="uid://co05gd8spbs4j" path="res://Character/Hilda/Heavy attack-Sheet.png" id="1_0p65e"]
+[ext_resource type="Script" path="res://scenes/Hilda.cs" id="1_ol662"]
 [ext_resource type="Texture2D" uid="uid://boqdwn6wlv2yk" path="res://Character/Hilda/Special/Heavy attackSpecial-Sheet.png" id="2_1wb21"]
 [ext_resource type="Texture2D" uid="uid://b5wqkjjsty1kp" path="res://Character/Hilda/HildaIdle-Sheet.png" id="3_tixbh"]
 [ext_resource type="Texture2D" uid="uid://d28c2t3rna2x0" path="res://Character/Hilda/Special/HildaIdle-Sheet.png" id="4_07n3e"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b3l3trb78ca1m" path="res://Character/Hilda/WALKING_Final-Sheet.png" id="12_hkuav"]
 [ext_resource type="Texture2D" uid="uid://bn7i0xbqed6r4" path="res://Character/Hilda/Special/HildaWalking-Sheet.png" id="13_jqecq"]
 [ext_resource type="Script" path="res://scenes/Collider.cs" id="14_utk4i"]
+[ext_resource type="Script" path="res://scenes/Hurtbox.cs" id="17_dbcjx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro6up"]
 atlas = ExtResource("1_0p65e")
@@ -1241,6 +1243,7 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace2D_bvrgc")
 states/Idle/position = Vector2(333.5, 65)
 
 [node name="Hilda" type="CharacterBody2D"]
+script = ExtResource("1_ol662")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -1260,6 +1263,7 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(468, 468)
 shape = SubResource("RectangleShape2D_mxdf0")
+script = ExtResource("17_dbcjx")
 
 [node name="Collider" type="Area2D" parent="."]
 script = ExtResource("14_utk4i")
