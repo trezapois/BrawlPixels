@@ -36,6 +36,8 @@ public partial class Collider : Area2D
 	{
 		if(body is Purple_Man)
 			((Purple_Man)body).handle_hit(damage, knockback,hitstun);
+			//GD.Print(((Purple_Man)body).hitstun);
+			//GD.Print("=======================");
 		//if(body is retro_boy)
 			//((retro_boy)body).handle_hit(damage, knockback,hitstun);
 		//if(body is Purple_Man)
@@ -44,6 +46,6 @@ public partial class Collider : Area2D
 			((buddy)body).handle_hit(damage, knockback,hitstun);
 		damage = 0;
 		knockback = new Vector2(0,0);
-		hitstun = 0;
+		//hitstun = 0;
 	}
 }
