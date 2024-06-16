@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnwjdfefydwjj"]
+[gd_scene load_steps=10 format=3 uid="uid://bnwjdfefydwjj"]
 
 [ext_resource type="Texture2D" uid="uid://d4lo0et0nu1v7" path="res://volcano.png" id="1_fm1ba"]
 [ext_resource type="Texture2D" uid="uid://beq5xuvgre2aw" path="res://Textures-16.png" id="2_10mrc"]
+[ext_resource type="Script" path="res://scenes/HealthBar.cs" id="3_xxk71"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_scifo"]
 texture = ExtResource("2_10mrc")
@@ -1310,6 +1311,17 @@ texture = ExtResource("2_10mrc")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_scifo")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebb7f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cayp"]
+bg_color = Color(0, 0.945098, 0.556863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtili"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8wof"]
+bg_color = Color(1, 0.6, 0.6, 1)
+
 [node name="StageRoot" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -1381,3 +1393,30 @@ position = Vector2(-417, -127)
 
 [node name="BuddySpawn" type="Node2D" parent="."]
 position = Vector2(398, -72)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 561.0
+offset_top = 209.0
+offset_right = 1013.0
+offset_bottom = 236.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ebb7f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4cayp")
+value = 100.0
+show_percentage = false
+script = ExtResource("3_xxk71")
+
+[node name="DamageBar" type="ProgressBar" parent="HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_dtili")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u8wof")
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="HealthBar"]
+
+[connection signal="timeout" from="HealthBar/Timer" to="HealthBar" method="_on_timer_timeout"]

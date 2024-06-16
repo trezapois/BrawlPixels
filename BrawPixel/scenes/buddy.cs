@@ -3,10 +3,16 @@ using System;
 
 public partial class buddy : CharacterBody2D
 {
+	
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	public int HP = 100;
-
+	public override void _Ready(){
+		// AddChild(volcano);
+		// var healthbar = GetNode<ProgressBar>("HealthBar");
+	
+	//healthbar.init_health(HP);
+	}
 	 [Signal]
 	public delegate void BuddyDiedEventHandler(); // Change delegate name to follow the convention
  
@@ -27,8 +33,7 @@ public partial class buddy : CharacterBody2D
 	public void handle_hit(int damage, Vector2 knockback)
 	{
 		HP -= damage;
-
-
+	//	healthbar.health = HP;
 		GD.Print("ouch");
 		GD.Print(HP);
 		if (HP <= 0)

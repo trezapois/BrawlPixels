@@ -256,12 +256,13 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		Velocity = velocity;
 		MoveAndSlide();
 		syncPos = GlobalPosition;
-		
+		GD.Print(HP);
 		}
 	}
 	public void handle_hit(int damage, Vector2 knockback)
 	{
 		HP -= damage; 
+		
 		Velocity = new Vector2(-20,-20);
 		hitstun = 20;
 	}

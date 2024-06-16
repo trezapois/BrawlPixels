@@ -10,6 +10,7 @@ public partial class Training : Node
 		pauseMenu = GetNode<Control>("Pause");
 		buddy = GetNode<CharacterBody2D>("Buddy");
 	}
+	
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
