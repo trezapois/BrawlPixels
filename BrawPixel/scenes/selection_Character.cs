@@ -14,25 +14,28 @@ public partial class selection_Character : Control
 		GetTree().ChangeSceneToFile("res://scenes/selection_stages.tscn");
 	}
 
-	public void _on_hilda_pressed()
-	{
-		StoreSelectedCharacter("Hilda");
-		GetTree().ChangeSceneToFile("res://scenes/selection_stages.tscn");
-	}
-
-	public void _on_retro_boy_pressed()
-	{
-		StoreSelectedCharacter("RetroBoy");
-		GetTree().ChangeSceneToFile("res://scenes/selection_stages.tscn");
-	}
-
 	private void StoreSelectedCharacter(string character)
 	{
 		var gameData = GetNode<GameData>("/root/GameData");
 		gameData.SelectedCharacter = character;
 	}
-
+	private void _on_button_pressed()
+{
+	GetTree().ChangeSceneToFile("res://scenes/selection_character3.tscn");
+	// Replace with function body.
+}
+private void _on_button_2_pressed()
+{
+	GetTree().ChangeSceneToFile("res://scenes/selection_Character2.tscn");
+	// Replace with function body.
+}
 	public override void _Process(double delta)
 	{
 	}
 }
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://l2ar7x4410x4"
+path="res://.godot/imported/Rock action2.mp3-ef6fe7285d4f61633dae297ad3ce657d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Rock action2.mp3"
+dest_files=["res://.godot/imported/Rock action2.mp3-ef6fe7285d4f61633dae297ad3ce657d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

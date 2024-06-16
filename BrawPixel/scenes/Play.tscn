@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b271q8q6wh3rs"]
+[gd_scene load_steps=7 format=3 uid="uid://b271q8q6wh3rs"]
 
 [ext_resource type="Script" path="res://scenes/Play.cs" id="1_3dkgr"]
+[ext_resource type="Texture2D" uid="uid://bxa05mjesbdwh" path="res://imageeeees.png" id="2_eagqp"]
+[ext_resource type="Texture2D" uid="uid://j5js6sh6rnyp" path="res://pixil-frame-0 (5).png" id="3_rfe01"]
 [ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="1_281ii"]
+[ext_resource type="AudioStream" uid="uid://dngh6vk77cfxs" path="res://Sounds/SoundEffects/Button.mp3" id="3_j247i"]
+[ext_resource type="AudioStream" uid="uid://c75hrfp28qcay" path="res://Sounds/SoundEffects/before fight.mp3" id="4_05oob"]
+[ext_resource type="AudioStream" uid="uid://c7jfsj34tq51l" path="res://Sounds/Music/Electronic chill1.mp3" id="5_jsb65"]
+[ext_resource type="AudioStream" uid="uid://1p6ky3djt7ks" path="res://Sounds/Music/Electronic chill2.mp3" id="6_tlav2"]
+
+
 
 [node name="Play" type="Node"]
 script = ExtResource("1_3dkgr")
@@ -10,49 +18,92 @@ script = ExtResource("1_3dkgr")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -60.0
+offset_right = 107.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_281ii")
+texture = ExtResource("2_eagqp")
 
-[node name="Multiplayer" type="Button" parent="."]
-anchors_preset = 5
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 2.08165e-12)
+anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -140.0
-offset_right = 140.0
-offset_bottom = 159.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 40.0
 grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Multiplayer" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.4
 theme_override_font_sizes/font_size = 30
 text = "Multiplayer"
 
-[node name="Training" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -79.5
-offset_right = 140.0
-offset_bottom = 79.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="StoryMode" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.4
+theme_override_font_sizes/font_size = 30
+text = "Story Mode"
+
+[node name="Training" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.4
 theme_override_font_sizes/font_size = 30
 text = "Training"
 
-[node name="Exit" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -159.0
-offset_right = 140.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Exit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.4
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+
+[node name="Train&MultiSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_05oob")
+volume_db = 7.0
+pitch_scale = 0.86
+bus = &"SFX"
+
+[node name="ExitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_j247i")
+volume_db = 12.0
+pitch_scale = 0.67
+bus = &"SFX"
+
+[node name="MusicChill1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jsb65")
+volume_db = -2.0
+bus = &"Music"
+
+[node name="MusicChill2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tlav2")
+volume_db = -2.0
+bus = &"Music"
+
+[connection signal="pressed" from="VBoxContainer/Multiplayer" to="." method="OnMultiPress"]
+[connection signal="pressed" from="VBoxContainer/Training" to="." method="OnTrainingPress"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPress"]
+
+[node name="TextureRect" type="TextureRect" parent="Exit"]
+layout_mode = 0
+offset_left = -111.0
+offset_top = -39.0
+offset_right = 376.0
+offset_bottom = 199.0
+texture = ExtResource("3_rfe01")
 
 [connection signal="pressed" from="Multiplayer" to="." method="OnMultiPress"]
 [connection signal="pressed" from="Training" to="." method="OnTrainingPress"]

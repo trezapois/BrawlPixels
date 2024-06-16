@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy650sb3sepba"]
+[gd_scene load_steps=8 format=3 uid="uid://cy650sb3sepba"]
 
 [ext_resource type="Script" path="res://scenes/selection_Character.cs" id="1_6o2vo"]
-[ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="1_rdjk1"]
-[ext_resource type="Texture2D" uid="uid://cn6s1tbm1b5ry" path="res://Character/Purpleman/PurpleMan.png" id="2_iv47v"]
-[ext_resource type="Texture2D" uid="uid://dfhhk6wu01gtx" path="res://Character/Hilda/Hilda 2.png" id="3_6ekh8"]
-[ext_resource type="Texture2D" uid="uid://32sjvkqo0gfl" path="res://Character/RetroBoy/RetroBoy.png" id="4_kquet"]
+[ext_resource type="Texture2D" uid="uid://cqcg5xowk7ipm" path="res://310197.png" id="2_fwvgq"]
+[ext_resource type="Texture2D" uid="uid://bxa05mjesbdwh" path="res://imageeeees.png" id="3_2pkme"]
+[ext_resource type="Texture2D" uid="uid://dmfb84dhagtaw" path="res://pixil-frame-0 (12).png" id="4_x4qj0"]
+[ext_resource type="Texture2D" uid="uid://byt1t2ltqxaj0" path="res://pixil-frame-0 (11).png" id="7_iuikg"]
+[ext_resource type="Texture2D" uid="uid://fm04aumw1llg" path="res://pixil-frame-0 (10).png" id="8_r4ubi"]
+[ext_resource type="Texture2D" uid="uid://ce4r11vkprxtu" path="res://Character/Purpleman/PurpleMAnIdel.png" id="9_1cq86"]
 
 [node name="Selection Character" type="Control"]
 layout_mode = 3
@@ -17,9 +19,17 @@ script = ExtResource("1_6o2vo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_rdjk1")
+offset_right = 1151.0
+offset_bottom = 649.0
+texture = ExtResource("2_fwvgq")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 572.0
+offset_top = -72.0
+offset_right = 1182.0
+offset_bottom = 662.0
+texture = ExtResource("3_2pkme")
 
 [node name="PurpleMan" type="Button" parent="."]
 texture_filter = 1
@@ -27,65 +37,58 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -121.0
-offset_right = 292.848
-offset_bottom = 121.0
+offset_left = 691.0
+offset_top = 120.0
+offset_right = 1106.0
+offset_bottom = 488.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 1000
-icon = ExtResource("2_iv47v")
+icon = ExtResource("4_x4qj0")
+flat = true
 icon_alignment = 1
-expand_icon = true
-
-[node name="Hilda" type="Button" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -292.848
-offset_top = -121.0
-offset_bottom = 121.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 1000
-icon = ExtResource("3_6ekh8")
-icon_alignment = 1
-expand_icon = true
-
-[node name="RetroBoy" type="Button" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -146.424
-offset_top = -121.0
-offset_right = 146.424
-offset_bottom = 121.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 1000
-icon = ExtResource("4_kquet")
-icon_alignment = 1
-expand_icon = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -164.0
-offset_top = 100.0
-offset_right = 164.0
-offset_bottom = 145.0
+offset_left = 164.0
+offset_top = 35.0
+offset_right = 492.0
+offset_bottom = 80.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "Choose Your character"
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 281.0
+offset_right = 172.0
+offset_bottom = 472.0
+icon = ExtResource("7_iuikg")
+flat = true
+expand_icon = true
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1003.0
+offset_top = 288.0
+offset_right = 1289.0
+offset_bottom = 476.0
+icon = ExtResource("8_r4ubi")
+flat = true
+expand_icon = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 200.0
+offset_top = 217.0
+offset_right = 502.0
+offset_bottom = 572.0
+texture = ExtResource("9_1cq86")
+
 [connection signal="pressed" from="PurpleMan" to="." method="_on_purple_man_pressed"]
-[connection signal="pressed" from="Hilda" to="." method="_on_hilda_pressed"]
-[connection signal="pressed" from="RetroBoy" to="." method="_on_retro_boy_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

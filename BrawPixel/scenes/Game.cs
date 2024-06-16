@@ -7,10 +7,12 @@ public partial class Game : Node2D
 	// Variables to store the selected character and stage
 	private string selectedCharacter;
 	private string selectedStage;
+
 	public buddy Bud;
 	public int HPp;
 	public int Xp;
 	public int i;
+  
 	// Called when the node enters the scene tree for the first time
 	public override void _Ready()
 	{
@@ -56,6 +58,7 @@ public partial class Game : Node2D
 			var characterInstance = characterScene.Instantiate<Node2D>();
 			AddChild(characterInstance);
 			GD.Print("Character instance added");
+
 			characterInstance.Name = "Player";
 			
 			if (selectedCharacter == "PurpleMan")
@@ -120,6 +123,7 @@ public partial class Game : Node2D
 			var buddyInstance = buddyScene.Instantiate<Node2D>();
 			AddChild(buddyInstance);
 			GD.Print("Buddy character instance added");
+
 			buddyInstance.Name = "bud";
 			Bud = ((buddy)GetNode<CharacterBody2D>("bud"));
 			// Position the buddy at the buddy spawn point within the stage
@@ -178,8 +182,19 @@ public partial class Game : Node2D
 		}
 	}
 	
+	 private void OnBuddyDied()
+	{
+		// Transition to the "you won" scene
+		GetTree().ChangeSceneToFile("res://scenes/Win.tscn");
+	}
+	
+
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Bud != null && !Bud.Visible)
+		{
+			OnBuddyDied();
+		}
 		if (selectedCharacter == "PurpleMan")
 			{
 				Purple_Man p = GetNode<Purple_Man>("Player");
