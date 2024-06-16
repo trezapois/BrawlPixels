@@ -1368,6 +1368,7 @@ offset_top = 278.0
 offset_right = 464.0
 offset_bottom = 378.0
 theme = SubResource("Theme_m3286")
+theme_override_font_sizes/font_size = 30
 text = "Continue"
 
 [node name="Exit" type="Button" parent="Pause"]
@@ -1377,6 +1378,7 @@ offset_left = 692.0
 offset_top = 278.0
 offset_right = 992.0
 offset_bottom = 378.0
+theme_override_font_sizes/font_size = 30
 text = "Exit"
 
 [connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]

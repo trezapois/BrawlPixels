@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://jded1u2bkjau"]
+[gd_scene load_steps=6 format=3 uid="uid://jded1u2bkjau"]
 
+[ext_resource type="Script" path="res://scenes/volcano.cs" id="1_0rxa6"]
 [ext_resource type="Texture2D" uid="uid://d4lo0et0nu1v7" path="res://volcano.png" id="1_fm1ba"]
 [ext_resource type="Texture2D" uid="uid://beq5xuvgre2aw" path="res://Textures-16.png" id="2_10mrc"]
 
@@ -1311,6 +1312,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_scifo")
 
 [node name="StageRoot" type="Node2D"]
+script = ExtResource("1_0rxa6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -1381,3 +1383,7 @@ position = Vector2(-417, -127)
 
 [node name="BuddySpawn" type="Node2D" parent="."]
 position = Vector2(398, -72)
+
+[connection signal="pressed" from="Pause/Pause_Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Pause/Pause_Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
