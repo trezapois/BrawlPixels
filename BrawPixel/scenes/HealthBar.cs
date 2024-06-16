@@ -17,16 +17,17 @@ public partial class HealthBar : ProgressBar
 	{
 		
 		HP = GetNode<buddy>("/root/CharacterBody2D/buddy");
-		health = HP.HP;
-		GD.Print(health);
+		health = 100;
+		//GD.Print(health);
 		timer = GetNode<Timer>("Timer");
 		damage_bar = GetNode<ProgressBar>("DamageBar");
 	}
-	public override void _Process(double delta){
-		HP = GetNode<buddy>("res://scenes/buddy");
-		health = HP.HP;
-		GD.Print(health);
-		SetHealth(health);
+	public override void _Process(double delta)
+	{
+//		HP = GetNode<buddy>("res://scenes/buddy");
+//		health = HP.HP;
+//		GD.Print(health);
+//		SetHealth(health);
 		
 	}
 	public void SetHealth(int newHealth)

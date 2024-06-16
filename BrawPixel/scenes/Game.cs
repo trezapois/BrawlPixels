@@ -175,6 +175,7 @@ public partial class Game : Node2D
 			AddChild(stageInstance);
 			stageInstance.Position = new Vector2(0, 0); // Adjust as necessary
 			GD.Print("Stage loaded and instantiated at position: " + stageInstance.Position);
+			stageInstance.Name = "Volc";
 		}
 		else
 		{
@@ -191,6 +192,9 @@ public partial class Game : Node2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		volcano V = GetNode<volcano>("Volc");
+		V.GetNode<HealthBar>("HealthBarP").SetHealth(HPp);
+		V.GetNode<HealthBar>("HealthBarB").SetHealth(Bud.HP);
 		if (Bud != null && !Bud.Visible)
 		{
 			OnBuddyDied();

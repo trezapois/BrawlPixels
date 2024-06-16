@@ -4,7 +4,7 @@ using System;
 public partial class volcano : Node2D
 {
 	private Control pauseMenu;
-	private CharacterBody2D buddy;
+	private CharacterBody2D? buddy;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -21,7 +21,7 @@ public partial class volcano : Node2D
 		}
 	}
 	public void _on_pause_2_pressed(){
-		GetTree().Paused= true;
+		GetTree().Paused = true;
 		pauseMenu.Show();
 	}
 	public void _on_continue_pressed(){
