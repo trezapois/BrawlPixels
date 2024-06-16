@@ -33,13 +33,18 @@ public override void _Ready()
 				break;
 			}
 		}
-
+		  currentPlayer.Connect(nameof(Purple_Man.CharacterDied), new Callable(this, nameof(OnCharacterDied)));
 		index++;
 	}
 }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	
+	private void OnCharacterDied(Purple_Man character)
+	{
+		GD.Print("Character ", character.Name, " has died.");
+		GetTree().Paused = true;
+		GetTree().ChangeSceneToFile("res://scenes/Win.tscn");
+	}
 	public void _on_pause_2_pressed(){
 		GetTree().Paused= true;
 		pauseMenu.Show();
