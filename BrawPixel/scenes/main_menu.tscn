@@ -52,6 +52,7 @@ theme_override_font_sizes/font_size = 30
 text = "Play"
 
 [node name="TextureRect3" type="TextureRect" parent="Play"]
+layout_mode = 0
 offset_left = -96.0
 offset_top = -29.0
 offset_right = 328.0

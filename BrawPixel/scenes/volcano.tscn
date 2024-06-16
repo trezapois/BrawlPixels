@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://jded1u2bkjau"]
+[gd_scene load_steps=15 format=3 uid="uid://jded1u2bkjau"]
 
 [ext_resource type="Script" path="res://scenes/volcano.cs" id="1_0rxa6"]
 [ext_resource type="Texture2D" uid="uid://d4lo0et0nu1v7" path="res://volcano.png" id="1_fm1ba"]
@@ -1312,15 +1312,26 @@ texture = ExtResource("2_10mrc")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_scifo")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebb7f"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7flhi"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cayp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kouak"]
 bg_color = Color(0, 0.945098, 0.556863, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtili"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dffip"]
 bg_color = Color(0.231373, 0.231373, 0.231373, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8wof"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v48pr"]
+bg_color = Color(1, 0.6, 0.6, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldi64"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tglkl"]
+bg_color = Color(0, 0.945098, 0.556863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbxls"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vci7k"]
 bg_color = Color(1, 0.6, 0.6, 1)
 
 [node name="StageRoot" type="Node2D"]
@@ -1396,21 +1407,18 @@ position = Vector2(-417, -127)
 [node name="BuddySpawn" type="Node2D" parent="."]
 position = Vector2(398, -72)
 
-[connection signal="pressed" from="Pause/Pause_Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Pause/Pause_Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 561.0
-offset_top = 209.0
-offset_right = 1013.0
-offset_bottom = 236.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_ebb7f")
-theme_override_styles/fill = SubResource("StyleBoxFlat_4cayp")
+[node name="HealthBarP" type="ProgressBar" parent="."]
+offset_left = 177.0
+offset_top = 53.0
+offset_right = 629.0
+offset_bottom = 80.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_7flhi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kouak")
 value = 100.0
 show_percentage = false
 script = ExtResource("3_xxk71")
 
-[node name="DamageBar" type="ProgressBar" parent="HealthBar"]
+[node name="DamageBar" type="ProgressBar" parent="HealthBarP"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -1418,10 +1426,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_dtili")
-theme_override_styles/fill = SubResource("StyleBoxFlat_u8wof")
+theme_override_styles/background = SubResource("StyleBoxFlat_dffip")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v48pr")
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="HealthBar"]
+[node name="Timer" type="Timer" parent="HealthBarP"]
 
-[connection signal="timeout" from="HealthBar/Timer" to="HealthBar" method="_on_timer_timeout"]
+[node name="HealthBarB" type="ProgressBar" parent="."]
+offset_left = 674.0
+offset_top = 51.0
+offset_right = 1126.0
+offset_bottom = 78.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ldi64")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tglkl")
+value = 100.0
+show_percentage = false
+script = ExtResource("3_xxk71")
+
+[node name="DamageBar" type="ProgressBar" parent="HealthBarB"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_tbxls")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vci7k")
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="HealthBarB"]
+
+[connection signal="pressed" from="Pause/Pause_Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Pause/Pause_Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
+[connection signal="timeout" from="HealthBarP/Timer" to="HealthBarP" method="_on_timer_timeout"]
+[connection signal="timeout" from="HealthBarB/Timer" to="HealthBarB" method="_on_timer_timeout"]
