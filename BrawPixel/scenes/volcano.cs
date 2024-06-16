@@ -12,7 +12,7 @@ public partial class volcano : Node2D
 		buddy = GetNode<CharacterBody2D>("Buddy");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	// Called every frame. 'delta' is the elapsed time since the previous frame
 	public override void _Process(double delta)
 	{
 		if (buddy != null && !buddy.Visible)
