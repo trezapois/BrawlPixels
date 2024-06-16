@@ -1,3 +1,4 @@
+
 using Godot;
 using Test;
 public partial class Projectile : Area2D
@@ -56,3 +57,4 @@ public partial class Projectile : Area2D
 		*/
 	}
 }
+

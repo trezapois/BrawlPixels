@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://6fxpwni2vqne"]
+
+[ext_resource type="Script" path="res://scenes/Volume.cs" id="1_xmrbx"]
+[ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="2_pl4dq"]
+[ext_resource type="Script" path="res://scenes/VolumeSlider.cs" id="2_u0v2d"]
+[ext_resource type="AudioStream" uid="uid://dngh6vk77cfxs" path="res://Sounds/SoundEffects/Button.mp3" id="4_btn6e"]
+
+[node name="Volume" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xmrbx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -60.0
+offset_right = 1259.0
+offset_bottom = 708.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pl4dq")
+
+[node name="Volume_contents" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 15.0
+offset_right = 1094.0
+offset_bottom = 278.0
+
+[node name="Master_label" type="Label" parent="Volume_contents"]
+layout_mode = 2
+text = "MASTER"
+
+[node name="master_slider" type="HSlider" parent="Volume_contents"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_u0v2d")
+bus_name = "Master"
+
+[node name="Music_label" type="Label" parent="Volume_contents"]
+layout_mode = 2
+text = "MUSIC"
+
+[node name="music_slider" type="HSlider" parent="Volume_contents"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_u0v2d")
+bus_name = "Music"
+
+[node name="SFX_label" type="Label" parent="Volume_contents"]
+layout_mode = 2
+text = "SFX"
+
+[node name="sfx_slider" type="HSlider" parent="Volume_contents"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_u0v2d")
+bus_name = "SFX"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 436.0
+offset_top = 350.0
+offset_right = 716.0
+offset_bottom = 509.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="ExitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_btn6e")
+volume_db = 12.0
+pitch_scale = 0.67
+bus = &"SFX"

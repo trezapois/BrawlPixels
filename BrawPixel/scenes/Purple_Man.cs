@@ -2,16 +2,14 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Purple_Man : Test.scenes.Main_character,IHittable
+public partial class Purple_Man : Test.scenes.Main_character, IHittable
 {
-	
-
-
 	private bool _inCombo = false;
 	private double _timeTillNextImput = 0;
 	private int _currentAttack = 0;
 	private int _previousAttack = 0;
 	private double _timeToCombo = 0;
+
 	public int hitstun {get;set;}
 	public int HP {get;set;}
 	private AnimationPlayer AP;
@@ -24,14 +22,22 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	public Dictionary<List<int>, (string,int)> KlistInput { get; }
 	public List<int> MovementList { get; set; }
 	public List<Attacks> AttacksList { get; set; }
-	public Dictionary<List<Attacks>, (string,int)> JCombos { get; }
-	public Dictionary<List<Attacks>, (string,int)> KCombos { get; }
+	public Dictionary<List<Attacks>, (string, int)> JCombos { get; }
+	public Dictionary<List<Attacks>, (string, int)> KCombos { get; }
 
-	Purple_Man()
+	private Vector2 syncPos = new Vector2(0, 0);
+	private float syncRotation = 0;
+
+	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	private AnimatedSprite2D animatedSprite;
+	private bool _playerAttacking = false;
+	private Timer _attackTimer;
+
+	public Purple_Man()
 	{
-		JlistInput = new Dictionary<List<int>, (string,int)>();
-		JlistInput.Add(new List<int>(){2,3,6},("Heavy",5));
-		KlistInput = new Dictionary<List<int>, (string,int)>();
+		JlistInput = new Dictionary<List<int>, (string, int)>();
+		JlistInput.Add(new List<int>() { 2, 3, 6 }, ("Heavy", 5));
+		KlistInput = new Dictionary<List<int>, (string, int)>();
 		MovementList = new List<int>();
 		AttacksList = new List<Attacks>();
 		JCombos = new Dictionary<List<Attacks>, (string,int)>();
@@ -42,27 +48,37 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		turned = false;
 		hitstun = 0;
 	}
-	
-	
-	private Vector2 syncPos = new Vector2(0,0);
-	private float syncRotation = 0;
-	
-
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	private AnimatedSprite2D animatedSprite;
 
 	public override void _Ready()
 	{
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+		_attackTimer = new Timer();
+		AddChild(_attackTimer);
+		_attackTimer.WaitTime = 0.5f;
+		_attackTimer.OneShot = true;
+		_attackTimer.Connect("timeout", new Callable(this, nameof(OnAttackTimerTimeout)));
+
+		// Ensure the Name is numeric before parsing
+		if (int.TryParse(Name, out int authorityId))
+		{
+			GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(authorityId);
+		}
+		else
+		{
+			GD.PrintErr("Node name is not a valid authority ID: " + Name);
+		}
+
+
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
 		CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
 		AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
 		AP.Play("Idle");
 	}
-	
-	
+
 	public override void _PhysicsProcess(double delta)
 	{
+
 		AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
 		int temp = hitstun;
 		//GD.Print(hitstun);
@@ -74,10 +90,11 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 			hitstun = temp;
 			//GD.Print(hitstun);
 			Vector2 velocity = Velocity;
-			if(_timeToCombo > 0)
+			if (_timeToCombo > 0)
 				_timeToCombo -= 1;
 			else
 				AttacksList = new List<Attacks>();
+
 			if (!IsOnFloor())
 				velocity.Y += gravity * (float)delta;
 			if(hitstun > 0)
@@ -92,6 +109,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				{
 					bool movingLeft = direction.X < 0;
 					velocity.X = direction.X * Speed;
+
 					//SwitchAnimation("run");
 					//AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
 					//if(AP.CurrentAnimation != "walk")
@@ -105,77 +123,13 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 					//AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
 					AP.Play("Idle");
 				}
-				// Clear the Movement list at neutral position
-				if (direction.X == 0 && direction.Y == 0)
-				{
-					MovementList = new List<int>();
-				}
-				// Add a new Movement in the Movement list if different than the last element
-				else if (direction.X == 0 && direction.Y < 0)
-				{
-					if (MovementList.Count == 0 || MovementList[^1] != 8)
-					{
-						MovementList.Add(8);
-					}
-				}
-				else if (direction.X > 0 && direction.Y < 0)
-				{
-					if (MovementList.Count == 0 || MovementList[^1] != 9)
-					{
-						MovementList.Add(9);
-					}
-				
-				}
-				else if (direction.X < 0 && direction.Y < 0)
-				{
-					if (MovementList.Count == 0 || MovementList[^1] != 7)
-					{
-						MovementList.Add(7);
-					}
-				
-				}
-				else if (direction.X > 0 && direction.Y == 0)
-				{
-					if (MovementList.Count == 0 || MovementList[^1] != 6)
-					{
-						MovementList.Add(6);
-					}			
-				}
-				else if (direction.X < 0 && direction.Y == 0)
-				{
-					if (MovementList.Count == 0 || MovementList[^1] != 4)
-					{
-						MovementList.Add(4);
-					}			
-				}
-				else if (direction.X == 0 && direction.Y > 0)
-				{
-					if (MovementList.Count == 0 || MovementList[^1] != 2)
-					{
-						MovementList.Add(2);
-					}
-				
-				}
-				else if (direction.X < 0 && direction.Y > 0)
-				{
-					if (MovementList.Count == 0 || MovementList[^1] != 1)
-					{
-						MovementList.Add(1);
-					}
-				}
-				else if (direction.X > 0 && direction.Y > 0)
-				{
-					if (MovementList.Count == 0 || MovementList[^1] != 3)
-					{
-						MovementList.Add(3);
-					}
-				}
-				
-		
 
-			
+				// Handle MovementList updates (as before)
+				UpdateMovementList(direction);
+
 				if (Input.IsActionJustPressed("punch"))
 				{
+
 					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
 					h.Disabled = false;
 					foreach (var input in JlistInput.Keys) 
@@ -219,8 +173,10 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 					_timeToCombo = 50;
 
 				}
+
 				if (Input.IsActionJustPressed("kick"))
 				{
+
 					foreach (var input in KlistInput.Keys) 
 					{
 						if (IsEqual(input,MovementList)) 
@@ -253,6 +209,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 					_timeToCombo = 50;
 
 				}
+
 				if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 					velocity.Y = JumpVelocity;
 			}
@@ -262,6 +219,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 			}
 			else if(hitstun == 0)
 			{
+
 				velocity.X = 0;
 //				if(_timeTillNextImput > 0)
 //				{
@@ -315,8 +273,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		
 	}
 
-
-	 private void FlipSprite(bool flip)
+	private void FlipSprite(bool flip)
 	{
 		animatedSprite.FlipH = flip; // flip character from left to right or vice versa
 		GD.Print("Flip state changed to: ", flip);
@@ -353,7 +310,26 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		animatedSprite.FlipH = flip;
 		GD.Print("Synced flip state to: ", flip);
 	}
-	
-	
-	
+
+	public void handle_hit(int damage, Vector2 knockback)
+	{
+		HP -= damage;
+	}
+
+	private void OnAttackTimerTimeout()
+	{
+		_playerAttacking = false;
+		GD.Print("Player stopped attacking");
+	}
+
+	public bool IsAttacking()
+	{
+		return _playerAttacking;
+	}
+
+	public void SetAttacking(bool attacking)
+	{
+		_playerAttacking = attacking;
+	}
+
 }
