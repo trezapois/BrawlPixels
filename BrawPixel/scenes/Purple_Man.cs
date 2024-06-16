@@ -277,6 +277,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				_inCombo = true;
 				velocity.Y = -500;
 			}
+
 			
 			Velocity = velocity;
 			_inCombo = false;
@@ -291,6 +292,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	public void handle_hit(int damage, Vector2 knockback, int stun)
 	{
 		HP -= damage; 
+
 		//Velocity = knockback;
 		kbx = 200;
 		kby = -500;

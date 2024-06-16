@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b271q8q6wh3rs"]
+[gd_scene load_steps=4 format=3 uid="uid://b271q8q6wh3rs"]
 
 [ext_resource type="Script" path="res://scenes/Play.cs" id="1_3dkgr"]
-[ext_resource type="Texture2D" uid="uid://dhokkd8gixdiq" path="res://Orange_Background.png" id="1_281ii"]
+[ext_resource type="Texture2D" uid="uid://bxa05mjesbdwh" path="res://imageeeees.png" id="2_eagqp"]
+[ext_resource type="Texture2D" uid="uid://j5js6sh6rnyp" path="res://pixil-frame-0 (5).png" id="3_rfe01"]
 
 [node name="Play" type="Node"]
 script = ExtResource("1_3dkgr")
@@ -12,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_281ii")
+texture = ExtResource("2_eagqp")
 
 [node name="Multiplayer" type="Button" parent="."]
 anchors_preset = 5
@@ -46,13 +47,22 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -159.0
-offset_right = 140.0
+offset_left = -139.0
+offset_top = -190.0
+offset_right = 141.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+
+[node name="TextureRect" type="TextureRect" parent="Exit"]
+layout_mode = 0
+offset_left = -111.0
+offset_top = -39.0
+offset_right = 376.0
+offset_bottom = 199.0
+texture = ExtResource("3_rfe01")
 
 [connection signal="pressed" from="Multiplayer" to="." method="OnMultiPress"]
 [connection signal="pressed" from="Training" to="." method="OnTrainingPress"]
