@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public partial class Purple_Man : Test.scenes.Main_character,IHittable
 {
 	
-
+	[Signal]
+	public delegate void CharacterDiedEventHandler(Purple_Man character);
 
 	private bool _inCombo = false;
 	private double _timeTillNextImput = 0;
@@ -298,6 +299,10 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		//GD.Print(HP);
 		//GD.Print(hitstun);
 		//GD.Print("-----------------------------------");
+		if (HP <= 0)
+		{
+			EmitSignal(nameof(CharacterDied), this);
+		}
 	}
 	
 	
