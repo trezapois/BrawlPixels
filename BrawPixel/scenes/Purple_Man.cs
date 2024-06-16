@@ -64,9 +64,15 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 	public override void _PhysicsProcess(double delta)
 	{
 		AP = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
-		
+		int temp = hitstun;
+		//GD.Print(hitstun);
+		//GD.Print(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId());
 		if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
 		{
+
+
+			hitstun = temp;
+			//GD.Print(hitstun);
 			Vector2 velocity = Velocity;
 			if(_timeToCombo > 0)
 				_timeToCombo -= 1;
@@ -239,6 +245,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 						}
 					} 
 					AP.Play("Special");
+					Special();
 					_timeTillNextImput = 3;
 					AttacksList.Add(Attacks.SMALLKICK);
 					_timeToCombo = 50;
@@ -254,15 +261,15 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 			else if(hitstun == 0)
 			{
 				velocity.X = 0;
-				if(_timeTillNextImput > 0)
-				{
-					_timeTillNextImput = _timeTillNextImput - 0.1;
-				}
-				else
-				{
-					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
-					h.Disabled = true;
-				}
+//				if(_timeTillNextImput > 0)
+//				{
+//					_timeTillNextImput = _timeTillNextImput - 0.1;
+//				}
+//				else
+//				{
+//					CollisionShape2D h = GetNode<Area2D>("Collider").GetNode<CollisionShape2D>("Hitbox");
+//					h.Disabled = true;
+//				}
 			}
 			else
 			{
@@ -270,16 +277,15 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 				_inCombo = true;
 				velocity.Y = -500;
 			}
-			if(_inCombo == false)
-				Velocity = velocity;
+			
+			Velocity = velocity;
 			_inCombo = false;
 			MoveAndSlide();
 			syncPos = GlobalPosition;
 		
-			GD.Print(velocity);
-			GD.Print(hitstun);
+			//GD.Print(velocity);
+			//GD.Print(hitstun);
 		}
-		
 	}
 	
 	public void handle_hit(int damage, Vector2 knockback, int stun)
@@ -288,14 +294,22 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		//Velocity = knockback;
 		kbx = 200;
 		kby = -500;
-		hitstun = 30; //stun;
-		GD.Print(HP);
-		
+		hitstun = 500; //stun;
+		//GD.Print(HP);
+		//GD.Print(hitstun);
+		//GD.Print("-----------------------------------");
 	}
+	
+	
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void SwitchAnimation(string animationName)
 	{
 		animatedSprite.Animation = animationName;
+	}
+	
+	private void Special()
+	{
+		
 	}
 
 
@@ -309,6 +323,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		}
 		
 	}
+
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	private void SyncFlipState(bool flip)

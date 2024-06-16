@@ -14,7 +14,7 @@ public partial class Retro_boy : Test.scenes.Main_character,IHittable
 	private int _previousAttack = 0;
 	private double _timeToCombo = 0;
 	private int hitstun = 0;
-	private int HP {get;set;}
+	public int HP {get;set;}
 	
 	public Dictionary<List<int>, (string,int)> JlistInput { get; }
 	public Dictionary<List<int>, (string,int)> KlistInput { get; }
