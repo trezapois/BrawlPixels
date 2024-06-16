@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://duwuawdhfbhiv"]
+[gd_scene load_steps=13 format=3 uid="uid://duwuawdhfbhiv"]
 
 [ext_resource type="Texture2D" uid="uid://d4lo0et0nu1v7" path="res://volcano.png" id="1_0qvaw"]
 [ext_resource type="Script" path="res://scenes/Training.cs" id="1_apkrt"]
 [ext_resource type="PackedScene" uid="uid://bx27usq666kpk" path="res://scenes/Main_character.tscn" id="3_4y6c8"]
 [ext_resource type="Script" path="res://Punching_ball.cs" id="4_x26ps"]
+[ext_resource type="Script" path="res://scenes/HealthBar.cs" id="6_2qigo"]
 [ext_resource type="PackedScene" uid="uid://2u32c1aohad4" path="res://scenes/buddy.tscn" id="6_hpx7r"]
 
 [sub_resource type="TileSet" id="TileSet_vvkk1"]
@@ -11,6 +12,17 @@ physics_layer_0/collision_layer = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygi1s"]
 size = Vector2(106, 246)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ffbe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2m8s"]
+bg_color = Color(0, 0.945098, 0.556863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u35t3"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr3nu"]
+bg_color = Color(1, 0.6, 0.6, 1)
 
 [node name="Training" type="Node"]
 script = ExtResource("1_apkrt")
@@ -94,6 +106,33 @@ shape = SubResource("RectangleShape2D_ygi1s")
 texture_filter = 1
 position = Vector2(175, 170)
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 561.0
+offset_top = 209.0
+offset_right = 1013.0
+offset_bottom = 236.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_4ffbe")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n2m8s")
+value = 100.0
+show_percentage = false
+script = ExtResource("6_2qigo")
+
+[node name="DamageBar" type="ProgressBar" parent="HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_u35t3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nr3nu")
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="HealthBar"]
+wait_time = 0.4
+
 [connection signal="pressed" from="Pause/Pause@Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Pause/Pause@Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Pause2" to="." method="_on_pause_2_pressed"]
+[connection signal="timeout" from="HealthBar/Timer" to="HealthBar" method="_on_timer_timeout"]

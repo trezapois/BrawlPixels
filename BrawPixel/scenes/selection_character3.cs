@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class selection_Character : Control
+public partial class selection_character3 : Node2D
 {
 	public override void _Ready()
 	{
@@ -9,8 +9,7 @@ public partial class selection_Character : Control
 
 	public void _on_purple_man_pressed()
 	{
-		GD.Print("1"); // Debug test
-		StoreSelectedCharacter("PurpleMan");
+		StoreSelectedCharacter("Hilda");
 		GetTree().ChangeSceneToFile("res://scenes/selection_stages.tscn");
 	}
 
@@ -21,18 +20,19 @@ public partial class selection_Character : Control
 	}
 	private void _on_button_pressed()
 {
-	GetTree().ChangeSceneToFile("res://scenes/selection_character3.tscn");
+	GetTree().ChangeSceneToFile("res://scenes/selection_Character2.tscn");
 	// Replace with function body.
 }
 private void _on_button_2_pressed()
 {
-	GetTree().ChangeSceneToFile("res://scenes/selection_Character2.tscn");
+	GetTree().ChangeSceneToFile("res://scenes/selection_Character.tscn");
 	// Replace with function body.
 }
 	public override void _Process(double delta)
 	{
 	}
 }
+
 
 
 

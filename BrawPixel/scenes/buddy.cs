@@ -3,9 +3,15 @@ using System;
 
 public partial class buddy : CharacterBody2D
 {
+	
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	public int HP = 100;
+
+		// var healthbar = GetNode<ProgressBar>("HealthBar");
+	
+	//healthbar.init_health(HP);
+
 	private int hitstun = 0;
 	private AnimationPlayer AP;
 	private int moving = 0;
