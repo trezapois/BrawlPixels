@@ -115,6 +115,7 @@ public partial class Play : Node
 		GetTree().ChangeSceneToFile("res://scenes/host_and_join.tscn");
 	}
 
+
 	public void OnTrainingPress()
 	{
 		GD.Print("Training button pressed");
@@ -134,7 +135,7 @@ public partial class Play : Node
 
 	private void OnTrainingSceneChange()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/Training.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/selection_Character.tscn");
 	}
 
 	public void OnStoryPress()

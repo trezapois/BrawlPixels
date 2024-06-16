@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5658afdf-b97e-4362-8618-3eab5a4a6344" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/GameData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BrawPixel.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BrawPixel.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/Main_character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Main_character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/Main_character.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Main_character.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/Purple_Man.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Purple_Man.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/Hilda.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Hilda.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/Training.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/Training.tscn" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,29 +28,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Character&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/lucadedonno/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache",
-      "/Users/lucadedonno/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache",
-      "/Users/lucadedonno/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/lucadedonno/Library/Application Support/JetBrains/Rider2023.2/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/lucadedonno/Library/Application Support/JetBrains/Rider2023.2/resharper-host/SourcesCache&quot;,
+      &quot;/Users/lucadedonno/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Executable.Player">
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="/private/var/folders/cd/zm5_596d1zzg1ppcy_f_p7600000gn/T/AppTranslocation/7E3EA403-A37F-4AD6-BC9D-C2F8698A52B0/d/Godot_mono.app/Contents/MacOS/Godot" />
+      <option name="EXE_PATH" value="/private/var/folders/cd/zm5_596d1zzg1ppcy_f_p7600000gn/T/AppTranslocation/7B8D00C3-9865-4C19-B1A6-0F987A31F271/d/Godot_mono.app/Contents/MacOS/Godot" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;$PROJECT_DIR$&quot; --editor" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -64,7 +63,7 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="/private/var/folders/cd/zm5_596d1zzg1ppcy_f_p7600000gn/T/AppTranslocation/7E3EA403-A37F-4AD6-BC9D-C2F8698A52B0/d/Godot_mono.app/Contents/MacOS/Godot" />
+      <option name="EXE_PATH" value="/private/var/folders/cd/zm5_596d1zzg1ppcy_f_p7600000gn/T/AppTranslocation/7B8D00C3-9865-4C19-B1A6-0F987A31F271/d/Godot_mono.app/Contents/MacOS/Godot" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;$PROJECT_DIR$&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -88,6 +87,9 @@
       <workItem from="1710929072163" duration="24000" />
       <workItem from="1717935499049" duration="126000" />
       <workItem from="1717935638598" duration="13920000" />
+      <workItem from="1718106804683" duration="603000" />
+      <workItem from="1718276536758" duration="5229000" />
+      <workItem from="1718368142679" duration="7916000" />
     </task>
     <servers />
   </component>

@@ -34,6 +34,7 @@ public partial class Training : Node
 		var pauseButton = GetNode<Button>("Pause2");
 		pauseButton.Connect("pressed", new Callable(this, nameof(_on_pause_2_pressed)));
 	}
+	
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
