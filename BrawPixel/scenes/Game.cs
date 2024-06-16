@@ -182,9 +182,19 @@ public partial class Game : Node2D
 		}
 	}
 	
+	 private void OnBuddyDied()
+	{
+		// Transition to the "you won" scene
+		GetTree().ChangeSceneToFile("res://scenes/Win.tscn");
+	}
+	
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Bud != null && !Bud.Visible)
+		{
+			OnBuddyDied();
+		}
 		if (selectedCharacter == "PurpleMan")
 			{
 				Purple_Man p = GetNode<Purple_Man>("Player");

@@ -46,8 +46,11 @@ public partial class buddy : CharacterBody2D
 			}
 			if(moving > 0)
 				velocity.X = -200;
-			else if(hitstun == 0)
+			else
+			{
 				velocity.X = 0;
+				AP.Play("Idle");
+			}
 		}
 		// Add the gravity.
 			
@@ -55,10 +58,10 @@ public partial class buddy : CharacterBody2D
 			velocity.Y += gravity * (float)delta;
 
 		Velocity = velocity;
-		if(velocity.X > 0)
+		if(velocity.X != 0)
 			AP.Play("walk");
 		MoveAndSlide();
-		GD.Print(velocity);
+		//GD.Print(velocity);
 	}
 	
 	public void AImove(int dist)
@@ -109,7 +112,7 @@ public partial class buddy : CharacterBody2D
 	public void handle_hit(int damage, Vector2 knockback, int stun)
 	{
 		HP -= damage; 
-		Velocity = new Vector2(200,-200);
+		Velocity = knockback;//new Vector2(200,-200);
 		hitstun = stun * 3;
 		GD.Print(HP);
 		GD.Print(stun);

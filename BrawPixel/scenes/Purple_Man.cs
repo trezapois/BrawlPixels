@@ -188,6 +188,8 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 							AttacksList.Add(ToAttacks(action));
 							_timeToCombo = frames + 50;
 							((Collider)GetNode<Area2D>("Collider"))._setDam(20);
+							GetNode<Collider>("Collider")._setK(new Vector2(500,-200));
+							GetNode<Collider>("Collider")._setHitstun(10);
 							return; 
 						}
 					}
@@ -203,7 +205,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 							AttacksList.Add(ToAttacks(action));
 							_timeToCombo = frames + 50;
 							GetNode<Collider>("Collider")._setDam(10);
-							GetNode<Collider>("Collider")._setK(new Vector2(-30,-30));
+							GetNode<Collider>("Collider")._setK(new Vector2(-300,-200));
 							GetNode<Collider>("Collider")._setHitstun(5);
 							return;
 						}
@@ -212,7 +214,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 					_timeTillNextImput = 3;
 					AttacksList.Add(Attacks.JAB1);
 					GetNode<Collider>("Collider")._setDam(8);
-					GetNode<Collider>("Collider")._setK(new Vector2(-5,-5));
+					GetNode<Collider>("Collider")._setK(new Vector2(200,-200));
 					GetNode<Collider>("Collider")._setHitstun(8);
 					_timeToCombo = 50;
 
@@ -294,8 +296,7 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 		HP -= damage; 
 
 		//Velocity = knockback;
-		kbx = 200;
-		kby = -500;
+		Velocity = new Vector2(-200,-200);
 		hitstun = 500; //stun;
 		//GD.Print(HP);
 		//GD.Print(hitstun);
@@ -324,6 +325,25 @@ public partial class Purple_Man : Test.scenes.Main_character,IHittable
 			Rpc(nameof(SyncFlipState), flip); // for the multiplayer
 		}
 		
+		// Get the Hitbox node
+		var hitbox = GetNode<CollisionShape2D>("Collider/Hitbox");
+		
+		// Get the Collider node and then the CollisionShape2D node (assuming Collider is an Area2D)
+		var collider = GetNode<Area2D>("Collider");
+		var colliderShape = collider.GetNode<CollisionShape2D>("CollisionShape2D");
+
+		// Flip the Hitbox and Collider shapes
+		ApplyFlip(hitbox, flip);
+		ApplyFlip(colliderShape, flip);
+		
+	}
+
+	private void ApplyFlip(CollisionShape2D shape, bool flip)
+	{
+		// Check the current scale and apply the flip
+		Vector2 scale = shape.Scale;
+		scale.X = flip ? -Mathf.Abs(scale.X) : Mathf.Abs(scale.X);
+		shape.Scale = scale;
 	}
 
 
